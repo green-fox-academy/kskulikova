@@ -4,7 +4,7 @@
 
 [git-lesson](https://github.com/kskulikova/git-lesson-repository)
 
-[patchwork](https://github.com/kskulikova/patchwork)
+[patchwork repo](https://github.com/kskulikova/patchwork)
 
 [First website repo](https://github.com/kskulikova/kskulikovai.github.io)
 
