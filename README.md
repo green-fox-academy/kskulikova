@@ -2,4 +2,5 @@
 [hello-world](https://github.com/kskulikova/hello-world)
 [git-lesson](https://github.com/kskulikova/git-lesson-repository)
 [patchwork](https://github.com/kskulikova/patchwork)
-[First website](https://github.com/kskulikova/kskulikova.github.io)
+[First website repo](https://github.com/kskulikova/kskulikovai.github.io)
+[My first website!](https://kskulikova.github.io)
