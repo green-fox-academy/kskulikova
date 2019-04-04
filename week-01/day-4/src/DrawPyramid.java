@@ -12,7 +12,7 @@ public class DrawPyramid {
         //last line = lines * 2 - 1
 
         int maxStars = lines * 2 - 1;
-        int spaces = (maxStars - 1) / 2;
+        int spaces = maxStars / 2;
 
         // i is a counter for lines
         for (int i = 1; i <= lines; i++){
@@ -22,7 +22,6 @@ public class DrawPyramid {
                 System.out.print(" ");
                 s++;
             }
-
             // print stars
             for (int j = 1; j <= (maxStars - spaces * 2); j ++) {
                 System.out.print("*");

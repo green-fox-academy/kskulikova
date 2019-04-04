@@ -19,7 +19,7 @@ public class DrawDiamond {
 
         System.out.println("Let's draw a diamond! How many lines?");
         int lines = scanner.nextInt();
-        int spaces = (lines - 1) / 2;
+        int spaces = lines/ 2;
 
         // i is a counter for lines
         for (int i = 1; i <= lines; i++){
@@ -34,7 +34,7 @@ public class DrawDiamond {
                 System.out.print("*");
             }
                 System.out.printf("\n");
-            if (i <= (lines - 1)/2) {
+            if (i <= lines / 2) {
                 spaces--;
             } else {
                 spaces++;
