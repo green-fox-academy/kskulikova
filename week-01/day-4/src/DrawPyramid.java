@@ -24,16 +24,9 @@ public class DrawPyramid {
             }
 
             // print stars
-            for (int j = 1; j <= (maxStars - spaces*2); j ++) {
+            for (int j = 1; j <= (maxStars - spaces * 2); j ++) {
                 System.out.print("*");
             }
-            // print spaces
-            while (s < spaces){
-                System.out.print(" ");
-                s++;
-
-            }
-            // print new line
             System.out.printf("\n");
             spaces--;
         }
