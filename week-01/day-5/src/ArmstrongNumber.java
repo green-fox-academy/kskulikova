@@ -14,7 +14,7 @@ public class ArmstrongNumber {
         double power;
         int answer = 0;
 
-        while (i >= 1){
+        while (i >= 1) {
             int j = i % 10;
             i = i / 10;
             power = Math.pow(j, length);

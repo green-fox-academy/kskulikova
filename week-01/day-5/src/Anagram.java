@@ -6,7 +6,7 @@ public class Anagram {
         System.out.println(subStr("dog", "god"));
     }
 
-    public static boolean subStr(String s1, String s2) {
+    private static boolean subStr(String s1, String s2) {
         boolean match;
 
         if (s1.length() != s2.length()) {

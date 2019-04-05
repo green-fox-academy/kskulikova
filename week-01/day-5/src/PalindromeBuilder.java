@@ -3,19 +3,19 @@ public class PalindromeBuilder {
         palindrome("GreenFox");
     }
 
-    static void palindrome(String s) {
+    private static void palindrome(String s) {
         char[] arr = s.toCharArray();
         int n = arr.length;
 
-        char [] b = new char[n];
+        char[] b = new char[n];
         int j = n;
-        for (int i = 0; i < n; i++) {
-            b[j - 1] = arr[i];
+        for (char c : arr) {
+            b[j - 1] = c;
             j = j - 1;
         }
 
-        for (int k = 0; k < n; k++) {
-            System.out.println(arr[k]);
+        for (char c : arr) {
+            System.out.println(c);
         }
         for (int k = 0; k < n; k++) {
             System.out.println(b[k]);
