@@ -20,25 +20,55 @@ public class DrawDiamond {
         System.out.println("Let's draw a diamond! How many lines?");
         int lines = scanner.nextInt();
         int spaces = lines/ 2;
+        int stars = lines - spaces * 2;
 
-        // i is a counter for lines
-        for (int i = 1; i <= lines; i++){
-            // print spaces
-            int s = 0;
-            while (s < spaces) {
-                System.out.print(" ");
-                s++;
-            }
-            // print stars
-            for (int j = 1; j <= (lines - spaces * 2); j++) {
-                System.out.print("*");
-            }
+        if (lines %2 != 0) {
+            // i is a counter for lines
+            for (int i = 1; i <= lines; i++) {
+                // print spaces
+                int s = 0;
+                while (s < spaces) {
+                    System.out.print(" ");
+                    s++;
+                }
+                // print stars
+                for (int j = 1; j <= stars; j++) {
+                    System.out.print("*");
+                }
                 System.out.printf("\n");
-            if (i <= lines / 2) {
-                spaces--;
-            } else {
-                spaces++;
+                if (i <= lines / 2) {
+                    spaces--;
+                    stars +=2;
+                } else {
+                    spaces++;
+                    stars -=2;
+                }
             }
+        } else {
+            for (int i = 0; i <= lines; i++) {
+                // print spaces
+                int s = 0;
+                while (s < spaces) {
+                    System.out.print(" ");
+                    s++;
+                }
+                // print stars
+                for (int j = 1; j <= (stars - 2 + 1); j++) {
+                    System.out.print("*");
+                }
+                System.out.printf("\n");
+                if (i < lines / 2) {
+                    spaces--;
+                    stars += 2;
+                } else if (i == lines /2){
+
+                } else {
+                    spaces++;
+                    stars -=2;
+                }
+            }
+
         }
     }
 }
+
