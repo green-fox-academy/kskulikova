@@ -53,7 +53,7 @@ public class DrawDiamond {
                     s++;
                 }
                 // print stars
-                for (int j = 1; j <= (stars - 2 + 1); j++) {
+                for (int j = 1; j < stars; j++) {
                     System.out.print("*");
                 }
                 System.out.printf("\n");
