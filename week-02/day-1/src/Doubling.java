@@ -4,14 +4,13 @@
 // - Print the result of `doubling(baseNum)`
 
 
-
 public class Doubling {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         int baseNum = 123;
         System.out.println(doubling(baseNum));
     }
 
-    public static int doubling( int i){
+    public static int doubling(int i) {
         return i * 2;
     }
 }

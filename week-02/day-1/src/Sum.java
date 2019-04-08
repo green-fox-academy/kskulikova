@@ -5,9 +5,10 @@ public class Sum {
     public static void main(String[] args) {
         System.out.println(sum(10));
     }
-    public static int sum(int i){
+
+    public static int sum(int i) {
         int sum = 0;
-        for (int j = 0; j < i + 1; j++){
+        for (int j = 0; j < i + 1; j++) {
             sum += j;
         }
         return sum;

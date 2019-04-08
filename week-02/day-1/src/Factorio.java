@@ -9,12 +9,12 @@ public class Factorio {
         System.out.println(factorio(4));
     }
 
-    public static int factorio (int i){
+    public static int factorio(int i) {
 
         if (i == 0)
             return 1;
         else
-            return(i * factorio(i - 1));
+            return (i * factorio(i - 1));
     }
 }
 
