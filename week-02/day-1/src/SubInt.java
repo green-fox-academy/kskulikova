@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.List;
 
 public class SubInt {
     public static void main(String[] args) {
@@ -28,7 +26,6 @@ public class SubInt {
                     arrFound[k] = i;
                     found = true;
                     k++;
-
                 }
 
                 arr[i] = arr[i] / 10;
@@ -38,7 +35,6 @@ public class SubInt {
 
         if (k > 0) {
             int[] arrFoundClean = Arrays.copyOfRange(arrFound, 0, k);
-
             return Arrays.toString(arrFoundClean);
         } else {
             return Arrays.toString(new int[0]);
