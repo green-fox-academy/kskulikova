@@ -13,6 +13,6 @@ public class SumElements {
 
     public static int sumOfElements(int[] arr) {
 
-        return arr[2] + arr[3];
+        return arr[1] + arr[2];
     }
 }

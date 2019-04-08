@@ -14,6 +14,6 @@ public class Third {
     }
 
     public static int third(int[] arr) {
-        return arr[3];
+        return arr[2];
     }
 }
