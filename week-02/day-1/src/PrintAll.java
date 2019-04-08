@@ -8,7 +8,7 @@ public class PrintAll {
         numbers = new int[]{4, 5, 6, 7};
 
         for (int i : numbers) {
-            System.out.println(i);
+            System.out.print(i);
         }
     }
 }
