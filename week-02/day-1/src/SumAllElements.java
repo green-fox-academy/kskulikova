@@ -4,8 +4,7 @@
 
 public class SumAllElements {
     public static void main(String[] args) {
-        int[] ai;
-        ai = new int[]{3, 4, 5, 6, 7};
+        int[] ai = {3, 4, 5, 6, 7};
 
         System.out.println(sum(ai));
     }

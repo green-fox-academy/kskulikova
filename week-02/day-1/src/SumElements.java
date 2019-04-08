@@ -5,8 +5,7 @@
 public class SumElements {
     public static void main(String[] args) {
 
-        int[] r;
-        r = new int[]{54, 23, 66, 12};
+        int[] r = {54, 23, 66, 12};
 
         System.out.println(sumOfElements(r));
     }

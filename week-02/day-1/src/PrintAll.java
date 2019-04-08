@@ -4,8 +4,7 @@
 
 public class PrintAll {
     public static void main(String[] args) {
-        int[] numbers;
-        numbers = new int[]{4, 5, 6, 7};
+        int [] numbers = {4, 5, 6, 7};
 
         for (int i : numbers) {
             System.out.print(i);
