@@ -13,15 +13,7 @@ import java.util.Map;
 
 public class ProductDatabase {
     public static void main(String[] args) {
-        HashMap<String, Integer> database = new HashMap<>();
-
-        database.put("Eggs", 200);
-        database.put("Milk", 200);
-        database.put("Fish", 400);
-        database.put("Apples", 150);
-        database.put("Bread", 50);
-        database.put("Chicken", 550);
-
+        HashMap<String, Integer> database = new ProductDatabaseFactory().getProductDatabase();
 
         System.out.println("The fish is " + database.get("Fish"));
 
@@ -61,9 +53,7 @@ public class ProductDatabase {
         System.out.println("There are " + i + " products with the price below 300");
         System.out.println("We " + answer + " buy " + (yes ? "something" : "anything") + " for exactly 125");
         System.out.println(cheap.getKey() + " is the cheapest product");
-
     }
-
 
 }
 
