@@ -49,17 +49,17 @@ public class ProductDatabase {
 
         for (String key : database.keySet()) {
             sum += database.get(key);
-            if(database.get(key) < 300){
+            if (database.get(key) < 300) {
                 i++;
             }
-            if (database.get(key) == 125){
+            if (database.get(key) == 125) {
                 yes = true;
                 answer = "can";
             }
         }
         System.out.println("The average price is " + sum / database.size());
         System.out.println("There are " + i + " products with the price below 300");
-        System.out.println("We "+ answer + " buy " + (yes ? "something" : "anything") + " for exactly 125");
+        System.out.println("We " + answer + " buy " + (yes ? "something" : "anything") + " for exactly 125");
         System.out.println(cheap.getKey() + " is the cheapest product");
 
     }
