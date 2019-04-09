@@ -7,7 +7,7 @@ public class PalindromeSearcher {
 
     public static String[] palindromeSearcher(String s) {
         boolean found = false;
-        String[] palindromes = new String[3];
+        String[] palindromes = new String[1];
         int palindromesCount = 0;
 
         for (int i = 0; i < s.length() - 1; i++) {
