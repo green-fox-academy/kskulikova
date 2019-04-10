@@ -9,16 +9,14 @@ public class PurpleSteps {
         // Reproduce this:
         // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/purple-steps/r3.png]
 
-        for (int i = 9; i < 190; i += 10){
+        for (int i = 10; i < 200; i += 11) {
+            graphics.setColor(Color.black);
             graphics.drawRect(i, i, 11, 11);
-        }
 
-        graphics.setColor(Color.magenta);
-        for (int i = 10; i < 200; i += 10){
-            graphics.fillRect(i, i, 10, 10);
+            graphics.setColor(Color.magenta);
+            graphics.fillRect(i + 1, i + 1, 10, 10);
         }
     }
-
 
 
     // Don't touch the code below
