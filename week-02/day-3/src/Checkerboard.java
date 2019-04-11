@@ -12,9 +12,8 @@ public class Checkerboard {
         for (int i = 0; i <= WIDTH - WIDTH / 8; i = i + WIDTH / 8) {
             counter++;
             for (int j = 0; j <= HEIGHT - HEIGHT / 8; j += HEIGHT / 8) {
-                if (counter % 2 == 0) {
-                    graphics.drawRect(j, i, HEIGHT / 8, HEIGHT / 8);
-                } else {
+                graphics.drawRect(j, i, HEIGHT / 8, HEIGHT / 8);
+                if (counter % 2 != 0) {
                     graphics.fillRect(j, i, HEIGHT / 8, HEIGHT / 8);
                 }
                 counter++;

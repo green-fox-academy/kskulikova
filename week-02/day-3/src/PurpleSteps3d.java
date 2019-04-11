@@ -9,7 +9,6 @@ public class PurpleSteps3d {
         // Reproduce this:
         // [https://github.com/green-fox-academy/teaching-materials/blob/master/workshop/drawing/purple-steps-3d/r4.png]
 
-        int j = 1;
         int start = 10;
         int size = 10;
         for (int i = 0; i < 6; i++) {
