@@ -10,13 +10,12 @@ public class MaximumFinder {
 
     private static int maximumFinder(int[] arr, int length) {
         if (length == 1) {
-            return arr[length - 1];
+            return arr[0];
         }
         if (arr[length - 1] > arr[length - 2]) {
             arr[length - 2] = arr[length - 1];
         }
         return maximumFinder(arr, length - 1);
     }
-
 
 }
