@@ -10,8 +10,8 @@ public class NumberAdder {
         System.out.println(adder(n));
     }
 
-    public static int adder (int i){
-        if (i == 0){
+    public static int adder(int i) {
+        if (i == 0) {
             return i;
         }
         i = i + adder(i - 1);
