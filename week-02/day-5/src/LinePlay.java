@@ -9,42 +9,45 @@ public class LinePlay {
     static int HEIGHT = 560;
 
     public static void mainDraw(Graphics graphics) {
+        int numberOfLines = 50;
+        int stepX = WIDTH / numberOfLines;
+        int stepY = HEIGHT / numberOfLines;
 
         int startXLeft = 3;
-        int startYLeft = 81;
+        int startYLeft = stepY * 2 + 3;
 
-        int endXLeft = 41;
-        int endYLeft = 557;
+        int endXLeft = stepX + 3;
+        int endYLeft = HEIGHT - 3;
 
         graphics.setColor(Color.green);
-        drawLinesLeft(startXLeft, startYLeft, endXLeft, endYLeft, graphics);
+        drawLinesLeft(startXLeft, startYLeft, endXLeft, endYLeft, graphics, stepX, stepY);
 
-        int startXRight = 557;
-        int startYRight = 479;
+        int startXRight = WIDTH - 3;
+        int startYRight = HEIGHT - (stepY * 2 + 3);
 
-        int endXRight = 517;
+        int endXRight = WIDTH - (stepX + 3);
         int endYRight = 3;
 
         graphics.setColor(Color.magenta);
-        drawLinesRight(startXRight, startYRight, endXRight, endYRight, graphics);
+        drawLinesRight(startXRight, startYRight, endXRight, endYRight, graphics, stepX, stepY);
 
     }
 
-    private static void drawLinesLeft(int startX, int startY, int endX, int endY, Graphics graphics) {
+    private static void drawLinesLeft(int startX, int startY, int endX, int endY, Graphics graphics, int stepX, int stepY) {
 
-        if (endX < 520) {
+        if (endX < WIDTH - stepX * 2) {
 
             graphics.drawLine(startX, startY, endX, endY);
-            drawLinesLeft(startX, startY + 40, endX + 40, endY, graphics);
+            drawLinesLeft(startX, startY + stepY, endX + stepX, endY, graphics, stepX, stepY);
         }
     }
 
-    private static void drawLinesRight(int startX, int startY, int endX, int endY, Graphics graphics) {
+    private static void drawLinesRight(int startX, int startY, int endX, int endY, Graphics graphics,int stepX, int stepY) {
 
         if (endX > 40) {
 
             graphics.drawLine(startX, startY, endX, endY);
-            drawLinesRight(startX, startY - 40, endX - 40, endY, graphics);
+            drawLinesRight(startX, startY - stepY, endX - stepX, endY, graphics,stepX, stepY);
         }
     }
 
@@ -54,7 +57,7 @@ public class LinePlay {
         ImagePanel panel = new ImagePanel();
         panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         jFrame.add(panel);
-        jFrame.setLocationRelativeTo(null);
+//        jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
         jFrame.pack();
     }
