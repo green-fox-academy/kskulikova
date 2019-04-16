@@ -32,7 +32,6 @@ public class WriteMultipleLines {
         } catch (IOException e) {
 
         }
-
     }
 
 }
