@@ -38,17 +38,15 @@ public class TicTacToe {
                 }
             }
             int k = 0;
-            if (symbols[k][0] == 'X' && symbols[k][1] == 'X' && symbols[k][2] == 'X') {
+            if (symbols[k][0] == 'X' && symbols[k][1] == 'X' && symbols[k][2] == 'X'
+                    || symbols[0][0] == 'X' && symbols[1][0] == 'X' && symbols[2][0] == 'X'
+                    || symbols[0][0] == 'X' && symbols[1][1] == 'X' && symbols[2][2] == 'X') {
+
                 result = "X";
-            } else if (symbols[k][0] == 'O' && symbols[k][1] == 'O' && symbols[k][2] == 'O') {
-                result = "O";
-            } else if (symbols[0][k] == 'X' && symbols[1][k] == 'X' && symbols[2][k] == 'X') {
-                result = "X";
-            } else if (symbols[0][k] == 'O' && symbols[1][k] == 'O' && symbols[2][k] == 'O') {
-                result = "O";
-            } else if (symbols[0][k] == 'X' && symbols[1][k + 1] == 'X' && symbols[2][k + 2] == 'X') {
-                result = "X";
-            } else if (symbols[0][k] == 'O' && symbols[1][k + 1] == 'O' && symbols[2][k + 2] == 'O') {
+            } else if (symbols[0][0] == 'O' && symbols[0][1] == 'O' && symbols[0][2] == 'O'
+                    || symbols[0][0] == 'O' && symbols[1][0] == 'O' && symbols[2][0] == 'O'
+                    || symbols[0][0] == 'O' && symbols[1][1] == 'O' && symbols[2][2] == 'O') {
+
                 result = "O";
             } else {
                 result = "DRAW";

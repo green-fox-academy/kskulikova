@@ -17,8 +17,8 @@ public class ReversedLines {
 
     private static void duplicatedChars(String copyFrom, String decrypted) {
         List<String> list = new ArrayList<>();
-        String s = "";
-        String word = "";
+        StringBuilder s = new StringBuilder();
+        StringBuilder word = new StringBuilder();
         try {
             Path src = Paths.get("assets/" + copyFrom);
             List<String> content = Files.readAllLines(src);
@@ -26,14 +26,14 @@ public class ReversedLines {
                 String[] words = line.split(" ");
                 for (int i = words.length - 1; i >= 0; i--) {
                     for (int j = words[i].length() - 1; j >= 0; j--) {
-                        s = s + words[i].charAt(j);
+                        s.append(words[i].charAt(j));
                     }
-                    word = word + " " + s;
-                    s = "";
+                    word.append(" ").append(s);
+                    s = new StringBuilder();
                 }
-                word += "\n";
+                word.append("\n");
             }
-            list.add(word);
+            list.add(word.toString());
 
             Files.write(Paths.get(decrypted), list);
 

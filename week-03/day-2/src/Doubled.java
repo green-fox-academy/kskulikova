@@ -16,23 +16,24 @@ public class Doubled {
 
     private static void duplicatedChars(String copyFrom, String decrypted) {
         List<String> list = new ArrayList<>();
-        String s = "";
-        String word = "";
+        StringBuilder s = new StringBuilder();
+        StringBuilder word = new StringBuilder();
+
         try {
             Path src = Paths.get("assets/" + copyFrom);
             List<String> content = Files.readAllLines(src);
             for (String line : content) {
                 String[] words = line.split(" ");
-                for (int i = 0; i < words.length; i++) {
-                    for (int j = 0; j < words[i].length(); j = j + 2) {
-                        s = s + words[i].charAt(j);
+                for (String value : words) {
+                    for (int j = 0; j < value.length(); j = j + 2) {
+                        s.append(value.charAt(j));
                     }
-                    word = word + " " + s;
-                    s = "";
+                    word.append(" ").append(s);
+                    s = new StringBuilder();
                 }
-                word += "\n";
+                word.append("\n");
             }
-            list.add(word);
+            list.add(word.toString());
 
             Files.write(Paths.get(decrypted), list);
 

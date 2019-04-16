@@ -11,10 +11,10 @@ public class ReversedOrder {
         // Create a method that decrypts reversed-order.txt
         String filename = "reversed-order.txt";
         String copyTo = "decrypted.txt";
-        duplicatedChars(filename, copyTo);
+        reverseOrder(filename, copyTo);
     }
 
-    private static void duplicatedChars(String copyFrom, String decrypted) {
+    private static void reverseOrder(String copyFrom, String decrypted) {
         List<String> list = new ArrayList<>();
         try {
             Path src = Paths.get("assets/" + copyFrom);

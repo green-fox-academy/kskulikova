@@ -3,7 +3,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.util.Collections;
-import java.util.List;
 
 // Write a function that is able to manipulate a file
 // By writing your name into it as a single line

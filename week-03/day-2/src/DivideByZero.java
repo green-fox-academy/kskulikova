@@ -19,8 +19,6 @@ public class DivideByZero {
         } catch (ArithmeticException e) {
             System.out.println("Division by zero!");
         }
-
     }
-
 }
 

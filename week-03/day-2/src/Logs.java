@@ -39,7 +39,6 @@ public class Logs {
         double r = 0.0;
         double gets = 0.0;
         double posts = 0.0;
-        List<String> list = new ArrayList<>();
 
         try {
             Path src = Paths.get(file);
@@ -59,5 +58,4 @@ public class Logs {
         }
         return r;
     }
-
 }
