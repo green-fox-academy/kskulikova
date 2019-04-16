@@ -1,8 +1,10 @@
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Doubled {
@@ -16,17 +18,24 @@ public class Doubled {
 
     private static void duplicatedChars(String copyFrom, String decrypted) {
         List<String> list = new ArrayList<>();
+        String s = "";
+        String word = "";
         try {
             Path src = Paths.get("assets/" + copyFrom);
             List<String> content = Files.readAllLines(src);
-            for(String line : content){
-                for (int i = 0; i < line.length() - 1;i++){
-                if (!(line.charAt(i+1) == line.charAt(i))){
-                    list.add(String.valueOf(line.charAt(i)));
+            for (String line : content) {
+                String[] words = line.split(" ");
+                for (int i = 0; i < words.length; i++) {
+                    for (int j = 0; j < words[i].length(); j = j + 2) {
+                        s = s + words[i].charAt(j);
+                    }
+                    word = word + " " + s;
+                    s = "";
                 }
-                }
-                Files.write(Paths.get(decrypted), list);
             }
+            list.add(word);
+
+            Files.write(Paths.get(decrypted), list);
 
         } catch (IOException e) {
             System.out.println("Could not open file: duplicated-chats.txt");
