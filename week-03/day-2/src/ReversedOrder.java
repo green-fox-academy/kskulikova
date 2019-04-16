@@ -16,8 +16,6 @@ public class ReversedOrder {
 
     private static void duplicatedChars(String copyFrom, String decrypted) {
         List<String> list = new ArrayList<>();
-        String s = "";
-        String word = "";
         try {
             Path src = Paths.get("assets/" + copyFrom);
             List<String> content = Files.readAllLines(src);
