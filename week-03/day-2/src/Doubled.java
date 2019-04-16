@@ -1,10 +1,8 @@
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Doubled {
@@ -32,6 +30,7 @@ public class Doubled {
                     word = word + " " + s;
                     s = "";
                 }
+                word += "\n";
             }
             list.add(word);
 
