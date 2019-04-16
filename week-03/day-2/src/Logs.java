@@ -13,7 +13,7 @@ public class Logs {
     public static void main(String[] args) {
         String file = "assets/logs.txt";
         System.out.println(uniqueIp(file));
-//        System.out.println(getPostRequestRatio(file));
+        System.out.printf("%.2f", postRequestRatio(file));
     }
 
     private static List uniqueIp(String file) {
@@ -33,6 +33,31 @@ public class Logs {
         }
 
         return list;
+    }
+
+    private static double postRequestRatio(String file) {
+        double r = 0.0;
+        double gets = 0.0;
+        double posts = 0.0;
+        List<String> list = new ArrayList<>();
+
+        try {
+            Path src = Paths.get(file);
+            List<String> content = Files.readAllLines(src);
+            for (String line : content) {
+                String[] parts = line.split(" ");
+                if (parts[11].trim().equals("GET")) {
+                    gets += 1;
+                }
+                if (parts[11].trim().equals("POST")) {
+                    posts += 1;
+                }
+                r = gets / posts;
+            }
+        } catch (IOException e) {
+            System.out.println("Could not open file: logs.txt");
+        }
+        return r;
     }
 
 }
