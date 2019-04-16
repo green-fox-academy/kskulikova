@@ -17,11 +17,6 @@ public class FractalSquares {
         int startY = 0;
 
         graphics.setColor(Color.black);
-//        graphics.drawLine(width / 3, startY, width / 3, endY);
-//        graphics.drawLine(width * 2 / 3, startY, width * 2 / 3, endY);
-//
-//        graphics.drawLine(startX, height / 3, endX, height / 3);
-//        graphics.drawLine(startX, height * 2 / 3, endX, height * 2 / 3);
 
         drawFractals(startX, startY, width, height, graphics);
     }

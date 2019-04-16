@@ -9,27 +9,28 @@ public class LinePlay {
     static int HEIGHT = 560;
 
     public static void mainDraw(Graphics graphics) {
-        int numberOfLines = 50;
+        int numberOfLines = 40;
         int stepX = WIDTH / numberOfLines;
         int stepY = HEIGHT / numberOfLines;
 
-        int startXLeft = 3;
-        int startYLeft = stepY * 2 + 3;
+        int startXLeft = 2;
+        int startYLeft = stepY * 2 + 2;
 
-        int endXLeft = stepX + 3;
-        int endYLeft = HEIGHT - 3;
+        int endXLeft = stepX + 2;
+        int endYLeft = HEIGHT - 2;
 
         graphics.setColor(Color.green);
         drawLinesLeft(startXLeft, startYLeft, endXLeft, endYLeft, graphics, stepX, stepY);
 
-        int startXRight = WIDTH - 3;
-        int startYRight = HEIGHT - (stepY * 2 + 3);
+        int startXRight = WIDTH - 2;
+        int startYRight = HEIGHT - (stepY * 2 + 2);
 
-        int endXRight = WIDTH - (stepX + 3);
-        int endYRight = 3;
+        int endXRight = WIDTH - (stepX + 2);
+        int endYRight = 2;
 
         graphics.setColor(Color.magenta);
         drawLinesRight(startXRight, startYRight, endXRight, endYRight, graphics, stepX, stepY);
+
 
     }
 
@@ -44,7 +45,7 @@ public class LinePlay {
 
     private static void drawLinesRight(int startX, int startY, int endX, int endY, Graphics graphics,int stepX, int stepY) {
 
-        if (endX > 40) {
+        if (endX > stepX) {
 
             graphics.drawLine(startX, startY, endX, endY);
             drawLinesRight(startX, startY - stepY, endX - stepX, endY, graphics,stepX, stepY);

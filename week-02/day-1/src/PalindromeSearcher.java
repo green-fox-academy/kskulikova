@@ -3,15 +3,16 @@ import java.util.Arrays;
 public class PalindromeSearcher {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(palindromeSearcher("dog goat dad duck doodle never")));
+        System.out.println(Arrays.toString(palindromeSearcher("1234567890987654321")));
     }
 
-    public static String[] palindromeSearcher(String s) {
-        boolean found = false;
+    private static String[] palindromeSearcher(String s) {
+        boolean found;
         String[] palindromes = new String[1];
         int palindromesCount = 0;
 
         for (int i = 0; i < s.length() - 1; i++) {
-            for (int j = s.length() - 1; j > i ; j--) {
+            for (int j = s.length() - 1; j > i; j--) {
 
                 int start = i;
                 int end = j;
@@ -21,8 +22,7 @@ public class PalindromeSearcher {
                     if (s.charAt(start) != s.charAt(end)) {
                         found = false;
                         break;
-                    }
-                    else {
+                    } else {
                         start += 1;
                         end -= 1;
                     }
