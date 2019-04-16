@@ -24,35 +24,39 @@ public class TicTacToe {
         System.out.println(ticTacResult("draw.txt"));
         // Should print "Draw"
     }
-    private static String ticTacResult(String file){
+
+    private static String ticTacResult(String file) {
         String result = "";
-        int x = 0;
-        int o = 0;
+        char[][] symbols = new char[3][3];
+
         try {
             Path src = Paths.get("assets/" + file);
             List<String> content = Files.readAllLines(src);
-            for (String line : content) {
-                for (int i = 0; i < line.length(); i++) {
-                    if(line.charAt(i) == 'X'){
-                     x++;
-                    }
-                    if (line.charAt(i) == 'O'){
-                        o++;
-                    }
+            for (int i = 0; i < content.size(); i++) {
+                for (int j = 0; j < content.size(); j++) {
+                    symbols[i][j] = content.get(i).charAt(j);
                 }
             }
-            if (x > o){
+            int k = 0;
+            if (symbols[k][0] == 'X' && symbols[k][1] == 'X' && symbols[k][2] == 'X') {
                 result = "X";
-            } else if ( o > x){
-                result ="O";
+            } else if (symbols[k][0] == 'O' && symbols[k][1] == 'O' && symbols[k][2] == 'O') {
+                result = "O";
+            } else if (symbols[0][k] == 'X' && symbols[1][k] == 'X' && symbols[2][k] == 'X') {
+                result = "X";
+            } else if (symbols[0][k] == 'O' && symbols[1][k] == 'O' && symbols[2][k] == 'O') {
+                result = "O";
+            } else if (symbols[0][k] == 'X' && symbols[1][k + 1] == 'X' && symbols[2][k + 2] == 'X') {
+                result = "X";
+            } else if (symbols[0][k] == 'O' && symbols[1][k + 1] == 'O' && symbols[2][k + 2] == 'O') {
+                result = "O";
             } else {
-                result = "draw";
+                result = "DRAW";
             }
-        } catch (IOException e){
+
+        } catch (IOException e) {
             System.out.println("Could not open file: " + file);
         }
-
-
-    return result;
+        return result;
     }
 }
