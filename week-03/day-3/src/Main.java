@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
         //create postIts
@@ -27,6 +29,16 @@ public class Main {
         third.publicationDate = "2017.03.28.";
 
         Animal tortoise = new Animal();
+
+
+        Blog myBlog = new Blog();
+        myBlog.add(first);
+        myBlog.add(second);
+
+        myBlog.delete(1);
+        myBlog.update(0, third);
+
+        System.out.println(myBlog.blogPosts.size());
 
 
     }
