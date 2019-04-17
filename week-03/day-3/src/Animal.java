@@ -7,8 +7,8 @@
 //Every animal can play() which increases both by one
 
 public class Animal {
-    private int thirst;
-    private int hunger;
+     int thirst;
+     int hunger;
 
     public Animal() {
         this(50, 50);
