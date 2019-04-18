@@ -8,11 +8,12 @@ import java.util.*;
 public class Lottery {
     public static void main(String[] args) {
         String filename = "lottery.csv";
-        findMostCommonNumbers(5, filename);
+        System.out.println("5 most common lottery numbers: " + findMostCommonNumbers(5, filename));
 
     }
 
-    public static void findMostCommonNumbers(int howMany, String filename) {
+    public static String[] findMostCommonNumbers(int howMany, String filename) {
+        String [] list = new String[5];
 
         try {
 
@@ -47,11 +48,18 @@ public class Lottery {
 
             System.out.println("map after sorting by values: " + sorted);
 
+            int i = 0;
+            for (int mapIndex = sorted.size() - 1; mapIndex == sorted.size() - 5; mapIndex--){
+                list[i] = sorted.get(mapIndex).getKey();
+            }
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return list;
 
     }
+
 }
