@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Farm {
-    List<Animal> animals = new ArrayList<>();
-    int slots;
+    private List<Animal> animals = new ArrayList<>();
+    private int slots;
 
     public void breed() {
         if (slots > 0) {
@@ -44,15 +44,16 @@ public class Farm {
         this.slots = slots;
     }
 
+    public void add(){
+        this.animals.add(new Animal());
+    }
+
 
     public static void main(String[] args) {
         Farm myFarm = new Farm(3);
-
-        myFarm.animals.add(new Animal());
-        myFarm.animals.add(new Animal());
-        myFarm.animals.add(new Animal());
-        myFarm.animals.add(new Animal());
-        myFarm.animals.add(new Animal());
+        for (int i = 0; i < 5; i++){
+            myFarm.add();
+        }
 
         myFarm.animals.get(3).hunger = 7;
         myFarm.slaughter();

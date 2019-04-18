@@ -25,11 +25,7 @@ public class SharpieSet {
     }
 
     public boolean isUsable(Sharpie s) {
-        if (s.inkAmount > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return s.inkAmount > 0;
 
     }
 

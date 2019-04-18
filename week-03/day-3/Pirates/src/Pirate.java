@@ -1,14 +1,12 @@
 public class Pirate {
 
-    int intoxicated;
     boolean alive;
-    boolean passedOut;
-    int consumedRum;
+    private boolean passedOut;
+    private int consumedRum;
 
     Pirate (){
         this.passedOut = false;
         this.consumedRum = 0;
-        this.intoxicated = 10;
         this.alive = true;
     }
 
@@ -16,19 +14,19 @@ public class Pirate {
         if (!alive) {
             System.out.println("He's dead");
         } else {
-            this.intoxicated += 2;
-            this.consumedRum ++;
+            this.consumedRum = this.getConsumedRum() + 1;
         }
     }
 
     public void howsItGoingMate() {
         if (!alive) {
             System.out.println("He's dead");
-        } else if (this.consumedRum < 5) {
+        } else if (this.getConsumedRum() < 5) {
             System.out.println("Pour me anudder!");
         } else {
             System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
             this.passedOut = true;
+            this.consumedRum = 0;
         }
     }
 
@@ -50,6 +48,16 @@ public class Pirate {
             }
 
         }
+    }
+
+//    public void drink(int rum) {
+//        if (rum > 0) {
+//            consumedRum += rum;
+//        }
+//    }
+
+    public int getConsumedRum() {
+        return consumedRum;
     }
 }
 
