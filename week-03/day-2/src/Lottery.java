@@ -27,16 +27,18 @@ public class Lottery {
                     }
                 }
             }
-
-            List<String> uniqueNumbers = new ArrayList<String>(new HashSet<String>(numbers));
-            System.out.println(uniqueNumbers);
-
+            
             HashMap numbersMap = new HashMap();
 
-            for (int number = 0; number < uniqueNumbers.size(); number++){
-                numbersMap.put(uniqueNumbers.get(number), "");
-            }
-
+            int counter = 0;
+             for (String number: numbers){
+                 if (numbersMap.containsKey(number)){
+                     numbersMap.put(number, counter++);
+                 } else {
+                     numbersMap.put(number, 1);
+                 }
+             }
+            System.out.println(numbersMap.size());
 
 
         } catch (IOException e) {
