@@ -13,7 +13,7 @@ public class Lottery {
     }
 
     public static String findMostCommonNumbers(int howMany, String filename) {
-        String[] list = new String[5];
+        String[] list = new String[howMany];
 
         try {
 
