@@ -2,10 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Lottery {
     public static void main(String[] args) {
@@ -33,6 +30,13 @@ public class Lottery {
 
             List<String> uniqueNumbers = new ArrayList<String>(new HashSet<String>(numbers));
             System.out.println(uniqueNumbers);
+
+            HashMap numbersMap = new HashMap();
+
+            for (int number = 0; number < uniqueNumbers.size(); number++){
+                numbersMap.put(uniqueNumbers.get(number), "");
+            }
+
 
 
         } catch (IOException e) {
