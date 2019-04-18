@@ -11,8 +11,9 @@ public class BattleApp {
         ship1.fillShip();
         ship2.fillShip();
 
-        System.out.println("Did our ship win? " + ship1.battle(ship2));
-        System.out.println("Did our ship win? " + ship1.battle(ship2));
-        System.out.println("Did our ship win? " + ship1.battle(ship2));
+        ship1.battle(ship2);
+        ship1.battle(ship2);
+        ship1.battle(ship2);
+
     }
 }

@@ -11,9 +11,7 @@ public class WarApp {
         armada2.fillArmada();
 
 
-        System.out.println("-------------------\n" + "Did our armada win? " + armada1.war(armada2));
-
-        System.out.println("Did our armada win? " + armada1.war(armada2));
-
+        System.out.println("-------------------\n" + "-------------------\n" + "Our armada" + (armada1.war(armada2) ? " WON!!!" : " LOST..."));
+        
     }
 }

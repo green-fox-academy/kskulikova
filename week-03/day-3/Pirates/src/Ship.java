@@ -23,19 +23,21 @@ public class Ship {
     }
 
     public boolean battle(Ship otherShip) {
-        System.out.println("Ship 1: \n" + "Captain consumed " + this.getCaptain().getConsumedRum() + " units of rum;\n" +
-                "Alive crew members: " + this.countAlive());
-        System.out.println("Ship 2: \n" + "Captain consumed " + otherShip.getCaptain().getConsumedRum() + " units of rum;\n" +
-                "Alive crew members: " + otherShip.countAlive());
+        System.out.println("OUR SHIP: \n" + "Captain consumed " + this.getCaptain().getConsumedRum() + " units of rum;\n" +
+                "Alive crew members: " + this.countAlive() + "\n-------------------\n");
+        System.out.println("ENEMY SHIP: \n" + "Captain consumed " + otherShip.getCaptain().getConsumedRum() + " units of rum;\n" +
+                "Alive crew members: " + otherShip.countAlive() + "\n-------------------\n");
         int thisScore = this.countAlive() - this.getCaptain().getConsumedRum();
         int otherScore = otherShip.countAlive() - otherShip.getCaptain().getConsumedRum();
         if (thisScore > otherScore) {
             this.party();
             killSomeCrew(otherShip);
+            System.out.println("Our ship WON!!!\n");
             return true;
         } else {
             otherShip.party();
             killSomeCrew(this);
+            System.out.println("Our ship LOST!!!\n");
             return false;
         }
     }
