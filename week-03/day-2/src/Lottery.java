@@ -12,8 +12,8 @@ public class Lottery {
 
     }
 
-    public static String[] findMostCommonNumbers(int howMany, String filename) {
-        String [] list = new String[5];
+    public static String findMostCommonNumbers(int howMany, String filename) {
+        String[] list = new String[5];
 
         try {
 
@@ -46,19 +46,21 @@ public class Lottery {
             List<Map.Entry<String, Integer>> sorted = new ArrayList<>(numbersMap.entrySet());
             sorted.sort(Map.Entry.comparingByValue());
 
-            System.out.println("map after sorting by values: " + sorted);
-
             int i = 0;
-            for (int mapIndex = sorted.size() - 1; mapIndex == sorted.size() - 5; mapIndex--){
+            for (int mapIndex = sorted.size() - 1; mapIndex >= sorted.size() - 5; mapIndex--) {
                 list[i] = sorted.get(mapIndex).getKey();
+                i++;
             }
-
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list;
+
+        String finalList = "";
+        for (int i = 0; i < list.length; i++) {
+            finalList += list[i] + " ";
+        }
+        return finalList;
 
     }
 
