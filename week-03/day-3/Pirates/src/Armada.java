@@ -29,14 +29,17 @@ public class Armada {
             for (int j = 0; j < otherArmada.numberOfShips; j++) {
                 if (!getArmada()[i].battle(otherArmada.getArmada()[j])) {
                     i++;
+                    j--;
                 }
+
             }
             return true;
         }
         return false;
     }
 
-
 }
+
+
 
 
