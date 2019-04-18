@@ -1,47 +1,41 @@
-import java.lang.reflect.Array;
-import java.util.List;
 import java.util.Random;
 
-public class Armada {
-    int numberOfShips;
+class Armada {
+    private int numberOfShips;
     private Ship[] ships;
 
-    public Ship[] initializeArmada() {
-        numberOfShips = new Random().nextInt(50) + 15;
+    void initializeArmada() {
+        numberOfShips = new Random().nextInt(20) + 15;
         ships = new Ship[numberOfShips];
-        return ships;
     }
 
-    public Ship[] fillArmada() {
+    void fillArmada() {
         for (int i = 0; i < numberOfShips; i++) {
             ships[i] = new Ship();
             ships[i].fillShip();
         }
+    }
+
+    private Ship[] getArmada() {
         return ships;
     }
 
-    public Ship[] getArmada() {
-        return ships;
-    }
 
-    int i;
-    int j;
+    boolean war(Armada otherArmada) {
+        int ourShipsCounter = 0;
 
-    public boolean war(Armada otherArmada) {
-        for (i = 0; i < numberOfShips; i++) {
-            for (j = 0; j < otherArmada.numberOfShips; j++) {
-                if (i >= numberOfShips) {
-                    return false;
-                } else {
-                    if (!getArmada()[i].battle(otherArmada.getArmada()[j])) {
-                        i++;
-                        j--;
-                    }
+        for (int enemyShipsCounter = 0; enemyShipsCounter < otherArmada.numberOfShips; enemyShipsCounter++) {
+            if (ourShipsCounter >= numberOfShips) {
+                return false;
+            } else {
+                if (!getArmada()[ourShipsCounter].battle(otherArmada.getArmada()[enemyShipsCounter])) {
+                    ourShipsCounter++;
+                    enemyShipsCounter--;
                 }
             }
-            return true;
         }
-        return false;
+        return true;
+
     }
 
 }

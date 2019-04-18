@@ -2,31 +2,31 @@
 import java.util.Arrays;
 import java.util.Random;
 
-public class Ship {
+class Ship {
     private Pirate captain;
     private Pirate[] crew;
 
-    public void fillShip() {
+    void fillShip() {
         captain = new Pirate();
         int number = new Random().nextInt(50) + 15;
         crew = new Pirate[number];
 
-        int i = 0;
-        while (i < number) {
-            getCrew()[i] = new Pirate();
-            i++;
+        int counter = 0;
+        while (counter < number) {
+            getCrew()[counter] = new Pirate();
+            counter++;
         }
     }
 
-    public int countAlive() {
+    private int countAlive() {
         return (int) Arrays.stream(getCrew()).filter(x -> x.alive).count();
     }
 
-    public boolean battle(Ship otherShip) {
+    boolean battle(Ship otherShip) {
         System.out.println("OUR SHIP: \n" + "Captain consumed " + this.getCaptain().getConsumedRum() + " units of rum;\n" +
-                "Alive crew members: " + this.countAlive() + "\n-------------------\n");
+                "Alive crew members: " + this.countAlive() + "\n---------------------------------\n");
         System.out.println("ENEMY SHIP: \n" + "Captain consumed " + otherShip.getCaptain().getConsumedRum() + " units of rum;\n" +
-                "Alive crew members: " + otherShip.countAlive() + "\n-------------------\n");
+                "Alive crew members: " + otherShip.countAlive() + "\n---------------------------------\n");
         int thisScore = this.countAlive() - this.getCaptain().getConsumedRum();
         int otherScore = otherShip.countAlive() - otherShip.getCaptain().getConsumedRum();
         if (thisScore > otherScore) {
@@ -56,8 +56,7 @@ public class Ship {
         }
     }
 
-
-    public void party() {
+    private void party() {
         int unitsOfRum = new Random().nextInt(10) + 1;
         for (int i = 0; i < unitsOfRum; i++) {
             if (this.getCaptain().alive) {
@@ -76,11 +75,11 @@ public class Ship {
         }
     }
 
-    public Pirate getCaptain() {
+    private Pirate getCaptain() {
         return captain;
     }
 
-    public Pirate[] getCrew() {
+    private Pirate[] getCrew() {
         return crew;
     }
 }

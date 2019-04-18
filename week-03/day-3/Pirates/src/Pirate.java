@@ -10,7 +10,7 @@ public class Pirate {
         this.alive = true;
     }
 
-    public void drinkSomeRum() {
+    void drinkSomeRum() {
         if (!alive) {
             System.out.println("He's dead");
         } else {
@@ -30,7 +30,7 @@ public class Pirate {
         }
     }
 
-    public void die() {
+    void die() {
         this.alive = false;
     }
 
@@ -50,13 +50,7 @@ public class Pirate {
         }
     }
 
-//    public void drink(int rum) {
-//        if (rum > 0) {
-//            consumedRum += rum;
-//        }
-//    }
-
-    public int getConsumedRum() {
+    int getConsumedRum() {
         return consumedRum;
     }
 }
