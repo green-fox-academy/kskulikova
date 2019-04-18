@@ -43,8 +43,8 @@ public class Ship {
     private static void killSomeCrew(Ship ship) {
         int deaths = new Random().nextInt(ship.countAlive() - 1) + 1;
 
-        int index = 0;
-        while (deaths > 0) {
+        int index = 1;
+        while (deaths > 1) {
             Pirate p = ship.getCrew()[index];
             if (p.alive) {
                 p.die();
@@ -58,12 +58,18 @@ public class Ship {
     public void party() {
         int unitsOfRum = new Random().nextInt(10) + 1;
         for (int i = 0; i < unitsOfRum; i++) {
-            this.getCaptain().drinkSomeRum();
+            if (this.getCaptain().alive) {
+                this.getCaptain().drinkSomeRum();
+            } else {
+                System.out.println("The captain is dead!");
+            }
         }
 
         for (Pirate p : getCrew()) {
             for (int i = 0; i < unitsOfRum; i++) {
-                p.drinkSomeRum();
+                if (p.alive) {
+                    p.drinkSomeRum();
+                }
             }
         }
     }

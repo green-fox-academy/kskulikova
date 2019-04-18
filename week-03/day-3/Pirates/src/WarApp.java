@@ -10,7 +10,9 @@ public class WarApp {
         armada2.initializeArmada();
         armada2.fillArmada();
 
-        System.out.println("Did our armada win? " + armada1.war(armada2));
+
+        System.out.println("-------------------\n" + "Did our armada win? " + armada1.war(armada2));
+
         System.out.println("Did our armada win? " + armada1.war(armada2));
 
     }

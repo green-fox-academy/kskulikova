@@ -24,14 +24,20 @@ public class Armada {
         return ships;
     }
 
-    public boolean war(Armada otherArmada) {
-        for (int i = 0; i < numberOfShips; i++) {
-            for (int j = 0; j < otherArmada.numberOfShips; j++) {
-                if (!getArmada()[i].battle(otherArmada.getArmada()[j])) {
-                    i++;
-                    j--;
-                }
+    int i;
+    int j;
 
+    public boolean war(Armada otherArmada) {
+        for (i = 0; i < numberOfShips; i++) {
+            for (j = 0; j < otherArmada.numberOfShips; j++) {
+                if (i >= numberOfShips) {
+                    return false;
+                } else {
+                    if (!getArmada()[i].battle(otherArmada.getArmada()[j])) {
+                        i++;
+                        j--;
+                    }
+                }
             }
             return true;
         }
