@@ -47,7 +47,7 @@ public class Lottery {
             sorted.sort(Map.Entry.comparingByValue());
 
             int i = 0;
-            for (int mapIndex = sorted.size() - 1; mapIndex >= sorted.size() - 5; mapIndex--) {
+            for (int mapIndex = sorted.size() - 1; mapIndex >= sorted.size() - howMany; mapIndex--) {
                 list[i] = sorted.get(mapIndex).getKey();
                 i++;
             }
