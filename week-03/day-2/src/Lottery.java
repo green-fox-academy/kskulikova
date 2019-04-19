@@ -32,7 +32,7 @@ public class Lottery {
                 }
             }
 
-            HashMap<String, Integer> numbersMap = new HashMap();
+            HashMap<String, Integer> numbersMap = new HashMap<>();
 
             for (String number : numbers) {
 

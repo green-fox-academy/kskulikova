@@ -23,7 +23,7 @@ public class LinePlayQuarters {
       int startXLeft = 3 + width * i;
       int startYLeft = stepY * 2 + 3;
 
-      int endXLeft = startXLeft * i + stepX + 3;
+      int endXLeft = startXLeft + stepX + 3;
       int endYLeft = height - 3;
 
       graphics.setColor(Color.green);
@@ -77,8 +77,8 @@ public class LinePlayQuarters {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
-      int n = 2;
-      mainDraw(graphics, WIDTH, HEIGHT, n);
+      int n = 64;
+      mainDraw(graphics, WIDTH, HEIGHT, (int) Math.sqrt(n));
     }
   }
 }

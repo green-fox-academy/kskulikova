@@ -17,6 +17,9 @@ public class EncodedLines {
         StringBuilder s = new StringBuilder();
         StringBuilder word = new StringBuilder();
 
+        System.out.println((char)(('a' - 1)));
+
+
         try {
             Path src = Paths.get("assets/" + copyFrom);
             List<String> content = Files.readAllLines(src);

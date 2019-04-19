@@ -1,6 +1,6 @@
 public class Pirate {
 
-    boolean alive;
+    private boolean alive;
     private boolean passedOut;
     private int consumedRum;
 
@@ -14,7 +14,7 @@ public class Pirate {
         if (!alive) {
             System.out.println("He's dead");
         } else {
-            this.consumedRum = this.getConsumedRum() + 1;
+            this.consumedRum++;
         }
     }
 
@@ -39,9 +39,9 @@ public class Pirate {
             int chance = 0;
             chance = (int) (Math.random() * (3 + 1));
             if (chance == 1) {
-                this.alive = false;
+                this.die();
             } else if (chance == 2) {
-                otherPirate.alive = false;
+                otherPirate.die();
             } else{
                 this.passedOut = true;
                 otherPirate.passedOut = true;
@@ -52,6 +52,10 @@ public class Pirate {
 
     int getConsumedRum() {
         return consumedRum;
+    }
+
+    public boolean isAlive() {
+        return alive;
     }
 }
 

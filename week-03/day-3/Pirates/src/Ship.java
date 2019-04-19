@@ -19,7 +19,7 @@ class Ship {
     }
 
     private int countAlive() {
-        return (int) Arrays.stream(getCrew()).filter(x -> x.alive).count();
+        return (int) Arrays.stream(getCrew()).filter(x -> x.isAlive()).count();
     }
 
     boolean battle(Ship otherShip) {
@@ -48,7 +48,7 @@ class Ship {
         int index = 1;
         while (deaths > 1) {
             Pirate p = ship.getCrew()[index];
-            if (p.alive) {
+            if (p.isAlive()) {
                 p.die();
                 deaths -= 1;
             }
@@ -59,7 +59,7 @@ class Ship {
     private void party() {
         int unitsOfRum = new Random().nextInt(10) + 1;
         for (int i = 0; i < unitsOfRum; i++) {
-            if (this.getCaptain().alive) {
+            if (this.getCaptain().isAlive()) {
                 this.getCaptain().drinkSomeRum();
             } else {
                 System.out.println("The captain is dead!");
@@ -68,7 +68,7 @@ class Ship {
 
         for (Pirate p : getCrew()) {
             for (int i = 0; i < unitsOfRum; i++) {
-                if (p.alive) {
+                if (p.isAlive()) {
                     p.drinkSomeRum();
                 }
             }
