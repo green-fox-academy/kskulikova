@@ -19,25 +19,28 @@ public class LinePlayQuarters {
     int stepX = width / numberOfLines;
     int stepY = height / numberOfLines;
 
-    for (int i = 0; i < n; i++) {
-      int startXLeft = 3 + width * i;
-      int startYLeft = stepY * 2 + 3;
+    for (int j = 0; j < n; j++) {
+      for (int i = 0; i < n; i++) {
+        int startXLeft = 3 + width * i;
+        int startYLeft = stepY * 2 + 3 + height * j;
 
-      int endXLeft = startXLeft + stepX + 3;
-      int endYLeft = height - 3;
+        int endXLeft = startXLeft + stepX + 3;
+        int endYLeft = height - 3 + height * j;
 
-      graphics.setColor(Color.green);
-      drawLinesLeft(startXLeft, startYLeft, endXLeft, endYLeft, graphics, stepX, stepY, width, i);
+        graphics.setColor(Color.green);
+        drawLinesLeft(startXLeft, startYLeft, endXLeft, endYLeft, graphics, stepX, stepY, width, i);
 
-      int startXRight = width - 3 + width * i;
-      int startYRight = height - (stepY * 2 + 3);
+        int startXRight = width - 3 + width * i;
+        int startYRight = height - (stepY * 2 + 3) + height * j;
 
-      int endXRight = width - (stepX + 3) + width * i;
-      int endYRight = 3;
+        int endXRight = width - (stepX + 3) + width * i;
+        int endYRight = 3 + height * j;
 
-      graphics.setColor(Color.magenta);
-      drawLinesRight(startXRight, startYRight, endXRight, endYRight, graphics, stepX, stepY, width,
-          i);
+        graphics.setColor(Color.magenta);
+        drawLinesRight(startXRight, startYRight, endXRight, endYRight, graphics, stepX, stepY,
+            width,
+            i);
+      }
     }
   }
 
@@ -67,7 +70,6 @@ public class LinePlayQuarters {
     ImagePanel panel = new ImagePanel();
     panel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
     jFrame.add(panel);
-//        jFrame.setLocationRelativeTo(null);
     jFrame.setVisible(true);
     jFrame.pack();
   }
@@ -77,7 +79,7 @@ public class LinePlayQuarters {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
-      int n = 64;
+      int n = 16;
       mainDraw(graphics, WIDTH, HEIGHT, (int) Math.sqrt(n));
     }
   }
