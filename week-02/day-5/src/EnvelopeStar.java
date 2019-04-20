@@ -19,10 +19,11 @@ public class EnvelopeStar {
     width = WIDTH / 2;
     height = HEIGHT / 2;
     int numberOfLines = 25;
+
     int stepX = width / numberOfLines;
     int stepY = height / numberOfLines;
 
-    int startX = width + 3;
+    int startX = width;
     int startY = stepY * 2;
 
     int endX = startX - stepX;
@@ -30,21 +31,19 @@ public class EnvelopeStar {
 
     drawLines1(startX, startY, endX, endY, graphics, stepX, stepY);
 
-    startX = width + 3;
     startY = stepY * 2;
-
     endX = startX + stepX;
-    endY = height;
 
     drawLines2(startX, startY, endX, endY, graphics, stepX, stepY, width);
 
-    startX = width + 3;
     startY = height - stepY * 2 + height;
-
     endX = startX - stepX;
-    endY = height;
 
     drawLines3(startX, startY, endX, endY, graphics, stepX, stepY);
+
+    endX = startX + stepX;
+
+    drawLines4(startX, startY, endX, endY, graphics, stepX, stepY, width);
 
   }
 
@@ -53,7 +52,7 @@ public class EnvelopeStar {
 
     if (endX > stepX * 2) {
 
-      graphics.drawLine(startX, startY, endX, endY);
+      graphics.drawLine(startX, startY, endX + stepX, endY);
       drawLines1(startX, startY + stepY, endX - stepX, endY, graphics, stepX, stepY);
     }
   }
@@ -73,8 +72,18 @@ public class EnvelopeStar {
 
     if (endX > stepX) {
 
-      graphics.drawLine(startX, startY, endX, endY);
+      graphics.drawLine(startX, startY, endX + stepX, endY);
       drawLines3(startX, startY - stepY, endX - stepX, endY, graphics, stepX, stepY);
+    }
+  }
+
+  private static void drawLines4(int startX, int startY, int endX, int endY, Graphics graphics,
+      int stepX, int stepY, int width) {
+
+    if (endX < width * 2 - stepX) {
+
+      graphics.drawLine(startX, startY, endX, endY);
+      drawLines4(startX, startY - stepY, endX + stepX, endY, graphics, stepX, stepY, width);
     }
   }
 
