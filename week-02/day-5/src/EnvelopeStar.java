@@ -10,40 +10,37 @@ import javax.swing.JPanel;
 
 public class EnvelopeStar {
 
-  static int WIDTH = 560;
-  static int HEIGHT = 560;
+  private static int WIDTH = 560;
+  private static int HEIGHT = 560;
 
-  public static void mainDraw(Graphics graphics, int width, int height) {
+  private static void mainDraw(Graphics graphics) {
 
     graphics.setColor(Color.green);
-    width = WIDTH / 2;
-    height = HEIGHT / 2;
+    int width = WIDTH / 2;
+    int height = HEIGHT / 2;
     int numberOfLines = 25;
 
     int stepX = width / numberOfLines;
     int stepY = height / numberOfLines;
 
-    int startX = width;
     int startY = stepY * 2;
+    int endX = width - stepX;
 
-    int endX = startX - stepX;
-    int endY = height;
-
-    drawLines1(startX, startY, endX, endY, graphics, stepX, stepY);
+    drawLines1(width, startY, endX, height, graphics, stepX, stepY);
 
     startY = stepY * 2;
-    endX = startX + stepX;
+    endX = width + stepX;
 
-    drawLines2(startX, startY, endX, endY, graphics, stepX, stepY, width);
+    drawLines2(width, startY, endX, height, graphics, stepX, stepY, width);
 
     startY = height - stepY * 2 + height;
-    endX = startX - stepX;
+    endX = width - stepX;
 
-    drawLines3(startX, startY, endX, endY, graphics, stepX, stepY);
+    drawLines3(width, startY, endX, height, graphics, stepX, stepY);
 
-    endX = startX + stepX;
+    endX = width + stepX;
 
-    drawLines4(startX, startY, endX, endY, graphics, stepX, stepY, width);
+    drawLines4(width, startY, endX, height, graphics, stepX, stepY, width);
 
   }
 
@@ -102,7 +99,7 @@ public class EnvelopeStar {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
-      mainDraw(graphics, WIDTH, HEIGHT);
+      mainDraw(graphics);
     }
   }
 }
