@@ -79,7 +79,7 @@ public class LinePlayQuarters {
     @Override
     protected void paintComponent(Graphics graphics) {
       super.paintComponent(graphics);
-      int n = 16;
+      int n = 4;
       mainDraw(graphics, WIDTH, HEIGHT, (int) Math.sqrt(n));
     }
   }
