@@ -27,7 +27,7 @@ public class Triangles {
     double stepY = Math.sqrt(3) * stepX / 2;
 
     drawLeft(leftX, leftY, upX, upY, g2, side, stepX, stepY);
-    drawRight(upX, upY, (double) side, rightY, g2, side, stepX, stepY);
+    drawRight(upX, upY, (double) side, rightY, g2, stepX, stepY);
     drawHorizontal(leftX, leftY, (double) side, rightY, g2, side, stepX, stepY);
 
   }
@@ -46,15 +46,13 @@ public class Triangles {
   }
 
   private static void drawRight(double startX, double startY, double endX, double endY,
-      Graphics2D graphics,
-      double side,
-      double stepX, double stepY) {
+      Graphics2D graphics, double stepX, double stepY) {
 
     Shape line = new Line2D.Double(startX, startY, endX, endY);
 
     graphics.draw(line);
     if (endX > stepX) {
-      drawRight(startX - stepX / 2, startY + stepY, endX - stepX, endY, graphics, side, stepX,
+      drawRight(startX - stepX / 2, startY + stepY, endX - stepX, endY, graphics, stepX,
           stepY);
     }
   }
