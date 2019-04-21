@@ -19,11 +19,21 @@ public class SuperHexagon {
 
     int radius = 20;
 
-    int centerX = mainCenterX - 3 * radius + (int) (3 * Math.cos(4.18879));
+    int centerX = mainCenterX - 3 * radius + (int) (3 * Math.cos(4.18879)) * radius;
 
     int centerY = mainCenterY - 3 * radius;
 
-    drawHexagonLine(centerX, centerY, radius, g2, 4);
+    drawHexagonOfHexagonsLeft(centerX, centerY, radius, g2, 4);
+
+  }
+
+  private static void drawHexagonOfHexagonsLeft(int centerX, int centerY, int r,
+      Graphics graphics, int number) {
+    drawHexagonLine(centerX, centerY, r, graphics, number);
+    if (number > 3 && number < 7) {
+      drawHexagonOfHexagonsLeft(centerX + r - (int) (Math.cos(4.18879) * r),
+          centerY - (int) (Math.sin(1.0472) * r), r, graphics, number + 1);
+    }
   }
 
   private static void drawHexagonLine(int centerX, int centerY, int r,
