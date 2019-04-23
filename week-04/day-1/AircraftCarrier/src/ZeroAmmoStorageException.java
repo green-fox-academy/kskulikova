@@ -1,6 +1,6 @@
 class ZeroAmmoStorageException extends Exception {
 
-  ZeroAmmoStorageException(String message) {
-    super(message);
+  ZeroAmmoStorageException() {
+    super("Empty ammo storage!");
   }
 }

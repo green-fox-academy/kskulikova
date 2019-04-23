@@ -32,8 +32,9 @@ public class Aircraft {
 
   int refill(int number) {
     if ((maxAmmo - ammo) < number) {
+      number = number - (maxAmmo - ammo);
       ammo = maxAmmo;
-      return number - (maxAmmo - ammo);
+      return number;
 
     } else {
       ammo = ammo + number;

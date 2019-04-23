@@ -32,26 +32,20 @@ public class Carrier {
 
   void fill() throws ZeroAmmoStorageException {
     if (storeOfAmmo <= 0) {
-      throw new ZeroAmmoStorageException("Empty ammo storage!");
+      throw new ZeroAmmoStorageException();
     }
     if (storeOfAmmo < carrierMissingAmmo()) {
       for (Aircraft plane : carrier) {
-        if (storeOfAmmo > 0) {
-          if (plane.isPriority()) {
-            storeOfAmmo = plane.refill(storeOfAmmo);
-          }
+        if (storeOfAmmo > 0 && plane.isPriority()) {
+          storeOfAmmo = plane.refill(storeOfAmmo);
         }
       }
       if (storeOfAmmo > 0) {
         for (Aircraft plane2 : carrier) {
-          if (storeOfAmmo > 0) {
-            if (!plane2.isPriority()) {
-              storeOfAmmo = plane2.refill(storeOfAmmo);
-            }
+          if (storeOfAmmo > 0 && !plane2.isPriority()) {
+            storeOfAmmo = plane2.refill(storeOfAmmo);
           }
-
         }
-
       }
     } else if (storeOfAmmo > 0 && storeOfAmmo >
 
