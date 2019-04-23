@@ -34,18 +34,19 @@ public class Plants {
     System.out.println("Watering with " + waterAmount + " water");
   }
 
-  Plants(){
-    needsWater = true;
-    waterAmount = 0;
-    color = "green";
-  }
+//  Plants(){
+//    needsWater = true;
+//    waterAmount = 0;
+//    color = "green";
+//  }
 
   @Override
   public String toString() {
-    return ("The " + this.getColor() + this.getClass() + (isNeedsWater() ? " needs" : " doesn't need") + " water \n");
+    return ("The " + this.getColor() + " " + this.getClass().getName() + (isNeedsWater() ? " needs"
+        : " doesn't need") + " water \n");
   }
 
-  Plants(String color){
+  Plants(String color) {
     needsWater = true;
     waterAmount = 0;
     this.color = color;

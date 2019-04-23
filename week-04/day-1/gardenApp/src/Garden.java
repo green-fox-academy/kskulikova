@@ -6,50 +6,51 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Garden {
+
   List<Plants> garden = new ArrayList<>();
   int needWater;
 
 
-  public int needWater(){
+  public int needWater() {
     int number = 0;
-    for (Plants plant : garden){
+    for (Plants plant : garden) {
       if (plant.isNeedsWater()) {
         number++;
       }
     }
-  return number;
+    return number;
   }
 
   public void getSomeWater(int waterAmount) {
     this.needWater = needWater();
     System.out.println("Watering with " + waterAmount + " water");
-    for(Plants plant : garden){
-      if (plant.isNeedsWater()){
+    for (Plants plant : garden) {
+      if (plant.isNeedsWater()) {
         plant.getSomeWater(waterAmount / needWater);
       }
     }
   }
 
 
-  public void add(Plants plant){
+  public void add(Plants plant) {
     this.garden.add(plant);
   }
 
   @Override
   public String toString() {
     String result = "";
-    for(int i = 0; i < garden.size(); i++) {
-      result +=  garden.get(i) + "\n";
+    for (int i = 0; i < garden.size(); i++) {
+      result += garden.get(i).toString();
     }
     return result;
   }
 
-  public void getState(){
-    System.out.println(garden.toString());
-    }
+  public void getState() {
+    System.out.println(this.toString());
+  }
 
 
-  Garden(){
+  Garden() {
     List<Plants> garden = new ArrayList<>();
   }
 }
