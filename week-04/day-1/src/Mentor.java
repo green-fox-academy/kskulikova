@@ -1,30 +1,23 @@
-public class Mentor {
+class Mentor extends Person{
 
-  private String name;
-  private int age;
-  private String gender;
   private String level;
 
   Mentor() {
-    name = "Jane Doe";
-    age = 30;
-    gender = "female";
+    super();
     level = "intermediate";
   }
 
   Mentor(String name, int age, String gender, String level) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+    super(name, age, gender);
     this.level = level;
 
   }
-
+  @Override
   void introduce() {
     System.out.println(
-        "Hi, I'm " + name + ", a " + age + " year old " + gender + " " + level + " mentor.");
+        "Hi, I'm " + this.getName() + ", a " + this.getAge() + " year old " + this.getGender() + " " + level + " mentor.");
   }
-
+  @Override
   void getGoal() {
     System.out.println("My goal is: Educate brilliant junior software developers.");
   }

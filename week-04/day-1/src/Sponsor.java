@@ -1,33 +1,30 @@
-public class Sponsor {
+class Sponsor extends Person {
 
-  private String name;
-  private int age;
-  private String gender;
   private String company;
   private int hiredStudents;
 
   Sponsor() {
-    name = "Jane Doe";
-    age = 30;
-    gender = "female";
+    super();
     company = "Google";
     hiredStudents = 0;
   }
 
   Sponsor(String name, int age, String gender, String company) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+    super(name, age, gender);
     this.company = company;
     hiredStudents = 0;
 
   }
 
+  @Override
   void introduce() {
-    System.out.println("Hi, I'm " + name + ", a " + age + " year old " + gender + " who represents "
-        + company + " and hired " + hiredStudents + "  students so far.");
+    System.out.println(
+        "Hi, I'm " + this.getName() + ", a " + this.getAge() + " year old " + this.getGender()
+            + " who represents "
+            + company + " and hired " + hiredStudents + " students so far.");
   }
 
+  @Override
   void getGoal() {
     System.out.println("My goal is: Hire brilliant junior software developers.");
   }

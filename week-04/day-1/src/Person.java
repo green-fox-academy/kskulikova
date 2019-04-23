@@ -4,6 +4,30 @@ public class Person {
   private int age;
   private String gender;
 
+  String getName() {
+    return this.name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  int getAge() {
+    return this.age;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  String getGender() {
+    return this.gender;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
   Person() {
     name = "Jane Doe";
     age = 30;

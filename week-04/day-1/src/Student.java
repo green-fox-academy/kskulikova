@@ -1,35 +1,27 @@
-public class Student {
+public class Student extends Person{
 
-
-  private String name;
-  private int age;
-  private String gender;
   private String previousOrganization;
   private int skippedDays;
 
   Student() {
-    name = "Jane Doe";
-    age = 30;
-    gender = "female";
+    super();
     previousOrganization = "The School of Life";
     skippedDays = 0;
   }
 
   Student(String name, int age, String gender, String previousOrganization) {
-    this.name = name;
-    this.age = age;
-    this.gender = gender;
+    super(name, age, gender);
     this.previousOrganization = previousOrganization;
     this.skippedDays = 0;
 
   }
-
+  @Override
   void introduce() {
     System.out.println(
-        "Hi, I'm " + name + ", a " + age + " year old " + gender + " from " + previousOrganization +
+        "Hi, I'm " + this.getName() + ", a " + this.getAge() + " year old " + this.getGender() + " from " + previousOrganization +
             " who skipped " + skippedDays + " days from the course already.");
   }
-
+  @Override
   void getGoal() {
     System.out.println("My goal is: Be a junior software developer.");
   }
