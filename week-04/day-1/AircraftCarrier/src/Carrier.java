@@ -21,7 +21,7 @@ public class Carrier {
   private Object Exception = "No ammo in the storage!";
 
 
-  Carrier(int ammo, int health) {
+  Carrier(int ammo, int health) throws Throwable {
     storeOfAmmo = ammo;
     healthPoints = health;
   }
@@ -30,28 +30,29 @@ public class Carrier {
     carrier.add(aircraft);
   }
 
-  public void fill() throws Throwable {
-    if (storeOfAmmo > 0 && storeOfAmmo < carrierMissingAmo()) {
+  void fill() throws Throwable {
+    if (storeOfAmmo > 0 && storeOfAmmo < carrierMissingAmmo()) {
       for (Aircraft plane : carrier) {
         if (storeOfAmmo > 0) {
           if (plane.isPriority()) {
-            storeOfAmmo -= plane.missingAmmo();
-            plane.refill(plane.missingAmmo());
-          }
-          if (storeOfAmmo > 0) {
-            for (Aircraft plane2 : carrier) {
-              if (storeOfAmmo > 0) {
-                if (!plane2.isPriority()) {
-                  storeOfAmmo -= plane2.missingAmmo();
-                  plane2.refill(plane2.missingAmmo());
-
-                }
-              }
-            }
+            storeOfAmmo = plane.refill(storeOfAmmo);
           }
         }
       }
-    } else if (storeOfAmmo > 0 && storeOfAmmo > carrierMissingAmo()) {
+      if (storeOfAmmo > 0) {
+        for (Aircraft plane2 : carrier) {
+          if (storeOfAmmo > 0) {
+            if (!plane2.isPriority()) {
+              storeOfAmmo = plane2.refill(storeOfAmmo);
+            }
+          }
+
+        }
+
+      }
+    } else if (storeOfAmmo > 0 && storeOfAmmo >
+
+        carrierMissingAmmo()) {
       for (Aircraft plane : carrier) {
         plane.refill(plane.missingAmmo());
         storeOfAmmo -= plane.missingAmmo();
@@ -59,10 +60,11 @@ public class Carrier {
     } else {
       throw (Throwable) Exception;
     }
+
   }
 
 
-  private int carrierMissingAmo() {
+  private int carrierMissingAmmo() {
     int missing = 0;
     for (Aircraft plane : carrier) {
       missing += plane.missingAmmo();
@@ -92,10 +94,10 @@ public class Carrier {
 
     StringBuilder result = new StringBuilder();
 
-    result.append("HP: " + this.healthPoints + ", Aircraft count: " + this.carrier.size() +
-        ", Ammo Storage: " + this.storeOfAmmo + ", Total Damage: " + this.totalDamage() + "\n" +
-        "Aircrafts: \n");
-    StringBuilder result1 = new StringBuilder();
+    result.append("HP: ").append(this.healthPoints).append(", Aircraft count: ")
+        .append(this.carrier.size()).append(", Ammo Storage: ").append(this.storeOfAmmo)
+        .append(", Total Damage: ").append(this.totalDamage()).append("\n").append("Aircrafts: \n");
+    StringBuilder result1;
     result1 = result;
     for (Aircraft planes : carrier) {
       result1.append(planes.getStatus());
