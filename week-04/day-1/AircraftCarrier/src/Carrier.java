@@ -21,7 +21,7 @@ public class Carrier {
   private Object Exception = "No ammo in the storage!";
 
 
-  Carrier(int ammo, int health) throws Throwable {
+  Carrier(int ammo, int health) {
     storeOfAmmo = ammo;
     healthPoints = health;
   }
@@ -30,8 +30,11 @@ public class Carrier {
     carrier.add(aircraft);
   }
 
-  void fill() throws Throwable {
-    if (storeOfAmmo > 0 && storeOfAmmo < carrierMissingAmmo()) {
+  void fill() throws ZeroAmmoStorageException {
+    if (storeOfAmmo <= 0) {
+      throw new ZeroAmmoStorageException("Empty ammo storage!");
+    }
+    if (storeOfAmmo < carrierMissingAmmo()) {
       for (Aircraft plane : carrier) {
         if (storeOfAmmo > 0) {
           if (plane.isPriority()) {
@@ -57,8 +60,6 @@ public class Carrier {
         plane.refill(plane.missingAmmo());
         storeOfAmmo -= plane.missingAmmo();
       }
-    } else {
-      throw (Throwable) Exception;
     }
 
   }
