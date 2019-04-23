@@ -3,12 +3,8 @@ public class Plants {
   private int waterAmount;
   private boolean needsWater;
 
-  public String getColor() {
+  private String getColor() {
     return color;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
   }
 
   private String color;
@@ -26,19 +22,10 @@ public class Plants {
     return needsWater;
   }
 
-  public void setNeedsWater(boolean needsWater) {
-    this.needsWater = needsWater;
-  }
 
   public void getSomeWater(int waterAmount) {
     System.out.println("Watering with " + waterAmount + " water");
   }
-
-//  Plants(){
-//    needsWater = true;
-//    waterAmount = 0;
-//    color = "green";
-//  }
 
   @Override
   public String toString() {
