@@ -30,4 +30,10 @@ public class Student extends Person{
     this.skippedDays += numberOfDays;
   }
 
+
+  public Student clone(){
+    Student student = this;
+    return student;
+  }
+
 }

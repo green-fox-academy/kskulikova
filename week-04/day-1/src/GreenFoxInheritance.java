@@ -44,7 +44,10 @@ public class GreenFoxInheritance {
     awesome.addMentor(mentor);
     awesome.addMentor(gandhi);
     awesome.info();
+
+
   }
+
 
 }
 
