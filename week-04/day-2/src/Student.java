@@ -34,4 +34,10 @@ public class Student extends Person {
   }
 
 
+  public Student clone() {
+    Student student = this;
+    return student;
+  }
+
+
 }
