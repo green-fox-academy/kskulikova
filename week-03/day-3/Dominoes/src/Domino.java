@@ -24,6 +24,7 @@ public class Domino implements Comparable<Domino> {
 
   @Override
   public int compareTo(Domino domino) {
+
     if (this.getLeftSide() == domino.getLeftSide()) {
       if (this.getRightSide() > domino.getRightSide()) {
         return 1;

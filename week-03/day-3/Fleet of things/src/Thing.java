@@ -1,20 +1,31 @@
 /**
  * Created by aze on 2017.03.29..
  */
-public class Thing {
-    private String name;
-    private boolean completed;
+public class Thing implements Comparable<Thing> {
 
-    public Thing(String name) {
-        this.name = name;
-    }
+  private String name;
+  private boolean completed;
 
-    public void complete() {
-        this.completed = true;
-    }
+  Thing(String name) {
+    this.name = name;
+  }
 
-    @Override
-    public String toString() {
-        return (completed ? "[x] " : "[ ] ") + name;
+  void complete() {
+    this.completed = true;
+  }
+
+  @Override
+  public String toString() {
+    return (completed ? "[x] " : "[ ] ") + name;
+  }
+
+  @Override
+  public int compareTo(Thing thing) {
+    if (this.completed == thing.completed) {
+      return this.name.compareTo(thing.name);
+    } else {
+      return -1;
     }
+  }
 }
+

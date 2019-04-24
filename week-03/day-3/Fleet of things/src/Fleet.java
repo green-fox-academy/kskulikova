@@ -1,25 +1,28 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by aze on 2017.03.29..
  */
 public class Fleet {
-    private ArrayList<Thing> things;
 
-    public Fleet() {
-        things = new ArrayList<>();
-    }
+ List<Thing> fleet;
 
-    public void add(Thing thing) {
-        things.add(thing);
-    }
+  Fleet() {
 
-    @Override
-    public String toString() {
-        String result = "";
-        for(int i = 0; i < things.size(); i++) {
-            result += (i+1) + ". " + things.get(i) + "\n";
-        }
-        return result;
+    fleet = new ArrayList<>();
+  }
+
+  void add(Thing thing) {
+    fleet.add(thing);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < fleet.size(); i++) {
+      result.append(i + 1).append(". ").append(fleet.get(i)).append("\n");
     }
+    return result.toString();
+  }
 }

@@ -28,7 +28,7 @@ public class Student extends Person {
     this.skippedDays += numberOfDays;
   }
 
-
+  @Override
   public Student clone() {
     return this;
   }
