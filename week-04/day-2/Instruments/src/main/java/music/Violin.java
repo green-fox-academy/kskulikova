@@ -1,13 +1,18 @@
 package main.java.music;
 
-class Violin extends StringedInstrument {
+public class Violin extends StringedInstrument {
 
   @Override
   String sound() {
     return "Screech";
   }
 
-  Violin() {
+  @Override
+  public String getType() {
+    return "Violin";
+  }
+
+  public Violin() {
     numberOfStrings = 4;
   }
 

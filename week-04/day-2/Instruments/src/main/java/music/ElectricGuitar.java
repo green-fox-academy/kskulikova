@@ -1,17 +1,22 @@
 package main.java.music;
 
-class ElectricGuitar extends StringedInstrument {
+public class ElectricGuitar extends StringedInstrument {
 
   @Override
   String sound() {
     return "Twang";
   }
 
-  ElectricGuitar() {
+  @Override
+  public String getType() {
+    return "Electric Guitar";
+  }
+
+  public ElectricGuitar() {
     numberOfStrings = 6;
   }
 
-  ElectricGuitar(int i) {
+  public ElectricGuitar(int i) {
     numberOfStrings = i;
   }
 

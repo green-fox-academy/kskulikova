@@ -1,18 +1,23 @@
 package main.java.music;
 
-class BassGuitar extends StringedInstrument {
+public class BassGuitar extends StringedInstrument {
 
   @Override
   String sound() {
     return "Duum-duum-duum";
   }
 
+  @Override
+  public String getType() {
+    return "Bass Guitar";
+  }
 
-  BassGuitar() {
+
+  public BassGuitar() {
     numberOfStrings = 4;
   }
 
-  BassGuitar(int i) {
+  public BassGuitar(int i) {
     numberOfStrings = i;
   }
 }
