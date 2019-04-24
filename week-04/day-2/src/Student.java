@@ -3,11 +3,6 @@ public class Student extends Person {
   private String previousOrganization;
   private int skippedDays;
 
-  Student() {
-    super();
-    previousOrganization = "The School of Life";
-    skippedDays = 0;
-  }
 
   Student(String name, int age, String gender, String previousOrganization) {
     super(name, age, gender);
@@ -35,8 +30,7 @@ public class Student extends Person {
 
 
   public Student clone() {
-    Student student = this;
-    return student;
+    return this;
   }
 
 
