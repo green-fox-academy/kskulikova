@@ -9,6 +9,11 @@ public class Dominoes {
 
     Collections.sort(dominoes);
     System.out.println(dominoes);
+
+
+    for (Domino d : dominoes) {
+      d.printAllFields();
+    }
   }
 
   private static List<Domino> initializeDominoes() {
@@ -20,6 +25,7 @@ public class Dominoes {
     dominoes.add(new Domino(2, 4));
     dominoes.add(new Domino(7, 1));
     return dominoes;
+
   }
 
 }
