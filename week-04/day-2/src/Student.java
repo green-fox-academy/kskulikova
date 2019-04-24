@@ -1,4 +1,4 @@
-class Student extends Person{
+public class Student extends Person {
 
   private String previousOrganization;
   private int skippedDays;
@@ -15,12 +15,15 @@ class Student extends Person{
     this.skippedDays = 0;
 
   }
+
   @Override
   void introduce() {
     System.out.println(
-        "Hi, I'm " + this.getName() + ", a " + this.getAge() + " year old " + this.getGender() + " from " + previousOrganization +
+        "Hi, I'm " + this.getName() + ", a " + this.getAge() + " year old " + this.getGender()
+            + " from " + previousOrganization +
             " who skipped " + skippedDays + " days from the course already.");
   }
+
   @Override
   void getGoal() {
     System.out.println("My goal is: Be a junior software developer.");
