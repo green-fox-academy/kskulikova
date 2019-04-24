@@ -1,5 +1,6 @@
+import day2.Printable;
 
-public class Domino implements Comparable<Domino>, Printable{
+public class Domino implements Comparable<Domino>, Printable {
 
   private final int left;
   private final int right;

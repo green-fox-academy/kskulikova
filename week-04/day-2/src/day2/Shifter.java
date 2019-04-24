@@ -1,8 +1,10 @@
+package day2;
+
 public class Shifter implements CharSequence {
 
   private String string;
 
-  Shifter(String string, int number) {
+  public Shifter(String string, int number) {
     this.string = string.substring(number);
   }
 

@@ -1,9 +1,13 @@
+import day2.Gnirts;
+import day2.Reservation;
+import day2.Shifter;
+
 public class Main {
 
   public static void main(String[] args) {
-//    Student john = new Student("John", 20, "male", "BME");
-//    Student johnTheClone = john.clone();
-
+//    day2.Student john = new day2.Student("John", 20, "male", "BME");
+//    day2.Student johnTheClone = john.clone();
+//
 //    johnTheClone.introduce();
 
     Gnirts test = new Gnirts("example");
@@ -13,7 +17,7 @@ public class Main {
 
     Shifter s = new Shifter("example", 2);
 
-
     System.out.println(s.charAt(0));
+
   }
 }

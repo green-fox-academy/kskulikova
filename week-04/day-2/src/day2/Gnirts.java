@@ -1,9 +1,10 @@
+package day2;
 
 public class Gnirts implements CharSequence {
 
   private String string;
 
-  Gnirts(String string) {
+  public Gnirts(String string) {
     this.string = string;
   }
 

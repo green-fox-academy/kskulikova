@@ -1,3 +1,5 @@
+package day2;
+
 public class Person {
 
   private String name;

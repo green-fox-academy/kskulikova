@@ -1,3 +1,5 @@
+package day2;
+
 public class Student extends Person {
 
   private String previousOrganization;
