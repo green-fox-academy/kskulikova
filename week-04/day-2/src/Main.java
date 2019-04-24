@@ -10,5 +10,10 @@ public class Main {
     System.out.println(test.charAt(2));
 
     System.out.println(test.subSequence(0, 3));
+
+    Shifter s = new Shifter("example", 2);
+
+
+    System.out.println(s.charAt(0));
   }
 }
