@@ -5,7 +5,8 @@ import java.util.List;
 /**
  * Created by aze on 2017.04.04..
  */
-public class Extension {
+class Extension {
+
 
   int add(int a, int b) {
     return a + b;
@@ -24,29 +25,34 @@ public class Extension {
 
   int median(List<Integer> pool) {
     pool.sort(Comparator.naturalOrder());
-    if (pool.size() % 2 == 0) {
+
+    if (pool.size() % 2 != 0) {
       return pool.get((pool.size() - 1) / 2);
     } else {
-      return (pool.get((pool.size() / 2) + pool.get(pool.size() / 2 - 1)) / 2);
+      return ((pool.get((pool.size() / 2)) + pool.get(pool.size() / 2 - 1)) / 2);
     }
 
   }
 
   boolean isVowel(char c) {
-    return Arrays.asList('a', 'u', 'o', 'e', 'i').contains(c);
+    return Arrays.asList('a', 'á', 'e', 'é', 'i', 'í', 'o', 'ó', 'ö', 'ő', 'u', 'ú', 'ü', 'ű')
+        .contains(c);
   }
 
   String translate(String hungarian) {
-    String teve = hungarian;
-    int length = teve.length();
+    StringBuilder teve = new StringBuilder();
+
+    int length = hungarian.length();
     for (int i = 0; i < length; i++) {
-      char c = teve.charAt(i);
+      char c = hungarian.charAt(i);
       if (isVowel(c)) {
-        teve = String.join(c + "v" + c, teve.split("" + c));
-        i += 2;
-        length += 2;
+        teve.append(c).append("v").append(c);
+      } else {
+        teve.append(c);
       }
     }
-    return teve;
+
+    return teve.toString();
   }
+
 }

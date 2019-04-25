@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ExtensionTest {
 
-  Extension extension = new Extension();
+  private Extension extension = new Extension();
 
   @Test
   void testAdd_2and3is5() {
@@ -52,6 +52,16 @@ class ExtensionTest {
   }
 
   @Test
+  void testMedian_allEqualsEvenNumberOfElements() {
+    assertEquals(7, extension.median(Arrays.asList(7, 7, 7, 7)));
+  }
+
+  @Test
+  void testMedian_allEqualsOddNumberOfElements() {
+    assertEquals(7, extension.median(Arrays.asList(7, 7, 7, 7, 7)));
+  }
+
+  @Test
   void testMedian_five() {
     assertEquals(3, extension.median(Arrays.asList(1, 2, 3, 4, 5)));
   }
@@ -74,6 +84,22 @@ class ExtensionTest {
   @Test
   void testTranslate_lagopus() {
     assertEquals("lavagovopuvus", extension.translate("lagopus"));
+  }
+
+
+  @Test
+  void testTranslate_lampa() {
+    assertEquals("lavampava", extension.translate("lampa"));
+  }
+
+  @Test
+  void testTranslate_oneVowel() {
+    assertEquals("ava", extension.translate("a"));
+  }
+
+  @Test
+  void testTranslate_oneConsonant() {
+    assertEquals("k", extension.translate("k"));
   }
 
 }
