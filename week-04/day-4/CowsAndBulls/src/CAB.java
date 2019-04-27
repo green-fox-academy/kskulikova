@@ -4,9 +4,33 @@ import java.util.Random;
 
 public class CAB {
 
-  int goal;
-  String state;
-  int counter;
+  private int goal;
+  private String state;
+  private int counter;
+
+  int getGoal() {
+    return goal;
+  }
+
+  void setGoal(int goal) {
+    this.goal = goal;
+  }
+
+  String getState() {
+    return state;
+  }
+
+  public void setState(String state) {
+    this.state = state;
+  }
+
+  public int getCounter() {
+    return counter;
+  }
+
+  public void setCounter(int counter) {
+    this.counter = counter;
+  }
 
   CAB() {
     goal = getNumber();
@@ -28,14 +52,15 @@ public class CAB {
 
   String guess(int guess) {
     if (guess == goal) {
-      return "Succes!";
+      state = "finished";
+      return "Success!";
     } else {
       counter++;
-      return countCowsandBulls(guess);
+      return countCowsAndBulls(guess);
     }
   }
 
-  String countCowsandBulls(int guess) {
+  String countCowsAndBulls(int guess) {
     int cows = 0;
     int bulls = 0;
 
@@ -53,7 +78,7 @@ public class CAB {
     if (cows == 0 & bulls == 0) {
       return "no cows, no bulls";
     }
-    return ((cows == 0 ? "" : cows + ((cows == 1) ? " cow" : " cows, ")) + ((bulls == 0) ? ""
+    return ((cows == 0 ? "" : cows + ((cows == 1) ? " cow, " : " cows")) + ((bulls == 0) ? ""
         : bulls + ((bulls == 1) ? " bull "
             : " bulls")));
   }
