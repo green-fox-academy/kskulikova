@@ -1,5 +1,11 @@
 import static java.lang.String.valueOf;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 
 public class CAB {
@@ -66,20 +72,52 @@ public class CAB {
 
     String goalString = valueOf(goal);
     String guessString = valueOf(guess);
+    Map<Integer, Character> goalNumber = new HashMap<>();
+
+    for (int i = 0; i < 4; i++) {
+      goalNumber.put(i, goalString.charAt(i));
+    }
+
+    Map<Integer, Character> guessed = new HashMap<>();
 
     for (int c = 0; c < 4; c++) {
       if (guessString.charAt(c) == goalString.charAt(c)) {
         cows++;
-      } else if (goalString.contains("" + guessString.charAt(c))) {
-        bulls++;
+        guessed.put(c, guessString.charAt(c));
+      }
+
+    }
+
+    List<Integer> index = new ArrayList<>();
+    for (int c = 0; c < 4; c++) {
+
+      if (goalString.contains("" + guessString.charAt(c))) {
+        if (!guessed.containsValue(guessString.charAt(c))) {
+          bulls++;
+        } else {
+          if (Collections.frequency(goalNumber.values(), guessString.charAt(c)) >
+              (Collections.frequency(guessed.values(), guessString.charAt(c)))) {
+            for (Entry e : guessed.entrySet()) {
+
+              if (e.getValue().equals(guessString.charAt(c))) {
+                index.add((Integer) e.getKey());
+              }
+            }
+            if (!index.contains(c)) {
+              bulls++;
+            }
+          }
+        }
       }
     }
 
     if (cows == 0 & bulls == 0) {
       return "no cows, no bulls";
     }
-    return ((cows == 0 ? "" : cows + ((cows == 1) ? " cow, " : ((bulls == 0) ? " cows": " cows, "))) + ((bulls == 0) ? ""
-        : bulls + ((bulls == 1) ? " bull "
-            : " bulls")));
+    return (
+        (cows == 0 ? "" : cows + ((cows == 1) ? " cow, " : ((bulls == 0) ? " cows" : " cows, ")))
+            + ((bulls == 0) ? ""
+            : bulls + ((bulls == 1) ? " bull "
+                : " bulls")));
   }
 }

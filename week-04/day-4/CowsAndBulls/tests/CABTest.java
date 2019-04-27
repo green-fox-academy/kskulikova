@@ -58,4 +58,28 @@ public class CABTest {
     assertEquals("3 cows", cab.countCowsAndBulls(guess));
 
   }
+
+  @Test
+  public void countCowsAndBullsRepeatingNumbersInGuess() {
+    cab.setGoal(1245);
+    int guess = 1222;
+    assertEquals("2 cows", cab.countCowsAndBulls(guess));
+
+  }
+
+  @Test
+  public void countCowsAndBullsRepeatingNumbersInGoal() {
+    cab.setGoal(1222);
+    int guess = 2222;
+    assertEquals("3 cows", cab.countCowsAndBulls(guess));
+
+  }
+
+  @Test
+  public void countCowsAndBullsRepeatingNumbersInGoalAndInGuess() {
+    cab.setGoal(1221);
+    int guess = 2121;
+    assertEquals("2 cows, 2 bulls", cab.countCowsAndBulls(guess));
+
+  }
 }
