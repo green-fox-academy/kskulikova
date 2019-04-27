@@ -56,8 +56,8 @@ public class CAB {
     return r.nextInt(9000) + 1000;
   }
 
-  String guess(int guess) {
-    if (guess == goal) {
+  String guess(String guess) {
+    if (guess.equals(String.valueOf(goal))) {
       state = "finished";
       return "Success!";
     } else {
@@ -66,7 +66,7 @@ public class CAB {
     }
   }
 
-  String countCowsAndBulls(int guess) {
+  String countCowsAndBulls(String guess) {
     int cows = 0;
     int bulls = 0;
 
