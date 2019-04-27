@@ -78,7 +78,7 @@ public class CAB {
     if (cows == 0 & bulls == 0) {
       return "no cows, no bulls";
     }
-    return ((cows == 0 ? "" : cows + ((cows == 1) ? " cow, " : " cows")) + ((bulls == 0) ? ""
+    return ((cows == 0 ? "" : cows + ((cows == 1) ? " cow, " : ((bulls == 0) ? " cows": " cows, "))) + ((bulls == 0) ? ""
         : bulls + ((bulls == 1) ? " bull "
             : " bulls")));
   }
