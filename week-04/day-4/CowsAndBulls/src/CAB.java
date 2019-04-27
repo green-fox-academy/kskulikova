@@ -71,7 +71,7 @@ public class CAB {
     int bulls = 0;
 
     String goalString = valueOf(goal);
-    String guessString = valueOf(guess);
+//    String guessString = valueOf(guess);
     Map<Integer, Character> goalNumber = new HashMap<>();
 
     for (int i = 0; i < 4; i++) {
@@ -80,30 +80,29 @@ public class CAB {
 
     Map<Integer, Character> guessed = new HashMap<>();
 
-    for (int c = 0; c < 4; c++) {
-      if (guessString.charAt(c) == goalString.charAt(c)) {
+    for (int i = 0; i < 4; i++) {
+      if (guess.charAt(i) == goalString.charAt(i)) {
         cows++;
-        guessed.put(c, guessString.charAt(c));
+        guessed.put(i, guess.charAt(i));
       }
-
     }
 
     List<Integer> index = new ArrayList<>();
-    for (int c = 0; c < 4; c++) {
-
-      if (goalString.contains("" + guessString.charAt(c))) {
-        if (!guessed.containsValue(guessString.charAt(c))) {
+    for (int i = 0; i < 4; i++) {
+      char c = guess.charAt(i);
+      if (goalString.contains("" + c)) {
+        if (!guessed.containsValue(c)) {
           bulls++;
         } else {
-          if (Collections.frequency(goalNumber.values(), guessString.charAt(c)) >
-              (Collections.frequency(guessed.values(), guessString.charAt(c)))) {
-            for (Entry e : guessed.entrySet()) {
+          if (Collections.frequency(goalNumber.values(), c) >
+              (Collections.frequency(guessed.values(), c))) {
+            for (Entry<Integer, Character> e : guessed.entrySet()) {
 
-              if (e.getValue().equals(guessString.charAt(c))) {
-                index.add((Integer) e.getKey());
+              if (e.getValue().equals(c)) {
+                index.add(e.getKey());
               }
             }
-            if (!index.contains(c)) {
+            if (!index.contains(i)) {
               bulls++;
             }
           }
@@ -115,7 +114,8 @@ public class CAB {
       return "no cows, no bulls";
     }
     return (
-        (cows == 0 ? "" : cows + ((cows == 1) ? " cow, " : ((bulls == 0) ? " cows" : " cows, ")))
+        (cows == 0 ? "" : cows + ((cows == 1) ? ((bulls == 0) ? " cow" : " cow, ")
+            : ((bulls == 0) ? " cows" : " cows, ")))
             + ((bulls == 0) ? ""
             : bulls + ((bulls == 1) ? " bull "
                 : " bulls")));
