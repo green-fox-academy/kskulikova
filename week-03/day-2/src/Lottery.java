@@ -27,7 +27,6 @@ public class Lottery {
         for (int i = 11; i < 16; i++) {
           numbers.add(components[i]);
         }
-
       }
 
       HashMap<String, Integer> numbersMap = new HashMap<>();
