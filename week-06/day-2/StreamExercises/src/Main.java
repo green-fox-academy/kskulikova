@@ -29,8 +29,13 @@ public class Main {
 //    numbers3.stream().filter(n -> n*n > 20).forEach(System.out::println);
 
     //Exercise4
-    List<Integer> numbers4 = Arrays.asList(1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14);
+//    List<Integer> numbers4 = Arrays.asList(1, 3, -2, -4, -7, -3, -8, 12, 19, 6, 9, 10, 14);
+//    System.out.println(
+//        numbers4.stream().filter(n -> n % 2 != 0).mapToDouble(n -> n).average().orElse(0.0));
+
+    //Exercise5
+    List<Integer> numbers5 = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
     System.out.println(
-        numbers4.stream().filter(n -> n % 2 != 0).mapToDouble(n -> n).average().orElse(0.0));
+        (Integer) numbers5.stream().filter(n -> n % 2 != 0).mapToInt(Integer::intValue).sum());
   }
 }
