@@ -1,3 +1,6 @@
+import static java.lang.Character.toChars;
+import static java.lang.Character.toUpperCase;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +37,12 @@ public class Main {
 //        numbers4.stream().filter(n -> n % 2 != 0).mapToDouble(n -> n).average().orElse(0.0));
 
     //Exercise5
-    List<Integer> numbers5 = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
-    System.out.println(
-        (Integer) numbers5.stream().filter(n -> n % 2 != 0).mapToInt(Integer::intValue).sum());
+//    List<Integer> numbers5 = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
+//    System.out.println(
+//        (Integer) numbers5.stream().filter(n -> n % 2 != 0).mapToInt(Integer::intValue).sum());
+
+    //Exercise6
+    String str = "Hello, Friends";
+    System.out.println(str.chars().filter(s -> s > 65 && s < 91).mapToObj(i -> (char) i).collect(Collectors.toList()));
   }
 }
