@@ -46,7 +46,7 @@ public class CAB {
 
   public static void main(String[] args) {
     System.out.println("Guess a 4-digit number");
-    System.out.println(getNumber());
+
   }
 
   private static int getNumber() {

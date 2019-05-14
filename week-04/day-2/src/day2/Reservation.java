@@ -48,11 +48,11 @@ public class Reservation implements Reservationy {
   }
 
   private List<Integer> generateRandomNumbers(List<Range> ranges, int numberOfNumbers) {
-    List<Integer> randomNumbers = new ArrayList<>(numberOfNumbers + 1);
-    while (numberOfNumbers-- > 0) {
+    List<Integer> randomNumbers = new ArrayList<>();
+    while (numberOfNumbers > 0) {
       Range range = ranges.get(new Random().nextInt(ranges.size()));
       randomNumbers.add(range.min + (int) (Math.random() * ((range.max - range.min) + 1)));
-
+      numberOfNumbers--;
     }
     return randomNumbers;
   }

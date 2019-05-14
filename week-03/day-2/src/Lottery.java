@@ -54,7 +54,7 @@ public class Lottery {
           j--;
         }
       }
-      
+
 
     } catch (IOException e) {
       e.printStackTrace();
