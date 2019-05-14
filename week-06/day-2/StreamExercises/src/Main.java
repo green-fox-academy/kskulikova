@@ -1,6 +1,7 @@
 import static java.lang.Character.toChars;
 import static java.lang.Character.toUpperCase;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -42,7 +43,31 @@ public class Main {
 //        (Integer) numbers5.stream().filter(n -> n % 2 != 0).mapToInt(Integer::intValue).sum());
 
     //Exercise6
-    String str = "Hello, Friends";
-    System.out.println(str.chars().filter(s -> s > 65 && s < 91).mapToObj(i -> (char) i).collect(Collectors.toList()));
+//    String str = "Hello, Friends";
+//    System.out.println(str.chars().filter(s -> s > 65 && s < 91).mapToObj(i -> (char) i).collect(Collectors.toList()));
+
+    //Exercise7
+//    List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH",
+//        "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
+//    System.out.println(cities.stream().filter(s -> s.startsWith("A")).collect(Collectors.toList()));
+
+    //Exercise8
+    List<Character> characters = new ArrayList<>();
+    characters.add('l');
+    characters.add('u');
+    characters.add('n');
+    characters.add('c');
+    characters.add('h');
+    characters.add('t');
+    characters.add('i');
+    characters.add('m');
+    characters.add('e');
+
+    System.out.println(characters);
+
+    System.out.println(characters.stream().collect(StringBuilder::new,
+        StringBuilder::appendCodePoint, StringBuilder::append)
+        .toString());
+
   }
 }
