@@ -1,5 +1,9 @@
+import static java.lang.Character.*;
+import static java.lang.Character.charCount;
 import static java.lang.Character.toChars;
 import static java.lang.Character.toUpperCase;
+import static java.lang.Character.valueOf;
+import static java.util.stream.Collectors.toMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -52,22 +56,30 @@ public class Main {
 //    System.out.println(cities.stream().filter(s -> s.startsWith("A")).collect(Collectors.toList()));
 
     //Exercise8
-    List<Character> characters = new ArrayList<>();
-    characters.add('l');
-    characters.add('u');
-    characters.add('n');
-    characters.add('c');
-    characters.add('h');
-    characters.add('t');
-    characters.add('i');
-    characters.add('m');
-    characters.add('e');
+//    List<Character> characters = new ArrayList<>();
+//    characters.add('l');
+//    characters.add('u');
+//    characters.add('n');
+//    characters.add('c');
+//    characters.add('h');
+//    characters.add('t');
+//    characters.add('i');
+//    characters.add('m');
+//    characters.add('e');
+//
+//    System.out.println(characters);
+//
+//    System.out.println(characters.stream().collect(StringBuilder::new,
+//        StringBuilder::appendCodePoint, StringBuilder::append)
+//        .toString());
 
-    System.out.println(characters);
-
-    System.out.println(characters.stream().collect(StringBuilder::new,
-        StringBuilder::appendCodePoint, StringBuilder::append)
-        .toString());
-
+    //Exercise9
+    //Write a Stream Expression to find the frequency of characters in a given string!
+    String str = "diversion";
+    Map<String, Integer> frequencies = str.chars().boxed()
+        .collect(toMap(k -> Character.valueOf((char) k.intValue()).toString(),
+            v -> 1,
+            Integer::sum));
+    System.out.println(frequencies);
   }
 }
