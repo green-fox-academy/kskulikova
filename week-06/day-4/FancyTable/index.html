@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FancyTable</title>
+  <meta charset="UTF-8">
+  <style>
+  	body {
+  	  background-color:rgb(41, 142, 239);	
+  	}
+  	 th {
+      background-color:rgb(27, 30, 37);
+      color:rgb(200, 210, 220);
+      border: 1px solid gray;
+      border-bottom-width: 3px;
+      font-weight: normal;
+      vertical-align: middle;
+    }
+
+    table th:first-child {
+    border-radius:  3px 0 0 0 !important;
+    }
+
+    table th:last-child {
+     border-radius:  0 3px 0 0 !important;
+    }
+     
+    table, td, tr {
+      border: 1px solid gray;
+      border-collapse: collapse;
+    }
+
+    table {
+      border-style: hidden;
+      text-align: left;
+      margin-left: 20px;
+    }
+
+    table tr:last-child td:first-child {
+      border-radius: 0 0 0 3px !important;
+    }
+
+    table tr:last-child td:last-child {
+      border-radius: 0 0 3px 0 !important;
+    }
+
+    td, th {
+     vertical-align: middle;
+     height: 75px;
+     padding-left: 20px;
+     font-family: 'Open Sans', sans-serif;
+     font-weight: lighter;
+    }
+
+    tr {
+      background-color: white;
+      color: rgb(102, 104, 134);
+      font-size: 24px;
+    }
+    
+    tr:nth-child(odd) {
+      background-color:rgb(230, 230, 230);
+    }
+
+  </style>	
+</head>
+<body>
+  <table>
+    <col width="250">
+    <col width="350">
+ 
+  	<thead>
+  	  <th>Month</th>
+      <th>Sales</th>
+  	</thead>
+  	<tbody>
+      <tr>
+        <td>January</td>
+        <td>$50,000.00</td>
+    </tr>
+    <tr>
+        <td>February</td>
+        <td>$10,000.00</td>
+    </tr>
+    <tr>
+        <td>March</td>
+      	<td>$85,000.00</td>
+    </tr> 
+    <tr>
+        <td>April</td>
+        <td>$56,000.00</td>
+    </tr>
+    <tr>   
+        <td>May</td>
+        <td>$98,000.00</td>   
+    </tr>
