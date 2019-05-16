@@ -1,0 +1,74 @@
+body {
+  display: block;
+  background-color: rgb(236, 234, 236);
+  font-family: 'PT Sans', sans-serif;
+  color: rgb(78, 77, 78);
+  font-size: 12px;
+}
+input {
+  display: block;
+}
+
+form {
+  display: block;
+  margin: auto;
+  width: 30%;
+  margin-top: 40px;
+  padding: 48px 72px;
+  background-color: rgb(255, 254, 255);
+}
+
+label, header {
+  text-transform: uppercase;
+}
+
+header {
+	font-size: 24px;
+}
+
+#forgot {
+  margin-top: 4px;
+  text-transform: capitalize;
+  text-align: right;
+}
+
+button {
+  margin-top: 40px;
+  width: 116px;
+  height: 40px;
+  background-color: rgb(52, 50, 52);
+  border-radius: 32px;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  
+}
+
+input {
+  margin-top: 4px;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 2px;
+  font-family: 'PT Sans', sans-serif;
+  color: rgb(85, 83, 85);
+  font-size: 22px;
+  padding: 4px 8px;
+}
+
+input:focus { 
+  outline: none;
+  border-color: green;
+  box-shadow: 0 0 7px green;
+}
+
+input[type="password"] {
+  background: url(icons/eye_compressed.png) no-repeat;
+  background-size: 24px 24px;
+  background-position: 95% 50%;
+}
+
+div {
+  margin-top: 25px;
+  width: 100%;
+}
