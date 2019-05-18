@@ -1,0 +1,74 @@
+body {
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+header {
+  padding-top: 16px;
+  color: crimson;
+  font-size: 28px;
+  text-align: left;
+}
+
+hr {
+  display: block;
+  margin: 0.5em auto;
+  border-style: inset;
+  border-width: 1px;
+  border-color: crimson;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 10% 5% 10%;
+  overflow: scroll;
+}
+
+.filters {
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: firebrick;
+  border-radius: 5px;
+  border-color: firebrick;
+  border-width: 1px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 12px;
+  padding: 4px 8px;
+  color: floralwhite;
+  text-transform: uppercase;
+}
+
+table {
+  padding-top: 16px;
+  width: 100%;
+}
+
+th {
+  vertical-align: middle;
+  height: 40px;
+  background-color: indianred;
+  color: floralwhite;
+}
+
+tr {
+  vertical-align: middle;
+  border: none;
+  color: dimgray;
+}
+
+td {
+  padding: 8px;
+}
+
+table td:last-child, table td:nth-last-child(2) {
+  text-align: center;
+}
+
+

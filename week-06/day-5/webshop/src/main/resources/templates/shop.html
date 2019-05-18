@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="/styles.css"/>
+<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+<head>
+  <title>Basic Webshop</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="content">
+  <header>My Shop</header>
+  <hr>
+  <div class="top-toolbar">
+    <form action="" method="get">
+      <div class="filters">
+        <a class="button" href="/only-available">only available</a>
+        <a class="button" href="/cheapest-first">cheapest first</a>
+        <a class="button" href="/contains-nike">contains nike</a>
+        <a class="button" href="/average-stock">average stock</a>
+        <a class="button" href="/most-expensive-available">most expensive available</a>
+      </div>
+
+      <table>
+        <thead>
+        <th>name</th>
+        <th>description</th>
+        <th>price</th>
+        <th>quantity of stock</th>
+        </thead>
+        <tbody>
+        <tr>
+      <tr th:each="item : ${items}">
+          <td th:text="${item.getName()}"></td>
+          <td th:text="${item.getDescription()}"></td>
+          <td th:text="${item.getPrice()}"></td>
+          <td th:text="${item.getQuantityOfStock()}"></td>
+      </tr>
+        </tbody>
+      </table>
+
+    </form>
+  </div>
+</div>
+</body>
+</html>
