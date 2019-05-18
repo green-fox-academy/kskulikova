@@ -64,7 +64,17 @@ public class ShopItemController {
 
   @RequestMapping(value = "/average-stock")
   public static String ShopItemsAverageStock(Model model) {
-    return "shop";
+    model.addAttribute("average", itemList.stream()
+        .mapToDouble(ShopItem::getQuantityOfStock)
+        .average().orElse(0.0));
+    return "shopQueryStock";
+  }
+
+  @RequestMapping(value = "/most-expensive-available")
+  public static String ShopItemsMostExpensiveAvailable(Model model) {
+    model.addAttribute("mostExpensive", itemList.stream().filter(item -> item.getQuantityOfStock() > 0)
+        .max(Comparator.comparingInt(x -> (int) x.getPrice())).map(ShopItem::getName).orElse("None"));
+    return "shopQueryPrice";
   }
 
 }

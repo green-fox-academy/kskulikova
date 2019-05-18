@@ -71,4 +71,11 @@ table td:last-child, table td:nth-last-child(2) {
   text-align: center;
 }
 
+span {
+  margin-top: 24px;
+  color: #000;
+  font-size: 32px;
+  font-weight: bold;
+}
+
 
