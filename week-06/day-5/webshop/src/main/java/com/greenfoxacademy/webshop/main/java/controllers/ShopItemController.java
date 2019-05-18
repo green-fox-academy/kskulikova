@@ -1,5 +1,6 @@
 package com.greenfoxacademy.webshop.main.java.controllers;
 
+import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -34,14 +35,36 @@ public class ShopItemController {
 
   @RequestMapping(value = "/only-available")
   public static String ShopItemsOnlyAvailable(Model model) {
-    model.addAttribute("items", itemList.stream().filter(item -> item.getQuantityOfStock() > 0).collect(
-        Collectors.toList()));
+    model.addAttribute("items",
+        itemList.stream().filter(item -> item.getQuantityOfStock() > 0).collect(
+            Collectors.toList()));
     return "shop";
   }
 
   @RequestMapping(value = "/cheapest-first")
   public static String ShopItemsCheapestFirst(Model model) {
-    model.addAttribute("items", itemList.stream().sorted(Comparator.comparing(ShopItem::getPrice)).collect(Collectors.toList()));
+    model.addAttribute("items", itemList.stream().sorted(Comparator.comparing(ShopItem::getPrice))
+        .collect(Collectors.toList()));
     return "shop";
   }
+
+  @RequestMapping(value = "/contains-nike")
+  public static String ShopItemsContainsNike(Model model) {
+    String string = "Nike";
+    List<ShopItem> items = new ArrayList<>();
+    itemList.stream()
+        .filter(x -> x.getDescription().contains(string))
+        .forEach(items::add);
+    itemList.stream()
+        .filter(x -> x.getName().contains(string))
+        .forEach(items::add);
+    model.addAttribute("items", items.stream().distinct().collect(Collectors.toList()));
+    return "shop";
+  }
+
+  @RequestMapping(value = "/average-stock")
+  public static String ShopItemsAverageStock(Model model) {
+    return "shop";
+  }
+
 }
