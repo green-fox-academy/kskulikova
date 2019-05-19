@@ -78,4 +78,33 @@ span {
   font-weight: bold;
 }
 
+.search {
+  margin-top: 4px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.searchTerm {
+  width: 90%;
+  border-radius: 5px;
+  border-color: indianred;
+  border-width: 2px;
+  height: 24px;
+}
+
+.searchButton {
+  border-radius: 7px;
+  background-color: crimson;
+  color: floralwhite;
+  font-size: 18px;
+}
+
+label {
+  margin-top: 8px;
+  color: crimson;
+  font-size: 20px;
+}
+
 

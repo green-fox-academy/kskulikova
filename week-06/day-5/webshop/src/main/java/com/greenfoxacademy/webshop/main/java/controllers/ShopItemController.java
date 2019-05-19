@@ -1,14 +1,14 @@
 package com.greenfoxacademy.webshop.main.java.controllers;
 
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ShopItemController {
@@ -27,13 +27,14 @@ public class ShopItemController {
     itemList.add(new ShopItem("Chainsaw", "Bosch Universal Chain 18 Cordless Chainsaw", 25.00));
   }
 
-  @RequestMapping(value = "/")
+  @GetMapping(value = "/")
   public static String ShopItems(Model model) {
     model.addAttribute("items", itemList);
+//    model.addAttribute("searchTerm", new Query());
     return "shop";
   }
 
-  @RequestMapping(value = "/only-available")
+  @GetMapping(value = "/only-available")
   public static String ShopItemsOnlyAvailable(Model model) {
     model.addAttribute("items",
         itemList.stream().filter(item -> item.getQuantityOfStock() > 0).collect(
@@ -41,14 +42,14 @@ public class ShopItemController {
     return "shop";
   }
 
-  @RequestMapping(value = "/cheapest-first")
+  @GetMapping(value = "/cheapest-first")
   public static String ShopItemsCheapestFirst(Model model) {
     model.addAttribute("items", itemList.stream().sorted(Comparator.comparing(ShopItem::getPrice))
         .collect(Collectors.toList()));
     return "shop";
   }
 
-  @RequestMapping(value = "/contains-nike")
+  @GetMapping(value = "/contains-nike")
   public static String ShopItemsContainsNike(Model model) {
     String string = "Nike";
     List<ShopItem> items = new ArrayList<>();
@@ -62,7 +63,7 @@ public class ShopItemController {
     return "shop";
   }
 
-  @RequestMapping(value = "/average-stock")
+  @GetMapping(value = "/average-stock")
   public static String ShopItemsAverageStock(Model model) {
     model.addAttribute("average", itemList.stream()
         .mapToDouble(ShopItem::getQuantityOfStock)
@@ -70,11 +71,24 @@ public class ShopItemController {
     return "shopQueryStock";
   }
 
-  @RequestMapping(value = "/most-expensive-available")
+  @GetMapping(value = "/most-expensive-available")
   public static String ShopItemsMostExpensiveAvailable(Model model) {
     model.addAttribute("mostExpensive", itemList.stream().filter(item -> item.getQuantityOfStock() > 0)
         .max(Comparator.comparingInt(x -> (int) x.getPrice())).map(ShopItem::getName).orElse("None"));
     return "shopQueryPrice";
+  }
+
+  @PostMapping("/search")
+  public String searchSubmit(@RequestParam(value = "searchTerm") String searchTerm, Model model) {
+    List<ShopItem> items = new ArrayList<>();
+    itemList.stream()
+        .filter(x -> x.getDescription().contains(searchTerm))
+        .forEach(items::add);
+    itemList.stream()
+        .filter(x -> x.getName().contains(searchTerm))
+        .forEach(items::add);
+    model.addAttribute("items", items.stream().distinct().collect(Collectors.toList()));
+    return "shop";
   }
 
 }
