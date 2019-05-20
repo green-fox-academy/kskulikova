@@ -55,6 +55,7 @@ th {
   height: 40px;
   background-color: indianred;
   color: floralwhite;
+  text-transform: capitalize;
 }
 
 tr {

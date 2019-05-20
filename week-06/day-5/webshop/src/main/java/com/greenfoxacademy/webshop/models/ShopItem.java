@@ -1,4 +1,4 @@
-package com.greenfoxacademy.webshop.main.java.controllers;
+package com.greenfoxacademy.webshop.models;
 
 import java.util.Random;
 

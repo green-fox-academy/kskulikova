@@ -1,5 +1,6 @@
 package com.greenfoxacademy.webshop.main.java.controllers;
 
+import com.greenfoxacademy.webshop.models.ShopItem;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -73,8 +74,10 @@ public class ShopItemController {
 
   @GetMapping(value = "/most-expensive-available")
   public static String ShopItemsMostExpensiveAvailable(Model model) {
-    model.addAttribute("mostExpensive", itemList.stream().filter(item -> item.getQuantityOfStock() > 0)
-        .max(Comparator.comparingInt(x -> (int) x.getPrice())).map(ShopItem::getName).orElse("None"));
+    model.addAttribute("mostExpensive",
+        itemList.stream().filter(item -> item.getQuantityOfStock() > 0)
+            .max(Comparator.comparingInt(x -> (int) x.getPrice())).map(ShopItem::getName)
+            .orElse("None"));
     return "shopQueryPrice";
   }
 
