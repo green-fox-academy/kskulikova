@@ -13,6 +13,7 @@ public class BankOfSimbaController {
   @GetMapping(value = "/show")
   public String showAccount(Model model) {
     model.addAttribute("account", account);
+    model.addAttribute("currency", "Zebra");
     return "index";
   }
 

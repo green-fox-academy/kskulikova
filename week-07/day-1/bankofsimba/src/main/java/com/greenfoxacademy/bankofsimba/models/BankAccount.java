@@ -34,9 +34,6 @@ public class BankAccount {
     return balance;
   }
 
-  public void setBalance(int balance) {
-    this.balance = balance;
-  }
 
   public String getAnimalType() {
     return animalType;
@@ -45,8 +42,6 @@ public class BankAccount {
   public void setAnimalType(String animalType) {
     this.animalType = animalType;
   }
-
-
 }
 
 
