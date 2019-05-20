@@ -49,5 +49,10 @@ public class BankOfSimbaController {
     return "table";
   }
 
+  @PostMapping(value = "/add")
+  public String addAccount(String name, int balance, String animalType) {
+    bank.getList().add(new BankAccount(name, balance, animalType));
+    return "table";
+  }
 }
 

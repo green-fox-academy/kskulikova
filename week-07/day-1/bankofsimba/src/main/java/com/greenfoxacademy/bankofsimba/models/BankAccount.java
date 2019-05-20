@@ -1,11 +1,5 @@
 package com.greenfoxacademy.bankofsimba.models;
 
-//Add the fields (properties in C#) name, balance, animalType in it
-//In your controller create the first endpoint called /show
-//Instantiate a new BankAccount("Simba", 2000, "lion")
-//Java: Add this BankAccount to the model
-//Create a template where you show the fields of the BankAccount
-
 public class BankAccount {
 
   private String name;
@@ -22,7 +16,7 @@ public class BankAccount {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
-    this.personality = name.equals("Scar")? "bad" : "good";
+    this.personality = name.equals("Scar") ? "bad" : "good";
     this.king = name.toLowerCase().equals("mufasa");
   }
 
@@ -55,14 +49,13 @@ public class BankAccount {
     return king;
   }
 
-  public void topUp(){
+  public void topUp() {
     if (this.isKing()) {
       this.balance += 100;
     } else {
       this.balance += 10;
     }
   }
-
 }
 
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:action="http://www.w3.org/1999/xhtml"
-      xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <link rel="stylesheet" href="/styles.css"/>
 <head>
   <title>Account details</title>
@@ -9,19 +8,37 @@
 <body>
 
 <div class="content">
+  <div class="top-up">
   <form action="#" th:action="@{/increase}" method="post">
+    <header>top up your balance</header>
     <label>select name</label>
     <input list="names" name="name"/>
     <datalist id="names">
       <select>
         <option th:each="account: ${list.getList()}" th:text="${account.getName()}"
-                th:value=" ${account.getName()}">
+                th:value=" ${account.getName()}"/>
         </option>
       </select>
     </datalist>
 
     <button>Top up</button>
+
   </form>
+  </div>
+
+  <div class="add-new">
+  <form action="#" th:action="@{/add}" method="post">
+    <header>add new account</header>
+    <label>name</label>
+    <input type="text" name="name"/>
+    <label>balance</label>
+    <input type="text" name="balance"/>
+    <label>animal type</label>
+    <input type="text" name="animalType"/>
+
+    <button>Add</button>
+  </form>
+  </div>
 
   <table>
     <thead>

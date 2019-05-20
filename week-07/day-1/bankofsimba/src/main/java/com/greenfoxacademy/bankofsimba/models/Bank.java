@@ -17,6 +17,5 @@ public class Bank {
   public List<BankAccount> getList() {
     return list;
   }
-
 }
 
