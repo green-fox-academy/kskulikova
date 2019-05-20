@@ -11,6 +11,8 @@ public class BankAccount {
   private String name;
   private int balance;
   private String animalType;
+  private String personality;
+  private boolean king;
 
   BankAccount() {
 
@@ -20,6 +22,8 @@ public class BankAccount {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
+    this.personality = name.equals("Scar")? "bad" : "good";
+    this.king = name.toLowerCase().equals("mufasa");
   }
 
   public String getName() {
@@ -42,6 +46,15 @@ public class BankAccount {
   public void setAnimalType(String animalType) {
     this.animalType = animalType;
   }
+
+  public String getPersonality() {
+    return personality;
+  }
+
+  public boolean isKing() {
+    return king;
+  }
+
 }
 
 

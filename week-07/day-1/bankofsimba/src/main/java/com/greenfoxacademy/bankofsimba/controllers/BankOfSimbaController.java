@@ -40,6 +40,7 @@ public class BankOfSimbaController {
   @ModelAttribute
   public void addCurrency(Model model) {
     model.addAttribute("currency", "Zebra");
+    model.addAttribute("weight", "bold");
   }
 
 }
