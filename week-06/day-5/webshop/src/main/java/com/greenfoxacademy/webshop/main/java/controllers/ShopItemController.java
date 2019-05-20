@@ -82,7 +82,7 @@ public class ShopItemController {
   }
 
   @PostMapping("/search")
-  public String searchSubmit(@RequestParam(value = "searchTerm") String searchTerm, Model model) {
+  public String searchSubmit(String searchTerm, Model model) {
     List<ShopItem> items = new ArrayList<>();
     itemList.stream()
         .filter(x -> x.getDescription().contains(searchTerm))
@@ -93,5 +93,4 @@ public class ShopItemController {
     model.addAttribute("items", items.stream().distinct().collect(Collectors.toList()));
     return "shop";
   }
-
 }
