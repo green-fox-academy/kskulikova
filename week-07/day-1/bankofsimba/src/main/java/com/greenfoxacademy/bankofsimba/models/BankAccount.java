@@ -55,6 +55,14 @@ public class BankAccount {
     return king;
   }
 
+  public void topUp(){
+    if (this.isKing()) {
+      this.balance += 100;
+    } else {
+      this.balance += 10;
+    }
+  }
+
 }
 
 

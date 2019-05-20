@@ -2,33 +2,16 @@ body {
   background-color: lightgray;
   margin: 0;
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
 }
 
-/*header {*/
-/*  padding-top: 16px;*/
-/*  color: crimson;*/
-/*  font-size: 28px;*/
-/*  text-align: left;*/
-/*}*/
-
-/*hr {*/
-/*  display: block;*/
-/*  margin: 0.5em auto;*/
-/*  border-style: inset;*/
-/*  border-width: 1px;*/
-/*  border-color: crimson;*/
-/*}*/
-
-.content {
-  margin: 0 auto;
-  padding: 0 10% 5% 10%;
-  overflow: scroll;
+form {
+  padding-top: 16px;
+  font-size: 16px;
 }
 
 table {
   padding-top: 16px;
-  width: 60%;
+  width:100%;
 }
 
 th {
@@ -46,7 +29,34 @@ tr {
   color: dimgrey;
 }
 
+label, button {
+  color: darkolivegreen;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+button {
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+label {
+  font-size: 18px;
+}
+
+datalist {
+  height: 28px;
+}
+
 td {
   padding: 8px;
   text-transform: capitalize;
 }
+
+.content {
+  margin: 0 auto;
+  padding: 0 10% 5% 10%;
+  overflow: scroll;
+  font-family: 'Open Sans', sans-serif;
+}
+

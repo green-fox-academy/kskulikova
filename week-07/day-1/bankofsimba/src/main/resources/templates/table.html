@@ -1,41 +1,51 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:action="http://www.w3.org/1999/xhtml"
+      xmlns:form="http://www.w3.org/1999/xhtml">
 <link rel="stylesheet" href="/styles.css"/>
 <head>
   <title>Account details</title>
   <meta charset="utf-8"/>
 </head>
 <body>
-<table>
-  <thead>
-  <th>index</th>
-  <th>rank</th>
-  <th>personality</th>
-  <th>name</th>
-  <th>balance</th>
-  <th>type of animal</th>
-  </thead>
-  <tbody>
-  <tr>
-  <tr th:each="account : ${list}">
-    <td th:text="${accountStat.index + 1}">
-    <td th:if="${account.isKing()}"><span th:style="'font-weight:' + ${weight}"/>King</td>
-    <td th:unless="${account.isKing()}"></td>
 
-    <!--    <div th:switch="${account.getName()}">-->
-    <!--      <td th:case="'Timon'">Good One</td>-->
-    <!--      <td th:case="'Scar'">Bad One</td>-->
-    <!--      <td th:case="'Pumbaa'">Good One</td>-->
-    <!--      <td th:case="'Mufasa'">Good One</td>-->
-    <!--    </div>-->
+<div class="content">
+  <form action="#" th:action="@{/increase}" method="post">
+    <label>select name</label>
+    <input list="names" name="name"/>
+    <datalist id="names">
+      <select>
+        <option th:each="account: ${list.getList()}" th:text="${account.getName()}"
+                th:value=" ${account.getName()}">
+        </option>
+      </select>
+    </datalist>
 
-    <td th:text="${account.getPersonality().toLowerCase().startsWith('g')} ? 'Good One' : 'Bad One'"></td>
+    <button>Top up</button>
+  </form>
 
-    <td th:text="${account.getName()}"></td>
-    <td th:text="|${#numbers.formatDecimal(account.getBalance(), 0, 'COMMA', 2, 'POINT')} ${currency}|"></td>
-    <td th:text="${account.getAnimalType()}"></td>
-  </tr>
-  </tbody>
-</table>
+  <table>
+    <thead>
+    <th>index</th>
+    <th>rank</th>
+    <th>personality</th>
+    <th>name</th>
+    <th>balance</th>
+    <th>type of animal</th>
+    </thead>
+    <tbody>
+
+    <tr>
+    <tr th:each="account : ${list.getList()}">
+      <td th:text="${accountStat.index + 1}">
+      <td th:if="${account.isKing()}"><span th:style="'font-weight:' + ${weight}"/>King</td>
+      <td th:unless="${account.isKing()}"></td>
+      <td th:text="${account.getPersonality().toLowerCase().startsWith('g')} ? 'Good One' : 'Bad One'"></td>
+      <td th:text="${account.getName()}"></td>
+      <td th:text="|${#numbers.formatDecimal(account.getBalance(), 0, 'COMMA', 2, 'POINT')} ${currency}|"></td>
+      <td th:text="${account.getAnimalType()}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
