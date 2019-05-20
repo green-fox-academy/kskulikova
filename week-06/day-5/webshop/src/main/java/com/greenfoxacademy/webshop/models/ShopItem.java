@@ -18,7 +18,7 @@ public class ShopItem {
     quantityOfStock = r.nextInt(5);
   }
 
-  ShopItem(String name, String description, double price) {
+  public ShopItem(String name, String description, double price) {
     r = new Random();
     this.name = name;
     this.description = description;
