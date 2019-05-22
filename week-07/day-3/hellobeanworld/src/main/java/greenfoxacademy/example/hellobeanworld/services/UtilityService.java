@@ -1,14 +1,16 @@
 package greenfoxacademy.example.hellobeanworld.services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UtilityService {
 
-  ArrayList<String> colors;
-  Random random;
+  private ArrayList<String> colors;
+  private Random random;
 
   public UtilityService() {
     colors = new ArrayList<>();
@@ -32,12 +34,12 @@ public class UtilityService {
     if (number < 0) {
       number = 26 + number;
     }
-    String result = "";
+    StringBuilder result = new StringBuilder();
     for (int i = 0; i < text.length(); i++) {
       int offset = Character.isUpperCase(text.charAt(i)) ? 'A' : 'a';
-      result += (char) (((int) text.charAt(i) + number - offset) % 26 + offset);
+      result.append((char) (((int) text.charAt(i) + number - offset) % 26 + offset));
     }
-    return result;
+    return result.toString();
   }
 
 }

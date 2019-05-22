@@ -1,6 +1,9 @@
 package greenfoxacademy.example.hellobeanworld.controllers;
 
+import greenfoxacademy.example.hellobeanworld.services.GreenFoxServiceable;
 import greenfoxacademy.example.hellobeanworld.services.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,21 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/gfa")
 public class GreenFoxClassController {
 
-  private StudentService studentService;
+  private final GreenFoxServiceable service;
 
-  GreenFoxClassController(StudentService studentService) {
-    this.studentService = studentService;
+  public GreenFoxClassController(
+      @Qualifier("FileWriter") GreenFoxServiceable service) {
+    this.service = service;
   }
 
   @GetMapping()
   public String mainPage(Model model) {
-    model.addAttribute("count", studentService.count());
+    int count = service.count();
+    model.addAttribute("count", count);
     return "gfa";
   }
 
   @GetMapping("/list")
   public String listStudents(Model model) {
-    model.addAttribute("list", studentService.findAll());
+    model.addAttribute("list", service.findAll());
     return "students";
   }
 
@@ -36,7 +41,7 @@ public class GreenFoxClassController {
 
   @GetMapping("/save")
   public String saveStudents(String name) {
-    studentService.save(name);
+    service.save(name);
     return "redirect:/gfa/list";
   }
 
@@ -47,7 +52,7 @@ public class GreenFoxClassController {
 
   @PostMapping("/check")
   public String isStudent(String name, Model model) {
-    model.addAttribute("message", studentService.check(name));
+    model.addAttribute("message", service.check(name));
     return "check";
   }
 
