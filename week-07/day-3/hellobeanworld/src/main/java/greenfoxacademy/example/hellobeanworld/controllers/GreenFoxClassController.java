@@ -4,6 +4,7 @@ import greenfoxacademy.example.hellobeanworld.services.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -39,5 +40,15 @@ public class GreenFoxClassController {
     return "redirect:gfa/list";
   }
 
+  @GetMapping("/check")
+  public String checkStudents() {
+    return "check";
+  }
+
+  @PostMapping("/check")
+  public String isStudent(String name, Model model) {
+    model.addAttribute("message", studentService.check(name));
+    return "check";
+  }
 
 }

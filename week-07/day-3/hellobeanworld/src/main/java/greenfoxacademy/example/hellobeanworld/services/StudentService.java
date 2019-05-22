@@ -27,5 +27,16 @@ public class StudentService {
   public void save(String student) {
     names.add(student);
   }
-}
 
+  public String check(String student) {
+    String s = "";
+    if (student != null) {
+      if (names.contains(student)) {
+        s = "Is already enrolled";
+      } else {
+        s = "Not yet enrolled";
+      }
+    }
+    return s;
+  }
+}
