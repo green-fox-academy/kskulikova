@@ -7,9 +7,9 @@
 <body>
 
 <p th:if="${valid}" th:text="|${email} is a valid email address|"
-   th:style="|color: ${stringColor}|"></p>
+   th:style="|color: green|"></p>
 <p th:unless="${valid}" th:text="|${email} is not a valid email address|"
-   th:style="|color: ${stringColor}|"></p>
+   th:style="|color: red|"></p>
 
 </body>
 </html>

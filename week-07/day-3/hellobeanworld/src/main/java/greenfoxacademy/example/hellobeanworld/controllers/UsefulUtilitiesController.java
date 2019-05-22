@@ -28,17 +28,21 @@ public class UsefulUtilitiesController {
 
   @GetMapping("/useful/email")
   public String checkEmail(@RequestParam String email, Model model) {
-    String color = "green";
-    boolean valid = true;
-
-    if (!(email.contains("@") && email.contains("."))) {
-      color = "red";
-      valid = false;
-    }
     model.addAttribute("email", email);
-    model.addAttribute("valid", valid);
-    model.addAttribute("stringColor", color);
+    model.addAttribute("valid", utilityService.isEmailValid(email));
     return "email";
+  }
+
+  @GetMapping("/useful/caesar/decode")
+  public String caesarDecode(@RequestParam String word, @RequestParam int number, Model model) {
+    model.addAttribute("result", utilityService.caesar(word, -number));
+    return "caesar";
+  }
+
+  @GetMapping("/useful/caesar/encode")
+  public String caesarEncode(@RequestParam String word, @RequestParam int number, Model model) {
+    model.addAttribute("result", utilityService.caesar(word, number));
+    return "caesar";
   }
 
 }
