@@ -37,7 +37,7 @@ public class GreenFoxClassController {
   @GetMapping("/save")
   public String saveStudents(String name) {
     studentService.save(name);
-    return "redirect:gfa/list";
+    return "redirect:/gfa/list";
   }
 
   @GetMapping("/check")
