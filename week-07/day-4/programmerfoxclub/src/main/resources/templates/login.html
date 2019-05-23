@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Programmers Fox Club</title>
   <meta charset="utf-8"/>
@@ -7,6 +7,7 @@
     body {
       padding-left: 5%;
     }
+
     button {
       text-transform: uppercase;
     }
@@ -15,9 +16,13 @@
 </head>
 <body>
 <h1>Welcome to Programmer Fox Club!</h1>
-<p>Please provide a name, so you can associate it with your pet!</p>
-<label>Name:</label>
-<input type="text" name="name">
-<button>go</button>
+
+<form th:action="@{/login}" method="post">
+  <header>Please provide a name, so you can associate it with your pet!</header>
+  <label>Name:</label>
+  <input type="text" name="name">
+  <button>go</button>
+</form>
+
 </body>
 </html>

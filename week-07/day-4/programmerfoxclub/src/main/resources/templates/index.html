@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
   <title>Programmers Fox Club</title>
   <meta charset="utf-8"/>
@@ -13,8 +13,8 @@
 <ul>
   <li><a href="/">Information</a></li>
 </ul>
-<img src="greenfox.png" alt="Ms. Fox">
-<p>This is Ms. Fox. Currently living on pizza and lemonade. She knows 2 tricks.</p>
+<img src="greenfox.png" alt="Pet Fox">
+<p th:text="|This is ${name}. Currently living on pizza and lemonade. She knows 2 tricks.|"/>
 <h1>Known tricks</h1>
 <ul>
   <li>write HTM</li>
