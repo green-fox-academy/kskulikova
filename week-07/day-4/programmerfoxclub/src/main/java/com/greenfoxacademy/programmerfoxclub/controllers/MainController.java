@@ -18,10 +18,12 @@ public class MainController {
 
   MainController(FoxService foxservice) {
     this.foxservice = foxservice;
+
   }
 
   @RequestMapping()
-  public String staticFox(@RequestParam(value = "name", required = false) String name, Model model,  Fox fox) {
+  public String staticFox(@RequestParam(value = "name", required = false) String name, Model model,
+      Fox fox) {
     foxservice.getFoxList();
     if (name == null) {
       return "login";
@@ -43,6 +45,8 @@ public class MainController {
     model.addAttribute("foxExists", foxservice.checkFox(name));
     model.addAttribute("message", foxservice.getMessage(name));
     redirectAttributes.addAttribute("fox", foxservice.getFox(name));
+    model.addAttribute("name", name);
+//    redirectAttributes.addAttribute("name", name);
     if (foxservice.checkFox(name)) {
       return "redirect:/?name=" + name;
     } else {
@@ -60,4 +64,17 @@ public class MainController {
     foxservice.add(name);
     return "redirect:/?name=" + name;
   }
+
+//  @GetMapping("nutritionStore")
+//  public String nutritionStore(Model model) {
+//    String name = model.getAttribute("name").toString();
+//    return "redirect:/nutritionSTore?name=" + name;
+//  }
+
+  @GetMapping("nutritionStore")
+  public String nutritionStore(@RequestParam String name, Model model) {
+    model.addAttribute("name", name);
+    return "store";
+  }
 }
+
