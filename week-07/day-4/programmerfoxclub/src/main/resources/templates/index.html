@@ -14,12 +14,14 @@
   <li><a href="/">Information</a></li>
 </ul>
 <img src="greenfox.png" alt="Pet Fox">
-<p th:text="|This is ${fox.getName()} Currently living on pizza and lemonade. He knows ${fox.coutTricks()} tricks.|"/>
+<p th:text="|'This is' ${fox.getName()} 'Currently living on pizza and lemonade. He knows' ${fox.coutTricks()} 'tricks.'|"/>
+
 <h1>Known tricks</h1>
-<ul>
-  <li>write HTM</li>
-  <li>code in Java</li>
+<p th:unless="${fox.coutTricks()} > 0" th:text="|'He knows nothing yet. Go teach him some tricks!'|"/>
+<ul th:each="trick : ${fox.getListOfTricks()}">
+  <li th:text="${trick}"/>
 </ul>
+
 
 </body>
 </html>

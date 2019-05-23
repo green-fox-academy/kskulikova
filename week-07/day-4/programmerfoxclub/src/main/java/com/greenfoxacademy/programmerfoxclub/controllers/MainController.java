@@ -21,11 +21,15 @@ public class MainController {
   }
 
   @RequestMapping()
-  public String staticFox(@RequestParam(value = "name", required = false) String name, Model model,
-      Fox fox) {
+  public String staticFox(@RequestParam(value = "name", required = false) String name, Model model,  Fox fox) {
     foxservice.getFoxList();
-    model.addAttribute("fox", fox);
-    return "index";
+    if (name == null) {
+      return "login";
+    } else if (foxservice.checkFox(name)) {
+      model.addAttribute("fox", fox);
+      return "index";
+    }
+    return "login";
   }
 
   @GetMapping("login")
