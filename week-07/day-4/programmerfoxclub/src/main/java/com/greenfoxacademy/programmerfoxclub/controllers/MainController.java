@@ -1,6 +1,5 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
-import com.greenfoxacademy.programmerfoxclub.models.Fox;
 import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 @Controller
 @RequestMapping("/")
@@ -18,17 +17,16 @@ public class MainController {
 
   MainController(FoxService foxservice) {
     this.foxservice = foxservice;
-
   }
 
   @RequestMapping()
-  public String staticFox(@RequestParam(value = "name", required = false) String name, Model model,
-      Fox fox) {
+  public String staticFox(@RequestParam(value = "name", required = false) String name,
+      Model model) {
     foxservice.getFoxList();
     if (name == null) {
       return "login";
     } else if (foxservice.checkFox(name)) {
-      model.addAttribute("fox", fox);
+      model.addAttribute("fox", foxservice.getFox(name));
       return "index";
     }
     return "login";
@@ -40,13 +38,10 @@ public class MainController {
   }
 
   @PostMapping("login")
-  public String login(@RequestParam String name, RedirectAttributes redirectAttributes,
-      Model model) {
+  public String login(@RequestParam String name, Model model) {
     model.addAttribute("foxExists", foxservice.checkFox(name));
     model.addAttribute("message", foxservice.getMessage(name));
-    redirectAttributes.addAttribute("fox", foxservice.getFox(name));
     model.addAttribute("name", name);
-//    redirectAttributes.addAttribute("name", name);
     if (foxservice.checkFox(name)) {
       return "redirect:/?name=" + name;
     } else {
@@ -64,12 +59,6 @@ public class MainController {
     foxservice.add(name);
     return "redirect:/?name=" + name;
   }
-
-//  @GetMapping("nutritionStore")
-//  public String nutritionStore(Model model) {
-//    String name = model.getAttribute("name").toString();
-//    return "redirect:/nutritionSTore?name=" + name;
-//  }
 
   @GetMapping("nutritionStore")
   public String nutritionStore(@RequestParam String name, Model model) {

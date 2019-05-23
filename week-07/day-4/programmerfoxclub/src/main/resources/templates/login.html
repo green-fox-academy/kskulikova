@@ -11,7 +11,6 @@
     button {
       text-transform: uppercase;
     }
-
   </style>
 </head>
 <body>
@@ -20,7 +19,7 @@
 <form th:action="@{/login}" method="post">
   <header>Please provide a name, so you can associate it with your pet!</header>
   <label>Name:</label>
-  <input type="text" name="name" placeholder="Type a name...">
+  <input type="text" name="name" placeholder="Type a name..."/>
   <button>go</button>
 </form>
 <p th:text="${message}"/>

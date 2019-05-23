@@ -43,5 +43,4 @@ public class FoxService {
     foxList.add(new Fox(name));
 
   }
-
 }
