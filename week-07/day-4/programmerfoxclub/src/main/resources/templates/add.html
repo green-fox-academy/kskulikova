@@ -15,16 +15,14 @@
   </style>
 </head>
 <body>
-<h1>Welcome to Programmer Fox Club!</h1>
+<h1>Add a new Fox!</h1>
 
-<form th:action="@{/login}" method="post">
-  <header>Please provide a name, so you can associate it with your pet!</header>
+<form th:action="@{/add}" method="post">
+  <header>Please provide a name for your new pet</header>
   <label>Name:</label>
-  <input type="text" name="name" placeholder="Type a name...">
-  <button>go</button>
+  <input type="text" name="name">
+  <button>create!</button>
 </form>
-<p th:text="${message}"/>
 
-<a href="/add">Add a new pet</a>
 </body>
 </html>
