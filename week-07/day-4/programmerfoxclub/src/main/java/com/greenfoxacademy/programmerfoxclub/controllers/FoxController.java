@@ -2,7 +2,6 @@ package com.greenfoxacademy.programmerfoxclub.controllers;
 
 import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,7 +15,7 @@ public class FoxController {
   }
 
   @PostMapping("nutritionStore")
-  public String nutritionStore(@RequestParam String name, Model model, String food, String drink) {
+  public String nutritionStore(@RequestParam String name, String food, String drink) {
     foxService.getFox(name).setFood(food);
     foxService.getFox(name).setDrink(drink);
 
@@ -24,7 +23,7 @@ public class FoxController {
   }
 
   @PostMapping("trickCenter")
-  public String trickCenter(@RequestParam String name, Model model, String trick) {
+  public String trickCenter(@RequestParam String name, String trick) {
     foxService.getFox(name).addTrick(trick);
     return "redirect:/?name=" + name;
   }
