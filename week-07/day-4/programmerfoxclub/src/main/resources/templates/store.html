@@ -27,11 +27,11 @@
   <input list="food" name="food"/>
   <datalist id="food">
     <select>
-    <option th:each="food: ${T(com.greenfoxacademy.programmerfoxclub.models.Food).values()}"
-            th:text="${food}"
-            th:value=" ${food}"/>
-<!--            th:selected="${food.equals(currentFood)}"/>-->
-    </option>
+      <option th:each="food: ${food}"
+              th:text="${food}"
+              th:value=" ${food}"
+              th:selected="${food.equals(currentFood)}"/>
+      </option>
     </select>
   </datalist>
 
@@ -39,12 +39,12 @@
   <input list="drink" name="drink"/>
   <datalist id="drink">
     <select>
-    <option th:each="drink: ${T(com.greenfoxacademy.programmerfoxclub.models.Drink).values()}"
-            th:text="${drink}"
-            th:value=" ${drink}"/>
-<!--            th:selected="${drink.equals(currentDrink)}"-->
-<!--    />-->
-    </option>
+      <option th:each="drink: ${drink}"
+              th:text="${drink}"
+              th:value=" ${drink}"/>
+<!--              th:selected="${drink.equals(currentDrink)}"/>-->
+
+      </option>
     </select>
   </datalist>
 

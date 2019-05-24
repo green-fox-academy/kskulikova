@@ -30,8 +30,8 @@
     <select>
     <option th:each="trick: ${tricks}"
             th:text="${trick}"
-            th:value=" ${trick}"
-            th:selected="${trick.equals(latestTrick)}"/>
+            th:value=" ${trick}"/>
+<!--            th:selected="${trick} == ${latestTrick}"/>-->
 
     </option>
     </select>

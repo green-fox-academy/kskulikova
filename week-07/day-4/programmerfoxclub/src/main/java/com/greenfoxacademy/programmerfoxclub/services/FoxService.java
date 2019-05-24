@@ -1,14 +1,31 @@
 package com.greenfoxacademy.programmerfoxclub.services;
 
+import com.greenfoxacademy.programmerfoxclub.models.Drink;
+import com.greenfoxacademy.programmerfoxclub.models.Food;
 import com.greenfoxacademy.programmerfoxclub.models.Fox;
+import com.greenfoxacademy.programmerfoxclub.models.Tricks;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FoxService {
 
   private ArrayList<Fox> foxList;
+
+  private List<String> tricks = Stream.of(Tricks.values())
+      .map(Enum::name)
+      .collect(Collectors.toList());
+
+  private List<String> food = Stream.of(Food.values())
+      .map(Enum::name)
+      .collect(Collectors.toList());
+  private List<String> drink = Stream.of(Drink.values())
+      .map(Enum::name)
+      .collect(Collectors.toList());
+
 
   FoxService() {
     foxList = new ArrayList<>();
@@ -43,4 +60,17 @@ public class FoxService {
     foxList.add(new Fox(name));
 
   }
+
+  public List<String> getTricks() {
+    return tricks;
+  }
+
+  public List<String> getFood() {
+    return food;
+  }
+
+  public List<String> getDrink() {
+    return drink;
+  }
+
 }

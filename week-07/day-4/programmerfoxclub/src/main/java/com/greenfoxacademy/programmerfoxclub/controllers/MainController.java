@@ -1,5 +1,7 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
+import com.greenfoxacademy.programmerfoxclub.models.Drink;
+import com.greenfoxacademy.programmerfoxclub.models.Food;
 import com.greenfoxacademy.programmerfoxclub.models.Tricks;
 import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import java.util.ArrayList;
@@ -20,9 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 
   private FoxService foxService;
-  private List<String> tricks = Stream.of(Tricks.values())
-      .map(Enum::name)
-      .collect(Collectors.toList());
 
   MainController(FoxService foxservice) {
     this.foxService = foxservice;
@@ -72,6 +71,8 @@ public class MainController {
   @GetMapping("nutritionStore")
   public String nutritionStore(@RequestParam String name, Model model) {
     model.addAttribute("name", name);
+    model.addAttribute("food", foxService.getFood());
+    model.addAttribute("drink", foxService.getDrink());
     model.addAttribute("currentFood", foxService.getFox(name).getFood());
     model.addAttribute("currentDrink", foxService.getFox(name).getDrink());
     return "store";
@@ -80,7 +81,7 @@ public class MainController {
   @GetMapping("trickCenter")
   public String trickCenter(@RequestParam String name, Model model) {
     model.addAttribute("name", name);
-    model.addAttribute("tricks", tricks);
+    model.addAttribute("tricks", foxService.getTricks());
     model.addAttribute("latestTrick", foxService.getFox(name).getLatestTrick());
     return "trickCenter";
   }
