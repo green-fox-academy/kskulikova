@@ -16,9 +16,16 @@ public class FoxController {
   }
 
   @PostMapping("nutritionStore")
-  public String nutritionStore(@RequestParam String name, Model model, String food, String drinks) {
+  public String nutritionStore(@RequestParam String name, Model model, String food, String drink) {
     foxService.getFox(name).setFood(food);
-    foxService.getFox(name).setDrink(drinks);
+    foxService.getFox(name).setDrink(drink);
+
+    return "redirect:/?name=" + name;
+  }
+
+  @PostMapping("trickCenter")
+  public String trickCenter(@RequestParam String name, Model model, String trick) {
+    foxService.getFox(name).addTrick(trick);
     return "redirect:/?name=" + name;
   }
 
