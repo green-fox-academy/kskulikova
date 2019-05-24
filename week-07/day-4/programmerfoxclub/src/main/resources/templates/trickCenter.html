@@ -28,12 +28,12 @@
   <input list="trick" name="trick">
   <datalist id="trick">
     <select>
-    <option th:each="trick: ${tricks}"
-            th:text="${trick}"
-            th:value=" ${trick}"/>
-<!--            th:selected="${trick} == ${latestTrick}"/>-->
+      <option th:each="trick: ${tricks}"
+              th:text="${trick}"
+              th:value=" ${trick}"
+              th:selected="${trick} == ${latestTrick}"/>
 
-    </option>
+      </option>
     </select>
   </datalist>
 

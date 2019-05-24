@@ -17,14 +17,14 @@ public class FoxService {
   private ArrayList<Fox> foxList;
 
   private List<String> tricks = Stream.of(Tricks.values())
-      .map(Enum::name)
+      .map(Tricks::getName)
       .collect(Collectors.toList());
 
   private List<String> food = Stream.of(Food.values())
-      .map(Enum::name)
+      .map(Food::getName)
       .collect(Collectors.toList());
   private List<String> drink = Stream.of(Drink.values())
-      .map(Enum::name)
+      .map(Drink::getName)
       .collect(Collectors.toList());
 
 
