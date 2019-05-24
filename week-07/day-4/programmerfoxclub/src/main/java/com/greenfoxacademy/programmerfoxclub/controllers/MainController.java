@@ -1,14 +1,6 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
-import com.greenfoxacademy.programmerfoxclub.models.Drink;
-import com.greenfoxacademy.programmerfoxclub.models.Food;
-import com.greenfoxacademy.programmerfoxclub.models.Tricks;
 import com.greenfoxacademy.programmerfoxclub.services.FoxService;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -16,10 +16,10 @@
   <li><a th:href="@{/trickCenter(name=${fox.getName()})}">Trick Center</a></li>
 </ul>
 <img src="greenfox.png" alt="Pet Fox">
-<p th:text="|This is ${fox.getName()}. Currently living on ${fox.getFood()} and ${fox.getDrink()}. He knows ${fox.coutTricks()} tricks.|"/>
+<p th:text="'This is ' + ${fox.getName()} + '. Currently living on ' +  ${fox.getFood()} + ' and ' + ${fox.getDrink()} + '. Knows ' + ${fox.coutTricks()} + ((${fox.coutTricks()} == 1) ? ' trick.' : ' tricks.')" />
 
 <h1>Known tricks</h1>
-<p th:unless="${fox.coutTricks()} > 0" th:text="|He knows nothing yet. Go teach him some tricks!|"/>
+<p th:unless="${fox.coutTricks()} > 0" th:text="| ${fox.getName()} knows nothing yet. Go learn some tricks!|"/>
 <ul th:each="trick : ${fox.getListOfTricks()}">
   <li th:text="${trick}"/>
 </ul>
