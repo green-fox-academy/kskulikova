@@ -30,7 +30,7 @@
       <option th:each="food: ${food}"
               th:text="${food}"
               th:value=" ${food}"
-              th:selected="${food.equals(currentFood)}"/>
+              th:selected="${food == currentFood}"/>
       </option>
     </select>
   </datalist>
@@ -41,8 +41,8 @@
     <select>
       <option th:each="drink: ${drink}"
               th:text="${drink}"
-              th:value=" ${drink}"/>
-<!--              th:selected="${drink.equals(currentDrink)}"/>-->
+              th:value=" ${drink}"
+              th:selected="${drink == currentDrink}"/>
 
       </option>
     </select>
