@@ -27,6 +27,4 @@ public class FoxController {
     foxService.getFox(name).addTrick(trick);
     return "redirect:/?name=" + name;
   }
-
-
 }

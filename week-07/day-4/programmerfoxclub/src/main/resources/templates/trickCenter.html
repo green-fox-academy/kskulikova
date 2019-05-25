@@ -25,18 +25,12 @@
 
 <form th:action="@{/trickCenter(name=${name})}" method="post">
   <label>Trick:</label>
-  <input list="trick" name="trick">
-  <datalist id="trick">
-    <select>
+    <select name="trick">
       <option th:each="trick: ${tricks}"
               th:text="${trick}"
               th:value=" ${trick}"
-              th:selected="${trick == latestTrick}"/>
-
-      </option>
+              th:selected="${trick.equals(latestTrick)}"/>
     </select>
-  </datalist>
-
   <button>learn</button>
 </form>
 

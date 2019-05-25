@@ -24,21 +24,16 @@
 
 <form th:action="@{/nutritionStore(name=${name})}" method="post">
   <label>Food:</label>
-  <input list="food" name="food"/>
-  <datalist id="food">
-    <select>
+    <select name="food">
       <option th:each="food: ${food}"
               th:text="${food}"
               th:value=" ${food}"
               th:selected="${food == currentFood}"/>
       </option>
     </select>
-  </datalist>
 
   <label>Drink:</label>
-  <input list="drink" name="drink"/>
-  <datalist id="drink">
-    <select>
+    <select name="drink">
       <option th:each="drink: ${drink}"
               th:text="${drink}"
               th:value=" ${drink}"
@@ -46,8 +41,6 @@
 
       </option>
     </select>
-  </datalist>
-
   <button type="submit">change</button>
 </form>
 
