@@ -1,6 +1,7 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
 import com.greenfoxacademy.programmerfoxclub.services.FoxService;
+import com.greenfoxacademy.programmerfoxclub.services.FoxServiceable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/")
 public class MainController {
 
-  private FoxService foxService;
+  private FoxServiceable foxService;
 
-  MainController(FoxService foxservice) {
+  MainController(FoxServiceable foxservice) {
     this.foxService = foxservice;
   }
 

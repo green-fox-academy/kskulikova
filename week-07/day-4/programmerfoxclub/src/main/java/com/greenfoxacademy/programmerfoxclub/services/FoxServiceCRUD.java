@@ -4,18 +4,17 @@ import com.greenfoxacademy.programmerfoxclub.models.Drink;
 import com.greenfoxacademy.programmerfoxclub.models.Food;
 import com.greenfoxacademy.programmerfoxclub.models.Fox;
 import com.greenfoxacademy.programmerfoxclub.models.Tricks;
+import com.greenfoxacademy.programmerfoxclub.repository.FoxRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 
+@Service
+public class FoxServiceCRUD implements FoxServiceable {
 
-//@Service
-public class FoxService implements FoxServiceable{
-
-  private ArrayList<Fox> foxList;
-
+  private FoxRepository foxRepository;
   private List<String> tricks = Stream.of(Tricks.values())
       .map(Tricks::getName)
       .collect(Collectors.toList());
@@ -27,27 +26,28 @@ public class FoxService implements FoxServiceable{
       .map(Drink::getName)
       .collect(Collectors.toList());
 
-
-  FoxService() {
-    foxList = new ArrayList<>();
-    foxList.add(new Fox("Fry"));
-    foxList.add(new Fox("Leela"));
-    foxList.add(new Fox("Bender"));
+  FoxServiceCRUD(FoxRepository foxRepository) {
+    this.foxRepository = foxRepository;
   }
 
+  @Override
   public List<Fox> getFoxList() {
-    return foxList;
+    List<Fox> foxes = new ArrayList<>();
+    foxRepository.findAll().forEach(foxes::add);
+    return foxes;
   }
 
+  @Override
   public Fox getFox(String name) {
-    return foxList.stream().filter(f -> f.getName().equals(name)).findAny().orElse(null);
+    return foxRepository.findById(name).orElse(null);
   }
 
+  @Override
   public boolean checkFox(String name) {
-
-    return foxList.stream().anyMatch(f -> f.getName().equals(name));
+    return foxRepository.existsById(name);
   }
 
+  @Override
   public String getMessage(String name) {
     String message = "";
     if (!checkFox(name)) {
@@ -56,36 +56,28 @@ public class FoxService implements FoxServiceable{
     return message;
   }
 
+  @Override
   public void add(String name) {
-
-    foxList.add(new Fox(name));
-
+    foxRepository.save(new Fox(name));
   }
 
   @Override
   public void addOrUpdate(Fox fox) {
-    String foxName = fox.getName();
-    for (int i = 0; i < foxList.size(); i++) {
-      Fox oldFox  = foxList.get(i);
-      if (oldFox.getName().equals(foxName)) {
-        foxList.set(i, fox);
-        return;
-      }
-    }
-
-    foxList.add(fox);
+    foxRepository.save(fox);
   }
 
+  @Override
   public List<String> getTricks() {
     return tricks;
   }
 
+  @Override
   public List<String> getFood() {
     return food;
   }
 
+  @Override
   public List<String> getDrink() {
     return drink;
   }
-
 }
