@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="/styles.css"/>
 <head>
   <title>Programmers Fox Club</title>
   <meta charset="utf-8"/>
-  <style>
-    body {
-      padding-left: 5%;
-    }
-
-    button {
-      text-transform: uppercase;
-    }
-
-  </style>
 </head>
 <body>
-<h1>Welcome to the nutrition store!</h1>
-<ul>
-  <li><a th:href="@{/(name=${name})}">Information</a></li>
-  <li><a th:href="@{/nutritionStore(name=${name})}">Nutrition store</a></li>
-  <li><a th:href="@{/trickCenter(name=${name})}">Trick Center</a></li>
-</ul>
+<div class="content">
+  <h1>Welcome to the nutrition store!</h1>
+  <ul>
+    <li><a th:href="@{/(name=${name})}">Information</a></li>
+    <li><a th:href="@{/nutritionStore(name=${name})}">Nutrition store</a></li>
+    <li><a th:href="@{/trickCenter(name=${name})}">Trick Center</a></li>
+  </ul>
 
-<form th:action="@{/nutritionStore(name=${name})}" method="post">
-  <label>Food:</label>
+  <form th:action="@{/nutritionStore(name=${name})}" method="post">
+    <label>Food:</label>
     <select name="food">
       <option th:each="food: ${food}"
               th:text="${food}"
@@ -32,7 +24,7 @@
       </option>
     </select>
 
-  <label>Drink:</label>
+    <label>Drink:</label>
     <select name="drink">
       <option th:each="drink: ${drink}"
               th:text="${drink}"
@@ -41,8 +33,9 @@
 
       </option>
     </select>
-  <button type="submit">change</button>
-</form>
+    <button type="submit">change</button>
+  </form>
+</div>
 
 </body>
 </html>

@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import org.springframework.stereotype.Service;
 
 
-//@Service
-public class FoxService implements FoxServiceable{
+public class FoxService implements FoxServiceable {
 
   private ArrayList<Fox> foxList;
 
@@ -66,7 +64,7 @@ public class FoxService implements FoxServiceable{
   public void addOrUpdate(Fox fox) {
     String foxName = fox.getName();
     for (int i = 0; i < foxList.size(); i++) {
-      Fox oldFox  = foxList.get(i);
+      Fox oldFox = foxList.get(i);
       if (oldFox.getName().equals(foxName)) {
         foxList.set(i, fox);
         return;

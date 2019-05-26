@@ -1,0 +1,18 @@
+button {
+  text-transform: uppercase;
+}
+
+.content, .elements {
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.elements {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-bar {
+  background-color: whitesmoke;
+}
+

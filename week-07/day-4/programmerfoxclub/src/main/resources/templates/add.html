@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="/styles.css"/>
 <head>
   <title>Programmers Fox Club</title>
   <meta charset="utf-8"/>
-  <style>
-    body {
-      padding-left: 5%;
-    }
 
-    button {
-      text-transform: uppercase;
-    }
-
-  </style>
 </head>
 <body>
-<h1>Add a new Fox!</h1>
+<div class="content">
+  <h1>Add a new Fox!</h1>
 
-<form th:action="@{/add}" method="post">
-  <header>Please provide a name for your new pet</header>
-  <label>Name:</label>
-  <input type="text" name="name">
-  <button>create!</button>
-</form>
+  <form th:action="@{/add}" method="post">
+    <header>Please provide a name for your new pet</header>
+    <label>Name:</label>
+    <input type="text" name="name">
+    <button>create!</button>
+  </form>
+</div>
 
 </body>
 </html>

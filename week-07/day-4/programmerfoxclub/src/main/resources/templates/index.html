@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="/styles.css"/>
 <head>
   <title>Programmers Fox Club</title>
   <meta charset="utf-8"/>
-  <style>
-    body {
-      padding-left: 25%;
-    }
-  </style>
+
 </head>
 <body>
-<ul>
-  <li><a th:href="@{/(name=${fox.getName()})}">Information</a></li>
-  <li><a th:href="@{/nutritionStore(name=${fox.getName()})}">Nutrition store</a></li>
-  <li><a th:href="@{/trickCenter(name=${fox.getName()})}">Trick Center</a></li>
-</ul>
-<img src="greenfox.png" alt="Pet Fox">
-<p th:text="'This is ' + ${fox.getName()} + '. Currently living on ' +  ${fox.getFood()} + ' and ' + ${fox.getDrink()} + '. He knows ' + ${fox.coutTricks()} + ((${fox.coutTricks()} == 1) ? ' trick.' : ' tricks.')"/>
+<div class="nav-bar">
+  <div class="elements">
+    <ul>
+      <li><a th:href="@{/(name=${fox.getName()})}">Information</a></li>
+      <li><a th:href="@{/nutritionStore(name=${fox.getName()})}">Nutrition store</a></li>
+      <li><a th:href="@{/trickCenter(name=${fox.getName()})}">Trick Center</a></li>
+    </ul>
 
-<h1>Known tricks</h1>
-<p th:unless="${fox.coutTricks()} > 0"
-   th:text="| ${fox.getName()} knows nothing yet. Go teach him some tricks!|"/>
-<ul th:each="trick : ${fox.getListOfTricks()}">
-  <li th:text="${trick}"/>
-</ul>
+    <ul>
+      <li><a href="/login">Change fox</a></li>
+      <li><a href="/add">Add new pet</a></li>
+    </ul>
+  </div>
 
+</div>
+
+<div class="content">
+  <img src="greenfox.png" alt="Pet Fox">
+  <p th:text="'This is ' + ${fox.getName()} + '. Currently living on ' +  ${fox.getFood()} + ' and ' + ${fox.getDrink()} + '. He knows ' + ${fox.coutTricks()} + ((${fox.coutTricks()} == 1) ? ' trick.' : ' tricks.')"/>
+
+  <h1>Known tricks</h1>
+  <p th:unless="${fox.coutTricks()} > 0"
+     th:text=" ${fox.getName()} + ' knows nothing yet. Go teach him some tricks!'"/>
+  <ul th:each="trick : ${fox.getListOfTricks()}">
+    <li th:text="${trick}"/>
+  </ul>
+</div>
 
 </body>
 </html>

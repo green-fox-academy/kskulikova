@@ -1,7 +1,6 @@
 package com.greenfoxacademy.programmerfoxclub.controllers;
 
 import com.greenfoxacademy.programmerfoxclub.models.Fox;
-import com.greenfoxacademy.programmerfoxclub.services.FoxService;
 import com.greenfoxacademy.programmerfoxclub.services.FoxServiceable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
