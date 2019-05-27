@@ -43,10 +43,6 @@ public class TennisGame1 implements TennisGame {
     return (score1 >= 4 || score2 >= 4);
   }
 
-  public boolean isOverFourty() {
-    return score1 >= 4 && score2 >= 4;
-  }
-
   private boolean isGapEnough() {
     return (gap >= 2);
   }

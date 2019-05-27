@@ -74,7 +74,7 @@ public class TennisGameTest {
       });
     }
 
-    public void checkAllScores(TennisGame game) {
+    void checkAllScores(TennisGame game) {
       int highestScore = Math.max(this.player1Score, this.player2Score);
       for (int i = 0; i < highestScore; i++) {
         if (i < this.player1Score) {
@@ -93,12 +93,12 @@ public class TennisGameTest {
       checkAllScores(game);
     }
 
-//      @Test
-//      public void checkAllScoresTennisGame2() {
-//        TennisGame2 game = new TennisGame2("player1", "player2");
-//        checkAllScores(game);
-//      }
-//
+    @Test
+    public void checkAllScoresTennisGame2() {
+      TennisGame2 game = new TennisGame2("player1", "player2");
+      checkAllScores(game);
+    }
+
 //      @Test
 //      public void checkAllScoresTennisGame3() {
 //        TennisGame3 game = new TennisGame3("player1", "player2");
