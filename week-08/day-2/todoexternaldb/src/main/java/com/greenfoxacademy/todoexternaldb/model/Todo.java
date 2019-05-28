@@ -1,12 +1,21 @@
 package com.greenfoxacademy.todoexternaldb.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class Todo {
+
+//  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,6 +23,10 @@ public class Todo {
   private String title;
   private boolean urgent;
   private boolean done;
+
+  @CreationTimestamp
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date createDate;
 
 
   public Todo(String title) {
@@ -27,6 +40,7 @@ public class Todo {
     this.done = done;
     done = false;
     urgent = false;
+
   }
 
   Todo() {
@@ -61,6 +75,10 @@ public class Todo {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public Date getCreateDate() {
+    return createDate;
   }
 }
 
