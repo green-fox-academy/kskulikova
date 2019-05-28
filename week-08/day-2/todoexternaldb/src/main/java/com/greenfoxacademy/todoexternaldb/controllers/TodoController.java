@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,4 +51,11 @@ public class TodoController {
     todoRepository.save(new Todo(text));
     return "redirect:/todo/";
   }
+
+  @GetMapping(value = "/{id}/delete")
+  public String deleteTodo(@PathVariable Long id) {
+    todoRepository.delete(todoRepository.findById(id).orElse(null));
+    return "redirect:/todo/";
+  }
 }
+
