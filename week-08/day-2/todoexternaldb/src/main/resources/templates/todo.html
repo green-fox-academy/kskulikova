@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<!--<link rel="stylesheet" href="/styles.css"/>-->
+<link rel="stylesheet" href="/styles.css"/>
 <head>
   <title>Todo List</title>
   <meta charset="utf-8"/>
@@ -8,11 +8,30 @@
 </head>
 <body>
 <h1>Todos for today</h1>
-<div class="elements">
-  <ul th:each="todo : ${todos}">
-    <li th:text="${todo.getTitle()}"/>
-  </ul>
-</div>
+<!--<div class="elements">-->
+<!--  <ul th:each="todo : ${todos}">-->
+<!--    <li th:text="${todo.getTitle()}"/>-->
+<!--  </ul>-->
+<!--</div>-->
+
+<table>
+  <thead>
+  <th>id</th>
+  <th>action</th>
+  <th>done</th>
+  <th>urgent</th>
+  </thead>
+  <tbody>
+
+  <tr>
+  <tr th:each="todo : ${todos}"></td>
+    <td th:text="${todo.getId()}"></td>
+    <td th:text="${todo.getTitle()}"></td>
+    <td th:text="${todo.isDone()}"></td>
+    <td th:text="${todo.isUrgent()}"></td>
+  </tr>
+  </tbody>
+</table>
 
 </body>
 </html>

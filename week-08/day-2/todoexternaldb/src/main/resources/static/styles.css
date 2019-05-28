@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  text-transform: capitalize;
+  padding: 0% 15%;
+}
+
+table {
+  padding-top: 16px;
+  width: 100%;
+}
+
+th {
+  vertical-align: middle;
+  height: 36px;
+  background-color: darkolivegreen;
+  color: whitesmoke;
+  text-transform: uppercase;
+}
+
+tr {
+  vertical-align: middle;
+  border: none;
+  background-color: ghostwhite;
+  color: dimgrey;
+}
