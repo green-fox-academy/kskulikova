@@ -23,3 +23,8 @@ tr {
   background-color: ghostwhite;
   color: dimgrey;
 }
+
+.clickable {
+  text-decoration: none;
+  color: dimgrey;
+}

@@ -29,11 +29,11 @@
   <tr>
   <tr th:each="todo : ${todos}"></td>
     <td th:text="${todo.getId()}"></td>
-    <td th:text="${todo.getTitle()}"></td>
+    <td><a class="clickable" th:href="|@{/todo/edit/}${todo.getId()}|" th:text="${todo.getTitle()}"
+           th:onclick=""></a></td>
     <td th:text="${todo.isDone()}"></td>
     <td th:text="${todo.isUrgent()}"></td>
     <td><a th:href="${todo.getId()}+'/delete'">delete</a></td>
-    <td><a th:href="${todo.getId()}+'/edit'">edit</a></td>
     <td>
   </tr>
   </tbody>

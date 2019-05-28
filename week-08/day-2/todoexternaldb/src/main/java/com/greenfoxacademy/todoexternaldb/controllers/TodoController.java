@@ -54,7 +54,7 @@ public class TodoController {
     return "redirect:/todo/";
   }
 
-  @GetMapping(value = "/{id}/edit")
+  @GetMapping(value = "/edit/{id}")
   public String editOneTodo(@PathVariable Long id, Model model) {
     model.addAttribute("id", id);
     return "edit";
