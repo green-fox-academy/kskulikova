@@ -58,5 +58,9 @@ public class Todo {
   public void setDone(boolean done) {
     this.done = done;
   }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
 }
 

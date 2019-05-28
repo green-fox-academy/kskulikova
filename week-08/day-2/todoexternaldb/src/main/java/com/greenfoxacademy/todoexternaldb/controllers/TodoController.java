@@ -27,15 +27,11 @@ public class TodoController {
 
   @RequestMapping({"/", "/list"})
   public String list(Model model,
-      @RequestParam(value = "isActive", required = false) String isActive) {
+      @RequestParam(value = "isActive", required = false) boolean isActive) {
     List<Todo> todos = new ArrayList<>();
     todoRepository.findAll().forEach(todos::add);
-    if (isActive != null) {
-      if (isActive.equals("true")) {
-        todos = todos.stream().filter(t -> !t.isDone()).collect(Collectors.toList());
-      } else if (isActive.equals("false")) {
-        todos = todos.stream().filter(t -> t.isDone()).collect(Collectors.toList());
-      }
+    if (isActive) {
+      todos = todos.stream().filter(t -> !t.isDone()).collect(Collectors.toList());
     }
     model.addAttribute("todos", todos);
     return "todo";
@@ -55,6 +51,23 @@ public class TodoController {
   @GetMapping(value = "/{id}/delete")
   public String deleteTodo(@PathVariable Long id) {
     todoRepository.delete(todoRepository.findById(id).orElse(null));
+    return "redirect:/todo/";
+  }
+
+  @GetMapping(value = "/{id}/edit")
+  public String editOneTodo(@PathVariable Long id, Model model) {
+    model.addAttribute("id", id);
+    return "edit";
+  }
+
+  @PostMapping(value = "/edit/{id}")
+  public String editTodo(@PathVariable long id, boolean urgent,
+      boolean done, String text) {
+    Todo todo = todoRepository.findById(id).get();
+    todo.setTitle(text);
+    todo.setUrgent(urgent);
+    todo.setDone(done);
+    todoRepository.save(todo);
     return "redirect:/todo/";
   }
 }
