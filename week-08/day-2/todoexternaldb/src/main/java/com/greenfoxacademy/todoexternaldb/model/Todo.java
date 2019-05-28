@@ -15,8 +15,6 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 public class Todo {
 
-//  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;

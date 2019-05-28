@@ -5,6 +5,7 @@ import com.greenfoxacademy.todoexternaldb.model.Todo;
 import com.greenfoxacademy.todoexternaldb.repository.TodoRepository;
 import java.util.ArrayList;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,7 @@ public class TodoController {
     if (isActive) {
       todos = todos.stream().filter(t -> !t.isDone()).collect(Collectors.toList());
     }
+    todos.sort(Comparator.comparing(Todo::getId));
     model.addAttribute("todos", todos);
     return "todo";
   }
