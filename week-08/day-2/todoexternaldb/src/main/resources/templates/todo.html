@@ -3,33 +3,25 @@
 <link rel="stylesheet" href="/styles.css"/>
 <!--<link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>-->
 <head>
-  <title>Todo List</title>
+  <title th:utext="#{label.title}"></title>
   <meta charset="utf-8"/>
 
 </head>
 <body class="text-center">
 
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--  <a class="navbar-brand" href="/todo/add">add new todo</a>-->
-<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="/todo/add"-->
-<!--          aria-controls="navbarSupportedContent" aria-expanded="false"-->
-<!--          aria-label="Toggle navigation">-->
-<!--    <span class="text-success"></span>-->
-<!--  </button>-->
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+  <a th:href="@{/todo?lang=en}">EN</a>
+  &nbsp;|&nbsp;
+  <a th:href="@{/todo?lang=fr}">FR</a>
+  &nbsp;|&nbsp;
+  <a th:href="@{/todo?lang=ru}">RU</a>
+</div>
 
-<!--  <form class="form-inline my-2 my-lg-0" th:action="@{/todo}" method="post">-->
-<!--    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"-->
-<!--           name="search">-->
-<!--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--  </form>-->
-<!--  </div>-->
-<!--</nav>-->
+<h1 th:utext="#{label.heading}"></h1>
 
-<h1>Todos for today</h1>
+<a href="/todo/add" th:utext="#{label.add}"></a>
 
-<a href="/todo/add">Add new TODO</a>
-
-<a href="/todo/assignees">List of assignees</a>
+<a href="/todo/assignees" th:utext="#{label.list}"></a>
 
 <div class="active-pink-3 active-pink-4 mb-4">
   <form th:action="@{/todo}" method="post">
@@ -40,12 +32,12 @@
 
 <table>
   <thead>
-  <th>id</th>
-  <th>action</th>
-  <th>done</th>
-  <th>urgent</th>
-  <th>date</th>
-  <th>assignee</th>
+  <th th:utext="#{label.id}"></th>
+  <th th:utext="#{label.action}"></th>
+  <th th:utext="#{label.done}"></th>
+  <th th:utext="#{label.urgent}"></th>
+  <th th:utext="#{label.date}"></th>
+  <th th:utext="#{label.assignee}"></th>
   <th></th>
   </thead>
   <tbody>
@@ -72,7 +64,5 @@
   </tbody>
 </table>
 
-<!--<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>-->
-<!--<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 </body>
 </html>

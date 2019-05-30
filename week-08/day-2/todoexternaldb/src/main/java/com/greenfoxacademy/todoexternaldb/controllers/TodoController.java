@@ -23,7 +23,7 @@ public class TodoController {
     this.assigneeService = assigneeService;
   }
 
-  @RequestMapping({"/", "/list"})
+  @RequestMapping({"", "/", "/list"})
   public String list(Model model,
       @RequestParam(value = "isActive", required = false) boolean isActive) {
     model.addAttribute("todos", todoService.getActiveTodos(isActive));
