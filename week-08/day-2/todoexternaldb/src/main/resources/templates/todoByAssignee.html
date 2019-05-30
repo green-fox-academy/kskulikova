@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="/styles.css"/>
+<!--<link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>-->
+<head>
+  <title>Todo by Assignee</title>
+  <meta charset="utf-8"/>
+
+</head>
+<body class="text-center">
+
+
+<h1 th:text="|${assignee.getName()}s TODOs|"></h1>
+
+<table>
+  <thead>
+  <th>action</th>
+  <th>done</th>
+  <th>urgent</th>
+  <th>date</th>
+  <th></th>
+  </thead>
+  <tbody>
+
+  <tr>
+  <tr th:each="todo : ${assignee.getTodoList()}"></td>
+    <td th:text="${todo.getTitle()}"></td>
+    <td th:text="${todo.isDone()}"></td>
+    <td th:text="${todo.isUrgent()}"></td>
+    <td th:text="${todo.getCreateDate()}"></td>
+    <td><a th:href="${todo.getId()}+'/delete'">delete</a></td>
+    <td>
+  </tr>
+  </tbody>
+</table>
+
+<a href="/todo/">Back</a>
+
+<!--<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>-->
+<!--<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+</body>
+</html>

@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
@@ -19,6 +22,9 @@ public class Todo {
   private boolean urgent;
   private boolean done;
 
+  @ManyToOne
+  private Assignee assignee;
+
   @CreationTimestamp
   @Temporal(TemporalType.TIMESTAMP)
   private Date createDate;
@@ -28,6 +34,7 @@ public class Todo {
     this.title = title;
     done = false;
     urgent = false;
+    assignee = new Assignee();
   }
 
   public Todo(String title, boolean done) {
@@ -35,12 +42,14 @@ public class Todo {
     this.done = done;
     done = false;
     urgent = false;
+    assignee = new Assignee();
 
   }
 
   Todo() {
     done = false;
     urgent = false;
+    assignee = new Assignee();
   }
 
 
@@ -74,6 +83,14 @@ public class Todo {
 
   public Date getCreateDate() {
     return createDate;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }
 

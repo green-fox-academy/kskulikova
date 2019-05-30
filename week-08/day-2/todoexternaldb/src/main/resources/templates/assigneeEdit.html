@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="/styles.css"/>
+<head>
+  <title>Edit todo</title>
+  <meta charset="utf-8"/>
+
+</head>
+<body>
+<div class="content">
+  <h1>Edit assignee</h1>
+
+  <form th:action="|@{/todo/assignees/edit/}${id}|" method="post">
+    <header></header>
+    <label>Assignee name</label>
+    <input type="text" name="name">
+
+    <button>submit</button>
+  </form>
+  <a href="/todo/assignees">Cancel</a>
+
+</div>
+
+</body>
+</html>
+

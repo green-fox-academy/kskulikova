@@ -1,9 +1,8 @@
 package com.greenfoxacademy.todoexternaldb.controllers;
 
 import com.greenfoxacademy.todoexternaldb.model.Todo;
-import com.greenfoxacademy.todoexternaldb.service.todoService;
-import java.util.ArrayList;
-import java.util.List;
+import com.greenfoxacademy.todoexternaldb.service.AssigneeService;
+import com.greenfoxacademy.todoexternaldb.service.TodoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/todo")
 public class TodoController {
 
-  private todoService todoService;
+  private TodoService todoService;
+  private AssigneeService assigneeService;
 
-  TodoController(todoService todoService) {
+  TodoController(TodoService todoService, AssigneeService assigneeService) {
     this.todoService = todoService;
+    this.assigneeService = assigneeService;
   }
 
   @RequestMapping({"/", "/list"})
@@ -49,13 +50,14 @@ public class TodoController {
   @GetMapping(value = "/edit/{id}")
   public String editOneTodo(@PathVariable Long id, Model model) {
     model.addAttribute("id", id);
+    model.addAttribute("assignees", assigneeService.findAll());
     return "edit";
   }
 
   @PostMapping(value = "/edit/{id}")
   public String editTodo(@PathVariable long id, boolean urgent,
-      boolean done, String text) {
-    todoService.edit(id, urgent, done, text);
+      boolean done, String text, Long assignee, Model model) {
+    todoService.edit(id, urgent, done, text, assignee);
     return "redirect:/todo/";
   }
 

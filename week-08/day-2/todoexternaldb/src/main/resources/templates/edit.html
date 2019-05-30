@@ -14,6 +14,16 @@
     <header></header>
     <label>Todo description</label>
     <input type="text" name="text">
+
+    <label>Assignee:</label>
+    <select name="assignee">
+      <option th:each="assignee: ${assignees}"
+              th:text="${assignee.getName()}"
+              th:value=" ${assignee.getId()}"
+      />
+      </option>
+    </select>
+
     <label>Urgent</label>
     <input
         type="checkbox"

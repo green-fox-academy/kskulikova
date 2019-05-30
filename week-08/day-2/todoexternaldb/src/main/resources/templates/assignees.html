@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/styles.css"/>
 <!--<link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>-->
 <head>
-  <title>Todo List</title>
+  <title>Assignee List</title>
   <meta charset="utf-8"/>
 
 </head>
@@ -25,48 +25,35 @@
 <!--  </div>-->
 <!--</nav>-->
 
-<h1>Todos for today</h1>
+<h1>Assignees</h1>
 
-<a href="/todo/add">Add new TODO</a>
+<a href="/todo/">All TODOs</a>
+<a href="/todo/assignees/add">Add a new assignee</a>
 
-<a href="/todo/assignees">List of assignees</a>
-
-<div class="active-pink-3 active-pink-4 mb-4">
-  <form th:action="@{/todo}" method="post">
-    <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">
-    <button type="submit">search</button>
-  </form>
-</div>
+<!--<div class="active-pink-3 active-pink-4 mb-4">-->
+<!--  <form th:action="@{/todo}" method="post">-->
+<!--    <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">-->
+<!--    <button type="submit">search</button>-->
+<!--  </form>-->
+<!--</div>-->
 
 <table>
   <thead>
   <th>id</th>
-  <th>action</th>
-  <th>done</th>
-  <th>urgent</th>
-  <th>date</th>
-  <th>assignee</th>
+  <th>name</th>
+  <th>e-mail</th>
   <th></th>
   </thead>
   <tbody>
 
   <tr>
-  <tr th:each="todo : ${todos}"></td>
-    <td th:text="${todo.getId()}"></td>
-    <td><a class="clickable" th:href="|@{/todo/edit/}${todo.getId()}|" th:text="${todo.getTitle()}"
+  <tr th:each="assignee : ${assignees}"></td>
+    <td th:text="${assignee.getId()}"></td>
+    <td><a class="clickable" th:href="|@{/todo/assignees/edit/}${assignee.getId()}|"
+           th:text="${assignee.getName()}"
            th:onclick=""></a></td>
-    <td th:text="${todo.isDone()}"></td>
-    <td th:text="${todo.isUrgent()}"></td>
-    <td th:text="${todo.getCreateDate()}"></td>
-    <td><a class="clickable"
-           th:if="${todo.getAssignee() !=null}"
-           th:href="|@{/todo/alltodo/}${todo.getAssignee().getId()}"
-           th:text="${todo.getAssignee().getName()}"/>
-      <a class="clickable"
-         th:unless="${todo.getAssignee() !=null}" th:href="|@{/todo/edit/}${todo.getId()}|"
-         th:text="'no assignee'"/>
-    </td>
-    <td><a th:href="${todo.getId()}+'/delete'">delete</a></td>
+    <td th:text="${assignee.getEmail()}"></td>
+    <td><a th:href="'/todo/assignees/' +${assignee.getId()}+'/delete'">delete</a></td>
     <td>
   </tr>
   </tbody>
