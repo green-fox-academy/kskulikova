@@ -10,6 +10,12 @@
 <h1>Todos for today</h1>
 <a href="/todo/add">Add new TODO</a>
 
+<div class="active-pink-3 active-pink-4 mb-4">
+  <form th:action="@{/todo}" method="post">
+  <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">
+  </form>
+</div>
+
 <table>
   <thead>
   <th>id</th>
