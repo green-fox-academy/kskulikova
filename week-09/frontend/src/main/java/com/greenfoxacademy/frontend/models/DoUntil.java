@@ -6,14 +6,14 @@ public class DoUntil extends Message {
 
   public DoUntil(Integer until, String action) {
     if (action.equals("sum")) {
-      this.result = getSum(until);
+      this.result = getSumOfAll(until);
     }
     if (action.equals("factor")) {
       this.result = getFactorial(until);
     }
   }
 
-  int getSum(int until) {
+  int getSumOfAll(int until) {
     int sum = 0;
     for (int i = until; i > 0; i--) {
       sum += i;

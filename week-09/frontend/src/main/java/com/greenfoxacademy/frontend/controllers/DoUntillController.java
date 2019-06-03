@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DoUntillController {
 
   @PostMapping("dountil/{action}")
-  public Message doUntil(@PathVariable String action, @RequestBody InputUntil until) {
+  public Message doUntil(@PathVariable String action,
+      @RequestBody(required = false) InputUntil until) {
 
     if (until == null) {
       return new Error("Please provide a number!");
