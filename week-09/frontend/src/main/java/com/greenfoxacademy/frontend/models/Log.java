@@ -65,6 +65,4 @@ public class Log {
   public void setData(String data) {
     this.data = data;
   }
-
-
 }
