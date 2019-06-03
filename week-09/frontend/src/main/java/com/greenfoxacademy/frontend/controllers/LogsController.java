@@ -1,24 +1,19 @@
 package com.greenfoxacademy.frontend.controllers;
 
-import com.greenfoxacademy.frontend.models.Log;
-import com.greenfoxacademy.frontend.models.Message;
-import com.greenfoxacademy.frontend.service.LogService;
-import java.util.List;
+import com.greenfoxacademy.frontend.models.AllLogs;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LogsController {
 
-  private LogService logService;
-
-  LogsController(LogService logService) {
-    this.logService = logService;
-  }
+  @Autowired
+  private AllLogs allLogs;
 
   @RequestMapping("logs")
-  List<Log> getLogs() {
-    return logService.findAll();
+  AllLogs getLogs() {
+    return allLogs;
   }
 
 }

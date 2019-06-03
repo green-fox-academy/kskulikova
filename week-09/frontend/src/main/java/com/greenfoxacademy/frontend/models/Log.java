@@ -29,8 +29,9 @@ public class Log {
 
 
   public Log(String endpoint, String data) {
-    this.data = data;
     this.endpoint = endpoint;
+    this.data = data;
+
   }
 
   public long getId() {
@@ -49,6 +50,14 @@ public class Log {
     this.createDate = createDate;
   }
 
+  public String getEndpoint() {
+    return endpoint;
+  }
+
+  public void setEndpoint(String endpoint) {
+    this.endpoint = endpoint;
+  }
+
   public String getData() {
     return data;
   }
@@ -57,11 +66,5 @@ public class Log {
     this.data = data;
   }
 
-  public String getEndpoint() {
-    return endpoint;
-  }
 
-  public void setEndpoint(String endpoint) {
-    this.endpoint = endpoint;
-  }
 }

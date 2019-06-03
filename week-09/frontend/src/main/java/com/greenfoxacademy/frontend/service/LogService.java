@@ -21,4 +21,8 @@ public class LogService {
   public List<Log> findAll() {
     return logRepository.findAll();
   }
+
+  public int count() {
+    return logRepository.findAll().size();
+  }
 }
