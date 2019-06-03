@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ArraysResult extends Message {
 
-  private List<Integer> result;
+  private Object result;
 
   public ArraysResult(String what, ArrayList<Integer> numbers) {
     if (what.equals("sum")) {
@@ -19,24 +19,20 @@ public class ArraysResult extends Message {
     }
   }
 
-  public List<Integer> getSum(ArrayList<Integer> numbers) {
-    List<Integer> resultList = new ArrayList<>();
+  public int getSum(ArrayList<Integer> numbers) {
     int result = 0;
     for (int n : numbers) {
       result += n;
     }
-    resultList.add(result);
-    return resultList;
+    return result;
   }
 
-  public List<Integer> getProduct(ArrayList<Integer> numbers) {
-    List<Integer> resultList = new ArrayList<>();
+  public int getProduct(ArrayList<Integer> numbers) {
     int result = 1;
     for (int n : numbers) {
       result *= n;
     }
-    resultList.add(result);
-    return resultList;
+    return result;
   }
 
   public List<Integer> getDouble(ArrayList<Integer> numbers) {
@@ -47,7 +43,7 @@ public class ArraysResult extends Message {
     return resultList;
   }
 
-  public List<Integer> getResult() {
+  public Object getResult() {
     return result;
   }
 
