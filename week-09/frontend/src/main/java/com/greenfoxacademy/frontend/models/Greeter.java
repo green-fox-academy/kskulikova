@@ -12,5 +12,4 @@ public class Greeter extends Message {
   public String getWelcome_message() {
     return welcome_message;
   }
-
 }
