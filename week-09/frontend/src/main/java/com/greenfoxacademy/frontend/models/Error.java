@@ -2,13 +2,13 @@ package com.greenfoxacademy.frontend.models;
 
 public class Error extends Message {
 
-  private String text;
+  private String error;
 
-  public Error(String text) {
-    this.text = text;
+  public Error(String error) {
+    this.error = error;
   }
 
-  public String getText() {
-    return text;
+  public String getError() {
+    return error;
   }
 }
