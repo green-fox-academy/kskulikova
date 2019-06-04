@@ -13,7 +13,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 public class Log {
 
-  Log() {
+  public Log() {
 
   }
 

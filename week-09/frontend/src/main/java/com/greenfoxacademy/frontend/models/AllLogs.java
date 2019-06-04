@@ -1,16 +1,17 @@
 package com.greenfoxacademy.frontend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.greenfoxacademy.frontend.service.LogService;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
 @Component
+@JsonIgnoreProperties(value = {"logService"})
 public class AllLogs {
 
   private LogService logService;
   private List<Log> logs;
   private int entry_count;
-
 
   public AllLogs(LogService logService) {
     this.logService = logService;
