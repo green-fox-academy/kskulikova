@@ -1,6 +1,6 @@
 <b>Important links<b>:
-
-Foundation/orientation phase syllabus (Java) : [Otters syllabus](https://github.com/green-fox-academy/otters-syllabus)
+  
+[Otters syllabus](https://github.com/green-fox-academy/otters-syllabus)
 
 <b>Projects<b>:
 
