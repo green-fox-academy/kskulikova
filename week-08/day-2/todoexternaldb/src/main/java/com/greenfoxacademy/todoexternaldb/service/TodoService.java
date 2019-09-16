@@ -1,6 +1,5 @@
 package com.greenfoxacademy.todoexternaldb.service;
 
-import com.greenfoxacademy.todoexternaldb.model.Assignee;
 import com.greenfoxacademy.todoexternaldb.model.Todo;
 import com.greenfoxacademy.todoexternaldb.repository.AssigneeRepository;
 import com.greenfoxacademy.todoexternaldb.repository.TodoRepository;
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TodoService {
+public class TodoService implements IToDoService {
 
   private TodoRepository todoRepository;
   private AssigneeRepository assigneeRepository;
@@ -31,15 +30,15 @@ public class TodoService {
     return todos;
   }
 
-  public void save(Todo todo) {
+  public void saveTodo(Todo todo) {
     todoRepository.save(todo);
   }
 
-  public void delete(long id) {
+  public void deleteTodo(long id) {
     todoRepository.delete(todoRepository.findById(id).orElse(null));
   }
 
-  public void edit(long id, boolean urgent,
+  public void editTodo(long id, boolean urgent,
       boolean done, String text, long assignee_id) {
     Todo todo = todoRepository.findById(id).get();
 

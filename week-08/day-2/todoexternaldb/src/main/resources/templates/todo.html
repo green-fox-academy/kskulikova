@@ -1,68 +1,150 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<link rel="stylesheet" href="/styles.css"/>
-<!--<link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>-->
 <head>
   <title th:utext="#{label.title}"></title>
   <meta charset="utf-8"/>
-
+  <meta name="viewport" content="width=device-width"/>
+  <!--  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="/bootstrap.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
 </head>
-<body class="text-center">
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+          aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-  <a th:href="@{/todo?lang=en}">EN</a>
-  &nbsp;|&nbsp;
-  <a th:href="@{/todo?lang=fr}">FR</a>
-  &nbsp;|&nbsp;
-  <a th:href="@{/todo?lang=ru}">RU</a>
-</div>
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/todo?lang=en}">EN<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/todo?lang=fr}">FR</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/todo?lang=ru}">RU</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" th:action="@{/todo}" method="post">
+      <input class="form-control mr-sm-2" type="text"
+             placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<h1 class="text-center" th:utext="#{label.heading}"></h1>
+<div class="text-center">
+  <button type="button" class="btn btn-success" id="add" data-toggle="modal" data-target="#Todo">Add<span
+      class="caret"></span>
+  </button>
+  <div class="modal fade" id="Todo">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="needs-validation" novalidate th:action="@{/add}" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title text-uppercase text-center">New ToDo</h5>
+          </div>
+          <div class="modal-body">
 
-<h1 th:utext="#{label.heading}"></h1>
-
-<a href="/todo/add" th:utext="#{label.add}"></a>
-
-<a href="/todo/assignees" th:utext="#{label.list}"></a>
-
-<div class="active-pink-3 active-pink-4 mb-4">
-  <form th:action="@{/todo}" method="post">
-    <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">
-    <button type="submit">search</button>
+            <div class="form-row">
+              <label for="title">Title</label>
+              <input id="title" name="title" type="text" class="form-control"
+                     aria-describedby="inputGroupPrepend" required/>
+              <div class="invalid-feedback">
+                Please enter the ToDo descriprion.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="assigneeName">Assignee</label>
+              <!--              <input id="assignee" name="assignee" type="text" class="form-control"-->
+              <!--                     aria-describedby="inputGroupPrepend" required/>-->
+              <select class="form-control" name="assigneeName" id="assigneeName">
+                <option th:each="assignee: ${assignees}"
+                        th:text="${assignee.getName()}"
+                        th:value=" ${assignee.getName()}"
+                        th:selected="${assignees.get(0)}"/>
+              </select>
+            </div>
+            <div class="invalid-feedback">
+              Please choose an assignee.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel
+            </button>
+            <button type="submit" class="btn btn-success rounded-0">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <form novalidate th:action="@{/todo/assignees}" method="get"><span
+      class="caret"></span>
+    <button class="btn btn-info" type="submit" th:utext="#{label.list}"></button>
   </form>
 </div>
 
-<table>
-  <thead>
-  <th th:utext="#{label.id}"></th>
-  <th th:utext="#{label.action}"></th>
-  <th th:utext="#{label.done}"></th>
-  <th th:utext="#{label.urgent}"></th>
-  <th th:utext="#{label.date}"></th>
-  <th th:utext="#{label.assignee}"></th>
-  <th></th>
-  </thead>
-  <tbody>
+<!--<div class="active-pink-3 active-pink-4 mb-4">-->
+<!--  <form th:action="@{/todo}" method="post">-->
+<!--    <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">-->
+<!--    <button type="submit">search</button>-->
+<!--  </form>-->
+<!--</div>-->
 
-  <tr>
-  <tr th:each="todo : ${todos}"></td>
-    <td th:text="${todo.getId()}"></td>
-    <td><a class="clickable" th:href="|@{/todo/edit/}${todo.getId()}|" th:text="${todo.getTitle()}"
-           th:onclick=""></a></td>
-    <td th:text="${todo.isDone()}"></td>
-    <td th:text="${todo.isUrgent()}"></td>
-    <td th:text="${todo.getCreateDate()}"></td>
-    <td><a class="clickable"
-           th:if="${todo.getAssignee() !=null}"
-           th:href="|@{/todo/alltodo/}${todo.getAssignee().getId()}"
-           th:text="${todo.getAssignee().getName()}"/>
-      <a class="clickable"
-         th:unless="${todo.getAssignee() !=null}" th:href="|@{/todo/edit/}${todo.getId()}|"
-         th:text="'no assignee'"/>
-    </td>
-    <td><a th:href="${todo.getId()}+'/delete'">delete</a></td>
-    <td>
-  </tr>
-  </tbody>
-</table>
+<div class="row justify-content-center">
+  <div class="col-auto">
+    <table class="table table-responsive">
+      <thead>
+      <tr class="text-uppercase text-center">
+        <th scope="col" th:utext="#{label.id}"></th>
+        <th scope="col" th:utext="#{label.action}"></th>
+        <th scope="col" th:utext="#{label.done}"></th>
+        <th scope="col" th:utext="#{label.urgent}"></th>
+        <th scope="col" th:utext="#{label.date}"></th>
+        <th scope="col" th:utext="#{label.assignee}"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <!--      <tr th:if="${todos.isEmpty()}">-->
+      <!--      <tr>No todos for today!</tr>-->
+      <tr th:each="todo : ${todos}">
+        <td th:text="${todo.getId()}"></td>
+        <td><a class="clickable" th:href="|@{/todo/edit/}${todo.getId()}|"
+               th:text="${todo.getTitle()}"
+               th:onclick=""></a></td>
+        <td th:text="${todo.isDone()}"></td>
+        <td th:text="${todo.isUrgent()}"></td>
+        <td th:text="${todo.getCreateDate()}"></td>
+        <td><a class="clickable"
+               th:if="${todo.getAssignee() !=null}"
+               th:href="|@{/todo/alltodo/}${todo.getAssignee().getId()}"
+               th:text="${todo.getAssignee().getName()}"/>
+          <a class="clickable"
+             th:unless="${todo.getAssignee() !=null}" th:href="|@{/todo/edit/}${todo.getId()}|"
+             th:text="'no assignee'"/>
+        </td>
+        <td>
+          <button th:href="${todo.getId()}+'/delete'" type="button" class="btn btn-danger">Delete
+          </button>
+          </a></td>
+        <td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

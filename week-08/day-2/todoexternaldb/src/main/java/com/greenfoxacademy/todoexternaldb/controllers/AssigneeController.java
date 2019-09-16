@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping("/todo")
+@RequestMapping(value = {"/", "/todo"})
 public class AssigneeController {
 
   private AssigneeService assigneeService;
@@ -24,7 +24,7 @@ public class AssigneeController {
 
   @GetMapping("/assignees")
   public String listAssignees(Model model) {
-    model.addAttribute("assignees", assigneeService.findAll());
+    model.addAttribute("assignees", assigneeService.findAllAssignees());
     return "assignees";
   }
 
@@ -35,13 +35,13 @@ public class AssigneeController {
 
   @PostMapping("/assignees/add")
   public String addAssignee(@RequestParam String name, String email) {
-    assigneeService.save(new Assignee(name, email));
+    assigneeService.saveAssignee(new Assignee(name, email));
     return "redirect:/todo/assignees";
   }
 
   @GetMapping(value = "assignees/{id}/delete")
   public String deleteTodo(@PathVariable Long id) {
-    assigneeService.delete(id);
+    assigneeService.deleteAssignee(id);
     return "redirect:/todo/assignees";
   }
 
@@ -53,7 +53,7 @@ public class AssigneeController {
 
   @PostMapping(value = "assignees/edit/{id}")
   public String editAssignee(@PathVariable Long id, String name) {
-    assigneeService.edit(id,name);
+    assigneeService.editAssignee(id,name);
     return "redirect:/todo/assignees";
   }
   @GetMapping(value = "alltodo/{id}")
