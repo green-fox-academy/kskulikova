@@ -1,8 +1,8 @@
 public class Main {
 
   public static void main(String[] args) throws Throwable {
-    Carrier myCarrier = new Carrier(500, 5);
-    Carrier enemyCarrier = new Carrier(60, 3);
+    Carrier myCarrier = new Carrier(10, 5);
+    Carrier enemyCarrier = new Carrier(10, 3);
 
     F35 first = new F35();
     F35 second = new F35();

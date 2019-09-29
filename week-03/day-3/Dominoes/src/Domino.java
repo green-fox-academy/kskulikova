@@ -41,7 +41,6 @@ public class Domino implements Comparable<Domino>, Printable {
     }
     return 1;
   }
-
   @Override
   public void printAllFields() {
     System.out.println(this.left + ", " + this.right);

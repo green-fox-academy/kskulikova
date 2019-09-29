@@ -2,6 +2,7 @@ package com.greenfoxacademy.programmerfoxclub.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 public class Fox {
 
   @Id
+  @Column(length = 50)
   private String name;
   private String food;
   private String drink;

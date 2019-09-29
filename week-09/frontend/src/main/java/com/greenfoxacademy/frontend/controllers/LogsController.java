@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LogsController {
-  
+
   private final LogService logService;
 
   public LogsController(LogService logService) {
@@ -18,6 +18,5 @@ public class LogsController {
   AllLogs getLogs() {
     return new AllLogs(logService);
   }
-
 
 }
