@@ -1,65 +1,115 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<link rel="stylesheet" href="/styles.css"/>
-<!--<link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>-->
 <head>
-  <title>Assignee List</title>
+  <title th:utext="#{label.title}"></title>
   <meta charset="utf-8"/>
-
+  <meta name="viewport" content="width=device-width"/>
+  <link rel="stylesheet" href="/bootstrap.min.css">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
 </head>
-<body class="text-center">
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/todo/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+          aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
-<!--  <a class="navbar-brand" href="/todo/add">add new todo</a>-->
-<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="/todo/add"-->
-<!--          aria-controls="navbarSupportedContent" aria-expanded="false"-->
-<!--          aria-label="Toggle navigation">-->
-<!--    <span class="text-success"></span>-->
-<!--  </button>-->
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/todo?lang=en}">EN<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/todo?lang=fr}">FR</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/todo?lang=ru}">RU</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0" th:action="@{/todo}" method="post">
+      <input class="form-control mr-sm-2" type="text"
+             placeholder="Search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
 
-<!--  <form class="form-inline my-2 my-lg-0" th:action="@{/todo}" method="post">-->
-<!--    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"-->
-<!--           name="search">-->
-<!--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--  </form>-->
-<!--  </div>-->
-<!--</nav>-->
+<div th:if="${assigneeError !=null && assigneeError.length() > 0}" class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Oops!</strong> It looks like this assignee already exists. Try another one!
+</div>
 
-<h1>Assignees</h1>
+<div class="text-center">
+  <h1 class="text-center" th:utext="#{label.allAssignees}"></h1>
 
-<a href="/todo/">All TODOs</a>
-<a href="/todo/assignees/add">Add a new assignee</a>
+  <button class="btn btn-primary" id="addAssignee" data-toggle="modal" data-target="#Assignee"
+          th:utext="#{label.list}"></button>
+  <div class="modal fade" id="Assignee">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="needs-validation-1" th:action="@{/assignees/add}" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title text-uppercase text-center">New Assignee</h5>
+          </div>
+          <div class="modal-body">
 
-<!--<div class="active-pink-3 active-pink-4 mb-4">-->
-<!--  <form th:action="@{/todo}" method="post">-->
-<!--    <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">-->
-<!--    <button type="submit">search</button>-->
-<!--  </form>-->
-<!--</div>-->
+            <div class="form-row">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" class="form-control"
+                     aria-describedby="inputGroupPrepend" required/>
+              <div class="invalid-feedback">
+                Please enter the assignee name.
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="text" class="form-control"
+                     aria-describedby="inputGroupPrepend" required/>
+            </div>
+            <div class="invalid-feedback">
+              Please enter the assignee email.
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel
+            </button>
+            <button type="submit" class="btn btn-info rounded-0">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <table>
+      <thead>
+      <th>name</th>
+      <th>e-mail</th>
+      <th></th>
+      </thead>
+      <tbody>
 
-<table>
-  <thead>
-  <th>id</th>
-  <th>name</th>
-  <th>e-mail</th>
-  <th></th>
-  </thead>
-  <tbody>
-
-  <tr>
-  <tr th:each="assignee : ${assignees}"></td>
-    <td th:text="${assignee.getId()}"></td>
-    <td><a class="clickable" th:href="|@{/todo/assignees/edit/}${assignee.getId()}|"
-           th:text="${assignee.getName()}"
-           th:onclick=""></a></td>
-    <td th:text="${assignee.getEmail()}"></td>
-    <td><a th:href="'/todo/assignees/' +${assignee.getId()}+'/delete'">delete</a></td>
-    <td>
-  </tr>
-  </tbody>
-</table>
-
-<!--<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>-->
-<!--<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+      <tr>
+      <tr th:each="assignee : ${assignees}"></td>
+        <td><a class="clickable" th:href="|@{/todo/assignees/edit/}${assignee.getId()}|"
+               th:text="${assignee.getName()}"
+               th:onclick=""></a></td>
+        <td th:text="${assignee.getEmail()}"></td>
+        <td><a th:href="'/todo/assignees/' +${assignee.getId()}+'/delete'">delete</a></td>
+        <td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 </html>
