@@ -4,7 +4,6 @@
   <title th:utext="#{label.title}"></title>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width"/>
-  <!--  <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sketchy/bootstrap.min.css" rel="stylesheet" integrity="sha384-hVpXlpdRmJ+uXGwD5W6HZMnR9ENcKVRn855pPbuI/mwPIEKAuKgTKgGksVGmlAvt" crossorigin="anonymous">-->
   <link rel="stylesheet" href="/bootstrap.min.css">
   <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
 </head>
@@ -37,62 +36,51 @@
 </nav>
 <h1 class="text-center" th:utext="#{label.heading}"></h1>
 <div class="text-center">
-  <button type="button" class="btn btn-success" id="add" data-toggle="modal" data-target="#Todo">Add<span
-      class="caret"></span>
-  </button>
-  <div class="modal fade" id="Todo">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="needs-validation" novalidate th:action="@{/add}" method="post">
-          <div class="modal-header">
-            <h5 class="modal-title text-uppercase text-center">New ToDo</h5>
-          </div>
-          <div class="modal-body">
+    <button type="button" class="btn btn-primary" id="add" data-toggle="modal" data-target="#Todo">
+      Add ToDo
+    </button>
+    <div class="modal fade" id="Todo">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form id="needs-validation" novalidate th:action="@{/add}" method="post">
+            <div class="modal-header">
+              <h5 class="modal-title text-uppercase text-center">New ToDo</h5>
+            </div>
+            <div class="modal-body">
 
-            <div class="form-row">
-              <label for="title">Title</label>
-              <input id="title" name="title" type="text" class="form-control"
-                     aria-describedby="inputGroupPrepend" required/>
+              <div class="form-row">
+                <label for="title">Title</label>
+                <input id="title" name="title" type="text" class="form-control"
+                       aria-describedby="inputGroupPrepend" required/>
+                <div class="invalid-feedback">
+                  Please enter the ToDo descriprion.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="assigneeName">Assignee</label>
+                <select class="form-control" name="assigneeName" id="assigneeName">
+                  <option th:each="assignee: ${assignees}"
+                          th:text="${assignee.getName()}"
+                          th:value=" ${assignee.getName()}"
+                          th:selected="${assignees.get(0)}"/>
+                </select>
+              </div>
               <div class="invalid-feedback">
-                Please enter the ToDo descriprion.
+                Please choose an assignee.
               </div>
             </div>
-            <div class="form-group">
-              <label for="assigneeName">Assignee</label>
-              <!--              <input id="assignee" name="assignee" type="text" class="form-control"-->
-              <!--                     aria-describedby="inputGroupPrepend" required/>-->
-              <select class="form-control" name="assigneeName" id="assigneeName">
-                <option th:each="assignee: ${assignees}"
-                        th:text="${assignee.getName()}"
-                        th:value=" ${assignee.getName()}"
-                        th:selected="${assignees.get(0)}"/>
-              </select>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel
+              </button>
+              <button type="submit" class="btn btn-info rounded-0">Add</button>
             </div>
-            <div class="invalid-feedback">
-              Please choose an assignee.
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">Cancel
-            </button>
-            <button type="submit" class="btn btn-success rounded-0">Add</button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
+  <a th:href="@{/assignees}"><button class="btn btn-primary" th:utext="#{label.list}"></button></a>
   </div>
-  <form novalidate th:action="@{/todo/assignees}" method="get"><span
-      class="caret"></span>
-    <button class="btn btn-info" type="submit" th:utext="#{label.list}"></button>
-  </form>
 </div>
-
-<!--<div class="active-pink-3 active-pink-4 mb-4">-->
-<!--  <form th:action="@{/todo}" method="post">-->
-<!--    <input class="form-control" type="text" name="search" placeholder="Search" aria-label="Search">-->
-<!--    <button type="submit">search</button>-->
-<!--  </form>-->
-<!--</div>-->
 
 <div class="row justify-content-center">
   <div class="col-auto">
@@ -105,10 +93,11 @@
         <th scope="col" th:utext="#{label.urgent}"></th>
         <th scope="col" th:utext="#{label.date}"></th>
         <th scope="col" th:utext="#{label.assignee}"></th>
+        <th scope="col" th:utext="#{label.delete}"></th>
       </tr>
       </thead>
       <tbody>
-      <!--      <tr th:if="${todos.isEmpty()}">-->
+<!--            <tr th:if="${todos.isEmpty()}">-->
       <!--      <tr>No todos for today!</tr>-->
       <tr th:each="todo : ${todos}">
         <td th:text="${todo.getId()}"></td>
@@ -127,9 +116,11 @@
              th:text="'no assignee'"/>
         </td>
         <td>
-          <button th:href="${todo.getId()}+'/delete'" type="button" class="btn btn-danger">Delete
-          </button>
-          </a></td>
+          <form novalidate th:action="'/' + ${todo.getId()}+'/delete'" method="get">
+            <button type="submit" class="btn btn-danger" th:utext="#{label.delete}">
+            </button>
+          </form>
+          </td>
         <td>
       </tr>
       </tbody>
