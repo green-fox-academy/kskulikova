@@ -8,6 +8,12 @@
 
 [P2P chat app](https://github.com/kskulikova/p2p-chat)
 
+[August FedEx day: digit recognizer project](https://github.com/green-fox-academy/devilline-digit-recognizer)
+
+[September Hackathon](https://github.com/green-fox-academy/SOLID-Erste)
+
+[Project phase group project LevelUp](https://github.com/green-fox-academy/ferrilata-devilline)
+
 <b>Other repositories<b>:
 
 [Hello-world](https://github.com/kskulikova/hello-world)
