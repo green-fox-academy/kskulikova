@@ -34,7 +34,8 @@ public class AssigneeService implements IAssigneeService {
   @Override
   public Assignee findAssigneeByName(String name) {
     List<Assignee> assignees = findAllAssignees();
-    return assignees.stream().filter(a->a.getName().equals(name)).findFirst().get();
+      return assignees.stream().filter(a -> a.getName().equals(name)).findFirst().orElse(null);
+
   }
 
   public void saveAssignee(Assignee assignee) {

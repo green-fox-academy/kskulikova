@@ -35,11 +35,12 @@
   </div>
 </nav>
 
-<div th:if="${assigneeError !=null && assigneeError.length() > 0}" class="alert alert-dismissible alert-danger">
+<div th:if="${assigneeError !=null && assigneeError.length() > 0}"
+     class="alert alert-dismissible alert-danger">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>Oops!</strong> It looks like this assignee already exists. Try another one!
+  <p th:text="${assigneeError}">
+  <p>
 </div>
-
 <div class="text-center">
   <h1 class="text-center" th:utext="#{label.allAssignees}"></h1>
 
@@ -80,36 +81,41 @@
       </div>
     </div>
   </div>
-  <div class="text-center">
-    <table>
-      <thead>
-      <th>name</th>
-      <th>e-mail</th>
-      <th></th>
-      </thead>
-      <tbody>
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <table class="table table-responsive">
+        <thead>
+        <tr class="text-uppercase text-center">
+          <th>name</th>
+          <th>e-mail</th>
+          <th>delete</th>
+        </tr>
+        </thead>
+        <tbody>
 
-      <tr>
-      <tr th:each="assignee : ${assignees}"></td>
-        <td><a class="clickable" th:href="|@{/todo/assignees/edit/}${assignee.getId()}|"
-               th:text="${assignee.getName()}"
-               th:onclick=""></a></td>
-        <td th:text="${assignee.getEmail()}"></td>
-        <td><a th:href="'/todo/assignees/' +${assignee.getId()}+'/delete'">delete</a></td>
-        <td>
-      </tr>
-      </tbody>
-    </table>
+        <tr>
+        <tr th:each="assignee : ${assignees}"></td>
+          <td><a class="clickable" th:href="|@{/todo/assignees/edit/}${assignee.getId()}|"
+                 th:text="${assignee.getName()}"
+                 th:onclick=""></a></td>
+          <td th:text="${assignee.getEmail()}"></td>
+          <td><a th:href="'/todo/assignees/' +${assignee.getId()}+'/delete'">
+            <button type="submit" class="btn btn-danger" th:utext="#{label.delete}"></button>
+          </a></td>
+          <td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+          crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+          integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+          integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+          crossorigin="anonymous"></script>
 </body>
 </html>
