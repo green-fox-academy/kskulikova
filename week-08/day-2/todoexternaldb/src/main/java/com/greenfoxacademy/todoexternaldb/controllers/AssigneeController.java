@@ -36,7 +36,7 @@ public class AssigneeController {
   @PostMapping("/assignees/add")
   public String addAssignee(@RequestParam String name, String email) {
     assigneeService.saveAssignee(new Assignee(name, email));
-    return "redirect:/todo/assignees";
+    return "redirect:/todo";
   }
 
   @GetMapping(value = "assignees/{id}/delete")
